@@ -1,0 +1,3209 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/dataAgent/definition/dataSource/1.0.0/schema.json",
+  "artifactId": "8df153aa-4bd9-9fa5-4bb4-6fb649efcd8e",
+  "workspaceId": "00000000-0000-0000-0000-000000000000",
+  "dataSourceInstructions": null,
+  "displayName": "SM_Composite_SupervisionPlatformEndUser",
+  "type": "semantic_model",
+  "userDescription": null,
+  "metadata": {
+    "csdl_relationships": "[{\"FromTable\":\"dim_utilisateur\",\"FromColumn\":\"id\",\"ToTable\":\"dim_max_user_licence\",\"ToColumn\":\"user_id\",\"IsActive\":true,\"IsBidirectional\":false,\"Cardinality\":\"Unknown\"},{\"FromTable\":\"dim_instance_licence_utilisateur\",\"FromColumn\":\"instance_id\",\"ToTable\":\"dim_instance\",\"ToColumn\":\"id\",\"IsActive\":true,\"IsBidirectional\":false,\"Cardinality\":\"ManyToOne\"},{\"FromTable\":\"dim_instance_licence_utilisateur\",\"FromColumn\":\"licence_id\",\"ToTable\":\"dim_licence\",\"ToColumn\":\"id\",\"IsActive\":true,\"IsBidirectional\":false,\"Cardinality\":\"ManyToOne\"},{\"FromTable\":\"dim_instance_licence_utilisateur\",\"FromColumn\":\"user_id\",\"ToTable\":\"dim_utilisateur\",\"ToColumn\":\"id\",\"IsActive\":true,\"IsBidirectional\":false,\"Cardinality\":\"ManyToOne\"},{\"FromTable\":\"fait_usage_dataiku_utilisateur\",\"FromColumn\":\"instance_id\",\"ToTable\":\"dim_instance\",\"ToColumn\":\"id\",\"IsActive\":true,\"IsBidirectional\":false,\"Cardinality\":\"ManyToOne\"},{\"FromTable\":\"fait_usage_dataiku_utilisateur\",\"FromColumn\":\"project_id\",\"ToTable\":\"dim_project\",\"ToColumn\":\"id\",\"IsActive\":true,\"IsBidirectional\":false,\"Cardinality\":\"ManyToOne\"},{\"FromTable\":\"fait_usage_dataiku_utilisateur\",\"FromColumn\":\"user_id\",\"ToTable\":\"dim_utilisateur\",\"ToColumn\":\"id\",\"IsActive\":true,\"IsBidirectional\":false,\"Cardinality\":\"ManyToOne\"},{\"FromTable\":\"fait_usage_dataiku_utilisateur\",\"FromColumn\":\"timestamp_dt\",\"ToTable\":\"dim_calendrier\",\"ToColumn\":\"DATE\",\"IsActive\":true,\"IsBidirectional\":false,\"Cardinality\":\"ManyToOne\"},{\"FromTable\":\"fait_usage_dataiku_utilisateur\",\"FromColumn\":\"usage_id\",\"ToTable\":\"dim_usage\",\"ToColumn\":\"id\",\"IsActive\":true,\"IsBidirectional\":false,\"Cardinality\":\"ManyToOne\"},{\"FromTable\":\"fait_usage_dataiku_utilisateur\",\"FromColumn\":\"licence_id\",\"ToTable\":\"dim_licence\",\"ToColumn\":\"id\",\"IsActive\":true,\"IsBidirectional\":false,\"Cardinality\":\"ManyToOne\"},{\"FromTable\":\"Date_Actualisation\",\"FromColumn\":\"Date_Actualisation2\",\"ToTable\":\"LocalDateTable_79485caa_2534_41a9_bf14_e8a3499f31ea\",\"ToColumn\":\"Date\",\"IsActive\":true,\"IsBidirectional\":false,\"Cardinality\":\"ManyToOne\"},{\"FromTable\":\"dim_max_user_licence\",\"FromColumn\":\"user_id\",\"ToTable\":\"dim_utilisateur\",\"ToColumn\":\"id\",\"IsActive\":true,\"IsBidirectional\":false,\"Cardinality\":\"Unknown\"}]"
+  },
+  "elements": [
+    {
+      "id": "1a60455f-59ca-4ed4-a5bd-f802bdc5b771",
+      "is_selected": false,
+      "display_name": "Colors",
+      "type": "semantic_model.table",
+      "description": null,
+      "children": [
+        {
+          "id": "3291b638-b0ba-40f4-994e-abd000841f84",
+          "is_selected": true,
+          "display_name": "Name",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "17ae5b79-f304-4bc6-8b5c-990b430e9659",
+          "is_selected": true,
+          "display_name": "LightMode",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "977ef31f-cb65-4b4e-8d4f-456bcfb4e5c9",
+          "is_selected": true,
+          "display_name": "DarkMode",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "d02b27fe-5434-46ef-96bf-56220a77ba50",
+          "is_selected": true,
+          "display_name": "Category",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "8a3754a8-cd22-48d5-be09-169037e7f4d5",
+          "is_selected": true,
+          "display_name": "Shade",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "9a0b2e91-ebfe-4e28-9b24-93989d790808",
+          "is_selected": true,
+          "display_name": "TextColor",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "2b2fb603-6aca-4b0a-9acd-5411fb3bf812",
+          "is_selected": true,
+          "display_name": "TextColor_100",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "4d340856-d486-41fd-80c9-205d385304db",
+          "is_selected": true,
+          "display_name": "TextColor_200",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "de94e2af-5493-4cec-a448-f93556b80a00",
+          "is_selected": true,
+          "display_name": "TextColor_300",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "2dea5ea6-a802-435f-8a9f-0e85b64cb0ec",
+          "is_selected": true,
+          "display_name": "TextColor_400",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "b0998707-f5bd-4c6d-901a-8c101b641ed8",
+          "is_selected": true,
+          "display_name": "TextColor_500",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "1db3fdfe-61c5-4a50-ab98-538ffb776838",
+          "is_selected": true,
+          "display_name": "TextColor_600",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "5b3a95ea-8913-42e8-80b0-e5d8c613513b",
+          "is_selected": true,
+          "display_name": "TextColor_700",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "8f899415-3c63-4286-8be3-a8d589fb21ce",
+          "is_selected": true,
+          "display_name": "TextColor_800",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "7576a7c9-70fb-4306-beed-fc36df75d3db",
+          "is_selected": true,
+          "display_name": "TextColor_900",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "fba7c19f-b5ee-44a1-9b2f-15ac261aa8fd",
+          "is_selected": true,
+          "display_name": "BackgroundColor",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "377d2193-2d7c-442d-bab4-54d8249ad8bb",
+          "is_selected": true,
+          "display_name": "BackgroundColor_100",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "8685d108-ae05-4b6e-8bc9-a89500d49df2",
+          "is_selected": true,
+          "display_name": "BackgroundColor_200",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "30359ce4-6fbd-44ee-8302-9f48221c241f",
+          "is_selected": true,
+          "display_name": "BackgroundColor_300",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "fdcbdf90-c2a0-4380-b394-27633e6b4a30",
+          "is_selected": true,
+          "display_name": "BackgroundColor_400",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "a8052966-700a-42d6-8839-23d3851a802e",
+          "is_selected": true,
+          "display_name": "BackgroundColor_500",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "c6832132-1198-4d1b-b40d-00187b6a82ed",
+          "is_selected": true,
+          "display_name": "BackgroundColor_600",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "d4068965-68fe-4a04-aa6f-d47175d909c2",
+          "is_selected": true,
+          "display_name": "BackgroundColor_700",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "400c2a2e-871e-4944-bffe-8b7da91c76db",
+          "is_selected": true,
+          "display_name": "BackgroundColor_800",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "f7de0c51-346a-419e-b0cb-0f37c0ab0ee3",
+          "is_selected": true,
+          "display_name": "BackgroundColor_900",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "b4ebe046-5e34-4742-905e-7b491997a26d",
+          "is_selected": true,
+          "display_name": "PrimaryColor",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "ed0233a6-44df-492b-8834-cdef295a3632",
+          "is_selected": true,
+          "display_name": "PrimaryColor_100",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "8387080f-5d32-438d-8eca-aeb872b47078",
+          "is_selected": true,
+          "display_name": "PrimaryColor_200",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "8624831a-50d1-40ea-a2d3-40fc5b87338e",
+          "is_selected": true,
+          "display_name": "PrimaryColor_300",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "661d847c-25f4-49c9-be45-20b04ba7bc42",
+          "is_selected": true,
+          "display_name": "PrimaryColor_400",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "e158c637-135a-4f55-8ea4-ae15ab78acf9",
+          "is_selected": true,
+          "display_name": "PrimaryColor_500",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "7ff9d692-8f77-4096-bbd8-fccbfea394f0",
+          "is_selected": true,
+          "display_name": "PrimaryColor_600",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "c495f5a1-1bc2-4e8e-826b-81b796f41236",
+          "is_selected": true,
+          "display_name": "PrimaryColor_700",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "49c1a67e-e814-42e6-ad24-9fd3517e054a",
+          "is_selected": true,
+          "display_name": "PrimaryColor_800",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "a69f58ac-a436-499d-9f33-f2fffb4290bd",
+          "is_selected": true,
+          "display_name": "PrimaryColor_900",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "ae7762dc-d058-4471-96b0-f7e781f16f00",
+          "is_selected": true,
+          "display_name": "PrimaryColor_950",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "ae9b0f8b-ad0b-42c7-93b7-8a79838f764f",
+          "is_selected": true,
+          "display_name": "SecondaryColor",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "babf158e-ac90-46fb-a398-cefe8bd3e389",
+          "is_selected": true,
+          "display_name": "SecondaryColor_100",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "fb94fef7-623c-4f88-ad91-0f2e170c2fc5",
+          "is_selected": true,
+          "display_name": "SecondaryColor_200",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "a81c14ed-e9a1-43dc-8c68-2a0e7efa39b8",
+          "is_selected": true,
+          "display_name": "SecondaryColor_300",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "0138d8af-a51e-43d4-9574-d9fd1a457556",
+          "is_selected": true,
+          "display_name": "SecondaryColor_400",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "30aa093e-415c-4a59-a15d-9b2beb3672ac",
+          "is_selected": true,
+          "display_name": "SecondaryColor_500",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "9028b278-df71-4f3b-af1f-c3e10a421e8b",
+          "is_selected": true,
+          "display_name": "SecondaryColor_600",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "e8d3ce38-15f8-4203-a37c-8c2ef666ba23",
+          "is_selected": true,
+          "display_name": "SecondaryColor_700",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "29f4c889-e012-49b3-be6d-783b5decc1a4",
+          "is_selected": true,
+          "display_name": "SecondaryColor_800",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "68f953c4-7521-4fb3-a8b1-c87b98cd4a8e",
+          "is_selected": true,
+          "display_name": "SecondaryColor_900",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "671b07a5-4710-456b-adf6-78ab6b19f873",
+          "is_selected": true,
+          "display_name": "SecondaryColor_950",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "b2f78d09-e8d9-4a20-80a4-0493428df004",
+          "is_selected": true,
+          "display_name": "ResponsibleGreen",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "998bcd66-8fcf-4560-a1ed-b5e2d52af480",
+          "is_selected": true,
+          "display_name": "ResponsibleGreen_100",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "42c91141-e8cc-4591-bf68-97c1fdc2f7ff",
+          "is_selected": true,
+          "display_name": "ResponsibleGreen_200",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "617bf43f-7654-42fc-b9c3-09b16ce1f81a",
+          "is_selected": true,
+          "display_name": "ResponsibleGreen_300",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "b3d9542b-013b-434f-b810-dbef66201a5c",
+          "is_selected": true,
+          "display_name": "ResponsibleGreen_400",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "c6c12a17-1f89-4e65-998d-8f35ab3bcad4",
+          "is_selected": true,
+          "display_name": "ResponsibleGreen_500",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "9fec27ea-b297-44f0-992b-cf19fa920406",
+          "is_selected": true,
+          "display_name": "ResponsibleGreen_600",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "3539abc7-d08e-4bc0-b1bb-0baeb14381c2",
+          "is_selected": true,
+          "display_name": "ResponsibleGreen_700",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "fcfa56e9-be75-43f0-ac07-52ace3743ef4",
+          "is_selected": true,
+          "display_name": "ResponsibleGreen_800",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "dbfce06a-3696-4ae5-b86b-05cefd45b606",
+          "is_selected": true,
+          "display_name": "ResponsibleGreen_900",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "98e8eba7-83fa-404c-9951-77d284162fff",
+          "is_selected": true,
+          "display_name": "ResponsibleGreen_950",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "5ec40ad5-e82e-42c9-8f44-710383eaf39c",
+          "is_selected": true,
+          "display_name": "LightPurple",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "92f5af83-45b1-40f3-a397-742273d18f97",
+          "is_selected": true,
+          "display_name": "LightPurple_100",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "15d56f0e-6405-4d6c-8d5d-2937d9ea7d68",
+          "is_selected": true,
+          "display_name": "LightPurple_200",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "1f6b4490-eccd-4dac-9e66-fbd4faabd548",
+          "is_selected": true,
+          "display_name": "LightPurple_300",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "5c92f6f7-e74d-4d48-9362-b9759b2e1064",
+          "is_selected": true,
+          "display_name": "LightPurple_400",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "285649a7-3fc9-40ea-93a3-51a1dca09f64",
+          "is_selected": true,
+          "display_name": "LightPurple_500",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "26551664-55ed-4caf-934f-e33c7be02047",
+          "is_selected": true,
+          "display_name": "LightPurple_600",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "85b403e2-11a8-4e4e-a689-bd5cf28b01a2",
+          "is_selected": true,
+          "display_name": "LightPurple_700",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "cc999ee9-7664-4072-8109-f550a9d74636",
+          "is_selected": true,
+          "display_name": "LightPurple_800",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "519fc521-4f34-4806-a65c-41170c1b32ee",
+          "is_selected": true,
+          "display_name": "LightPurple_900",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "4f5444af-0aae-4dd5-9aec-0df3fac8a0ea",
+          "is_selected": true,
+          "display_name": "LightPurple_950",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "89220a5f-65ea-422e-9367-d79ca31e0ec4",
+          "is_selected": true,
+          "display_name": "VibrantRed",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "a37e410b-1f13-4a97-bea8-58d8c6f53af6",
+          "is_selected": true,
+          "display_name": "VibrantRed_100",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "869222cc-8125-4f25-9b0e-66b55a5d8986",
+          "is_selected": true,
+          "display_name": "VibrantRed_200",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "22263319-1de6-400a-bfae-f6b082b9e3e7",
+          "is_selected": true,
+          "display_name": "VibrantRed_300",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "18da9a68-fc67-4b33-8f68-236639b9a910",
+          "is_selected": true,
+          "display_name": "VibrantRed_400",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "60e478e5-c7ca-4de5-91cb-d9a8fa71a172",
+          "is_selected": true,
+          "display_name": "VibrantRed_500",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "9868e252-c583-4d4c-81aa-4ead97651d8b",
+          "is_selected": true,
+          "display_name": "VibrantRed_600",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "0f2164e0-6cd3-4d8d-8b80-50c2cfd1bfd9",
+          "is_selected": true,
+          "display_name": "VibrantRed_700",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "9c45ddbc-d21d-4c0c-aa35-9ee787b4af69",
+          "is_selected": true,
+          "display_name": "VibrantRed_800",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "834869cc-2b9f-44f5-a45b-f613635fd68f",
+          "is_selected": true,
+          "display_name": "VibrantRed_900",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "44896b2d-5d71-465e-b263-2755350aff45",
+          "is_selected": true,
+          "display_name": "VibrantRed_950",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "31e08364-85dc-499c-b732-f9268b04b182",
+          "is_selected": true,
+          "display_name": "WhiteColor",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "1f5d2743-cf0b-4f0c-a3e1-41723caf49fc",
+          "is_selected": true,
+          "display_name": "WhiteColor_100",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "e0d2b58d-3ed7-4bf1-bae3-8549d9e8b952",
+          "is_selected": true,
+          "display_name": "WhiteColor_200",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "deca2860-afc0-4450-b784-e2e9e2d95719",
+          "is_selected": true,
+          "display_name": "WhiteColor_300",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "44ee3078-6bab-4e47-8966-91823a86a965",
+          "is_selected": true,
+          "display_name": "WhiteColor_400",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "b9acca0e-3232-47ed-9f9d-a6f62aa55bbf",
+          "is_selected": true,
+          "display_name": "WhiteColor_500",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "f58dd89a-e314-43b7-b772-dcca49850984",
+          "is_selected": true,
+          "display_name": "WhiteColor_600",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "09df2b29-fafa-4aaa-94b4-559cfa1b36a1",
+          "is_selected": true,
+          "display_name": "WhiteColor_700",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "0c78bff9-c7c0-47f5-92f0-963e754a6614",
+          "is_selected": true,
+          "display_name": "WhiteColor_800",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "71fa87d0-1f8f-4dd8-a5c3-a73c875a833c",
+          "is_selected": true,
+          "display_name": "WhiteColor_900",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "c7a2a9cf-04b4-491d-a789-6ccd7af766a3",
+          "is_selected": true,
+          "display_name": "WhiteColor_950",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "5e433b38-5484-4024-8775-55b45d164c18",
+          "is_selected": true,
+          "display_name": "BlackColor",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "2a3a2113-0adb-4dfe-858e-10a8835591dd",
+          "is_selected": true,
+          "display_name": "BlackColor_100",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "0a136619-2c0d-4436-9834-b99a1f0f448b",
+          "is_selected": true,
+          "display_name": "BlackColor_200",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "20ca97cc-c733-4e90-b96b-9dc238512dcc",
+          "is_selected": true,
+          "display_name": "BlackColor_300",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "e39f00d0-7a78-4cdb-ab48-75046865c441",
+          "is_selected": true,
+          "display_name": "BlackColor_400",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "4ff0c64c-1b00-43ba-833b-c59e04e56999",
+          "is_selected": true,
+          "display_name": "BlackColor_500",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "1c965d11-f397-4141-adfc-506a52ad3ca6",
+          "is_selected": true,
+          "display_name": "BlackColor_600",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "5345e1a9-d667-4ed9-8c15-59d7130db3dd",
+          "is_selected": true,
+          "display_name": "BlackColor_700",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "e2aed037-5e4f-4e0f-acd1-bcff168bacee",
+          "is_selected": true,
+          "display_name": "BlackColor_800",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "a077451e-27f8-4a33-ba88-8b470e3cd868",
+          "is_selected": true,
+          "display_name": "BlackColor_900",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "21a53519-5f20-4670-8e22-e8ccaef8e5eb",
+          "is_selected": true,
+          "display_name": "BlackColor_950",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "6d2ee347-3b55-479a-8ec7-75b2a775e4ad",
+          "is_selected": true,
+          "display_name": "BgLinearGradientColor",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "0647f22f-8245-4361-8c3a-fd46f7e72a39",
+          "is_selected": true,
+          "display_name": "PageTitleGradientColor",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "b07ad222-ae3f-4492-93b4-dfb7a98bd3e6",
+          "is_selected": true,
+          "display_name": "AliceBlueColor",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "33e88604-e89f-4a8c-8a83-38d4bb089278",
+          "is_selected": true,
+          "display_name": "DynamicColor",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "e99e79da-5b31-4f93-b470-10877759f690",
+          "is_selected": true,
+          "display_name": "TransparentColor",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "d90f253b-b8c7-4065-b744-66a0aa583cc0",
+          "is_selected": true,
+          "display_name": "UnitedBlueColor",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "81d2912d-efb4-42de-b7f9-48d9946b1191",
+          "is_selected": true,
+          "display_name": "UnitedBlueTextColor",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "37f1a9c3-89fe-478d-ae0c-d5260982f819",
+      "is_selected": true,
+      "display_name": "Date_Actualisation",
+      "type": "semantic_model.table",
+      "description": null,
+      "children": [
+        {
+          "id": "a94b4d43-f756-46e3-b3d5-627d8d3f23a2",
+          "is_selected": true,
+          "display_name": "Date_Actualisation",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "f55ee467-299d-4ac2-a040-128a32cfd563",
+      "is_selected": true,
+      "display_name": "dim_calendrier",
+      "type": "semantic_model.table",
+      "description": "Calendar/date dimension providing ISO, Gregorian, and business decision (décisionnel) time attributes to support time intelligence and period comparisons.",
+      "children": [
+        {
+          "id": "a3f08839-9c4f-4e50-8834-fb9499cf9e48",
+          "is_selected": true,
+          "display_name": "DATE",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Full date (calendar dimension key).",
+          "children": []
+        },
+        {
+          "id": "c400992e-9d29-48dd-bda9-969602831c6d",
+          "is_selected": true,
+          "display_name": "CD_JOUR",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Numeric identifier of the day.",
+          "children": []
+        },
+        {
+          "id": "050d72c9-52a1-4143-a0fe-0454828aa0ff",
+          "is_selected": true,
+          "display_name": "ANNEE_ISO",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "ISO year (ISO 8601 standard).",
+          "children": []
+        },
+        {
+          "id": "060e4dad-f383-4376-bb94-672f33b9a398",
+          "is_selected": true,
+          "display_name": "JOUR_ANNEE_ISO",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Day within the ISO year.",
+          "children": []
+        },
+        {
+          "id": "1fca1ac6-eb9f-4116-8241-7749cf2af7c9",
+          "is_selected": true,
+          "display_name": "TRIMESTRE_ISO",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "ISO quarter.",
+          "children": []
+        },
+        {
+          "id": "ff548b74-9fd0-4247-9844-ebe782ad46a6",
+          "is_selected": true,
+          "display_name": "JOUR_TRIMESTRE_ISO",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Day within the ISO quarter.",
+          "children": []
+        },
+        {
+          "id": "478080c9-737b-4e04-9a18-7c888e51ea3d",
+          "is_selected": true,
+          "display_name": "MOIS_ISO",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "ISO month.",
+          "children": []
+        },
+        {
+          "id": "641542cd-5a3d-40f7-af3c-d8efca789845",
+          "is_selected": true,
+          "display_name": "JOUR_MOIS_ISO",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Day within the ISO month.",
+          "children": []
+        },
+        {
+          "id": "11a4da6d-e5d6-433f-949a-202e51781cc1",
+          "is_selected": true,
+          "display_name": "SEMAINE_ISO",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "ISO week.",
+          "children": []
+        },
+        {
+          "id": "29c40209-8a73-4b55-9c1a-c7fce546bc22",
+          "is_selected": true,
+          "display_name": "JOUR_SEMAINE_ISO",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "ISO day of the week.",
+          "children": []
+        },
+        {
+          "id": "09426414-7c8c-4760-b381-d07c627407bb",
+          "is_selected": true,
+          "display_name": "ANNEE_GREGORIEN",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Gregorian year.",
+          "children": []
+        },
+        {
+          "id": "b0ac50b9-1e83-4c6e-913f-3cd3e6b9856e",
+          "is_selected": true,
+          "display_name": "JOUR_ANNEE_GREGORIEN",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Day within the Gregorian year.",
+          "children": []
+        },
+        {
+          "id": "acb8a641-ef03-4184-8739-6419083c6b2b",
+          "is_selected": true,
+          "display_name": "TRIMESTRE_GREGORIEN",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Gregorian quarter.",
+          "children": []
+        },
+        {
+          "id": "a43f70c6-1320-435b-b2b3-e8be25ed887e",
+          "is_selected": true,
+          "display_name": "JOUR_TRIMESTRE_GREGORIEN",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Day within the Gregorian quarter.",
+          "children": []
+        },
+        {
+          "id": "b0bc8ffb-688d-48e9-bad8-c7f7686ebe0c",
+          "is_selected": true,
+          "display_name": "MOIS_GREGORIEN",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Gregorian month.",
+          "children": []
+        },
+        {
+          "id": "06a9e2f8-1461-40c0-b917-e9f4cb6fbb9b",
+          "is_selected": true,
+          "display_name": "JOUR_MOIS_GREGORIEN",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Day within the Gregorian month.",
+          "children": []
+        },
+        {
+          "id": "05c78058-0dd9-44ee-8634-095ccc2e62e8",
+          "is_selected": true,
+          "display_name": "ANNEE_DECISIONNEL",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Business decision year.",
+          "children": []
+        },
+        {
+          "id": "8a426603-99d3-477d-a52e-5bc8cb60e665",
+          "is_selected": true,
+          "display_name": "JOUR_ANNEE_DECISIONNEL",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Day within the business decision year.",
+          "children": []
+        },
+        {
+          "id": "5b096b1f-de75-404b-a0ac-979cbe0f3dcd",
+          "is_selected": true,
+          "display_name": "TRIMESTRE_DECISIONNEL",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Business decision quarter.",
+          "children": []
+        },
+        {
+          "id": "4f144c6e-5229-416e-a3ec-351f71d4cd32",
+          "is_selected": true,
+          "display_name": "JOUR_TRIMESTRE_DECISIONNEL",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Day within the business decision quarter.",
+          "children": []
+        },
+        {
+          "id": "cfa0d572-fdd2-4aa9-9aba-be81f0272017",
+          "is_selected": true,
+          "display_name": "MOIS_DECISIONNEL",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Business decision month.",
+          "children": []
+        },
+        {
+          "id": "814de341-ba8a-48d9-9dcf-b2459dd63a9d",
+          "is_selected": true,
+          "display_name": "JOUR_MOIS_DECISIONNEL",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Day within the business decision month.",
+          "children": []
+        },
+        {
+          "id": "c1fd5053-e40f-445f-9421-9ef2c559cca6",
+          "is_selected": true,
+          "display_name": "SEMAINE_DECISIONNEL",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Business decision week.",
+          "children": []
+        },
+        {
+          "id": "b20565a5-5b6d-457b-af94-51f18ae77e51",
+          "is_selected": true,
+          "display_name": "JOUR_SEMAINE_DECISIONNEL",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Business decision day of week.",
+          "children": []
+        },
+        {
+          "id": "7e5dca8f-489a-4aa0-b7d4-e8d0bbb3ab89",
+          "is_selected": true,
+          "display_name": "FLAG_ANNEE_BISSEXTILE",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": "Indicates whether the year is a leap year.",
+          "children": []
+        },
+        {
+          "id": "a7f94323-8188-4432-9270-0328421251be",
+          "is_selected": true,
+          "display_name": "FLAG_ANNEE_53_SEMAINES",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": "Indicates whether the year contains 53 weeks.",
+          "children": []
+        },
+        {
+          "id": "54cc2f13-e173-47d9-bcbc-a32e3328e5e4",
+          "is_selected": true,
+          "display_name": "BI_DATE_RATTACH_SEM_DECISIONNEL",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Attachment date to the business decision week.",
+          "children": []
+        },
+        {
+          "id": "9ac7d384-3542-433d-a754-eb7d22e6f4a0",
+          "is_selected": true,
+          "display_name": "BI_SEM_COMPAR_DECISIONNEL",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Business decision comparison week.",
+          "children": []
+        },
+        {
+          "id": "c70d2ed8-f91b-46b2-968b-9fd45cbf88d0",
+          "is_selected": true,
+          "display_name": "BI_DATE_RATTACH_SEM_COMPAR_DECISIONNEL",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Attachment date for business decision comparison.",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "433fbf91-e2bf-4cba-9e71-47b2cfe108b5",
+      "is_selected": true,
+      "display_name": "dim_instance",
+      "type": "semantic_model.table",
+      "description": "Reference dimension for Dataiku platform instances/environments (DEV/INT/RPP/PROD) and related metadata (instance name, timestamps).",
+      "children": [
+        {
+          "id": "1cb9d310-27f9-482b-b621-39c01d2936fe",
+          "is_selected": true,
+          "display_name": "id",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Unique technical identifier of the license (dimension key).",
+          "children": []
+        },
+        {
+          "id": "613e7682-ee9f-407e-94f4-83f808a198c9",
+          "is_selected": true,
+          "display_name": "environment",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": "Platform environment (DEV, INT, RPP, PROD).",
+          "children": []
+        },
+        {
+          "id": "c0daa13f-a3f7-4f7d-a281-fa35e65d4667",
+          "is_selected": true,
+          "display_name": "type",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": "Dataiku instance type (design, automation…).",
+          "children": []
+        },
+        {
+          "id": "6e88c04e-49da-4eb7-a068-d123eeeeb9e2",
+          "is_selected": true,
+          "display_name": "instance_name",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": "Dataiku instance name (logical/technical platform identifier e.g.: automation_monopole_int).",
+          "children": []
+        },
+        {
+          "id": "7629d4dd-a905-4e51-b78c-1a2a3c461965",
+          "is_selected": true,
+          "display_name": "loaded_at",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Timestamp of record loading into the Lakehouse (ingestion).",
+          "children": []
+        },
+        {
+          "id": "c985cd13-5018-403e-82c9-ac4009b3aa1f",
+          "is_selected": true,
+          "display_name": "updated_at",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Timestamp of the last record update (source or processing).",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "203b184d-b379-49c3-814e-0db9a8a1c678",
+      "is_selected": true,
+      "display_name": "dim_instance_licence_utilisateur",
+      "type": "semantic_model.table",
+      "description": "Link (bridge) table associating users, licenses, and instances, tracking license assignment events over time (creation date, snapshots, ingestion metadata).",
+      "children": [
+        {
+          "id": "ef984c6b-846b-49c3-af62-ee3f1b9cbdee",
+          "is_selected": true,
+          "display_name": "id",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Unique technical identifier of the record (link table key)",
+          "children": []
+        },
+        {
+          "id": "26d3305a-9daf-49c9-8ffd-dee07c50a98e",
+          "is_selected": true,
+          "display_name": "creationdate",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Creation date of the license assignment to the user",
+          "children": []
+        },
+        {
+          "id": "a1992e33-9565-479d-9d48-86158e989854",
+          "is_selected": true,
+          "display_name": "snapshot_dt",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Snapshot date of the data (useful for historization of assignments)",
+          "children": []
+        },
+        {
+          "id": "52803016-c5d7-4d2e-bf73-d8bdbbaeba99",
+          "is_selected": true,
+          "display_name": "loaded_at",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Timestamp of record loading into the Lakehouse (ingestion).",
+          "children": []
+        },
+        {
+          "id": "34af89b7-5325-4d11-a240-6e60edb0cd64",
+          "is_selected": true,
+          "display_name": "updated_at",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Timestamp of the last record update (source or processing).",
+          "children": []
+        },
+        {
+          "id": "ff01c3ee-fb79-4868-a6e3-60dd55cdf312",
+          "is_selected": true,
+          "display_name": "max_priority_licence_id",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Identifier of the highest priority license assigned to the user (within the instance context)",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "803b53ed-87de-4e4b-b5fd-d33394228790",
+      "is_selected": true,
+      "display_name": "dim_licence",
+      "type": "semantic_model.table",
+      "description": "License dimension describing Dataiku license types, allocations (max licenses), unlimited flag, validity dates, and related metadata.",
+      "children": [
+        {
+          "id": "36d6d9c4-6903-41a5-bc98-a2685cc3f169",
+          "is_selected": true,
+          "display_name": "id",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Unique technical identifier of the license (dimension key).",
+          "children": []
+        },
+        {
+          "id": "8bad3455-6f76-4b44-8d3b-e83e31f32d00",
+          "is_selected": true,
+          "display_name": "type",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": "Dataiku license type (platform admin, designer, explorer…).",
+          "children": []
+        },
+        {
+          "id": "326ba44f-91cf-4df3-b528-2894ce1db663",
+          "is_selected": true,
+          "display_name": "max_licences",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Total number of available licenses (allocation).",
+          "children": []
+        },
+        {
+          "id": "f7447a1f-989f-4960-9456-9c81fa7d13a1",
+          "is_selected": true,
+          "display_name": "licences_used",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Number of licenses currently in use/assigned.",
+          "children": []
+        },
+        {
+          "id": "778a32ca-2814-4fca-8bb2-6d4e9aec8bd1",
+          "is_selected": true,
+          "display_name": "quotas",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Number of remaining available licenses (calculated: max_licences - licences_used).",
+          "children": []
+        },
+        {
+          "id": "7b6caa56-7785-47d2-8f25-212646060d04",
+          "is_selected": true,
+          "display_name": "unlimited",
+          "type": "semantic_model.column",
+          "data_type": "Boolean",
+          "description": "Indicates whether the license is unlimited (TRUE) or subject to quota (FALSE).",
+          "children": []
+        },
+        {
+          "id": "f53c6777-1c7f-4231-821f-7d4174688845",
+          "is_selected": true,
+          "display_name": "end_date",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "License end date.",
+          "children": []
+        },
+        {
+          "id": "063201a7-7444-4e2f-8640-da1c22815070",
+          "is_selected": true,
+          "display_name": "start_date",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "License start date.",
+          "children": []
+        },
+        {
+          "id": "08ce4c8b-c991-4315-9aad-0e3c88393afb",
+          "is_selected": true,
+          "display_name": "loaded_at",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Timestamp of record loading into the Lakehouse (ingestion).",
+          "children": []
+        },
+        {
+          "id": "2ff1e97a-c732-4aa6-9623-9a2965cd96dc",
+          "is_selected": true,
+          "display_name": "updated_at",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Timestamp of the last record update (source or processing).",
+          "children": []
+        },
+        {
+          "id": "43b338d3-a72e-4105-b376-0d3ee80e58ea",
+          "is_selected": true,
+          "display_name": "priority",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Priority level of the license",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "7dcc2786-ea6a-4037-b5b2-6644e96ce86b",
+      "is_selected": true,
+      "display_name": "dim_max_user_licence",
+      "type": "semantic_model.table",
+      "description": "Helper/mapping table identifying, per user, the relevant license type and the highest-priority license assignment reference used for allocation/optimization logic.",
+      "children": [
+        {
+          "id": "c08ac7fd-864b-44c4-8d78-6da9af8d7676",
+          "is_selected": true,
+          "display_name": "username",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": "User login identifier (Dataiku username).",
+          "children": []
+        },
+        {
+          "id": "7ae17e4a-ad9b-46eb-b5c0-c989131c18a6",
+          "is_selected": true,
+          "display_name": "user_id",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Unique technical identifier of the user (foreign key).",
+          "children": []
+        },
+        {
+          "id": "a42b3680-8e88-4e34-af55-a3b54bb5d669",
+          "is_selected": true,
+          "display_name": "type",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": "Type of Dataiku license associated with the user.",
+          "children": []
+        },
+        {
+          "id": "af062aeb-5ada-470f-9ead-2b63d73a719a",
+          "is_selected": true,
+          "display_name": "max_priority_licence_id",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Identifier of the highest priority license assigned to the user.",
+          "children": []
+        },
+        {
+          "id": "fbbb43ac-fee2-419c-9e53-5f64d2c416af",
+          "is_selected": true,
+          "display_name": "loaded_at",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "6f3607c0-917e-40bc-aba3-de316d027d7a",
+          "is_selected": true,
+          "display_name": "updated_at",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "62ecccd5-7a08-4697-9190-2cda1e48e0cf",
+      "is_selected": true,
+      "display_name": "dim_project",
+      "type": "semantic_model.table",
+      "description": "Project dimension for Dataiku projects, including technical ID, business project key, folder hierarchy path, and domain/sub-domain classification.",
+      "children": [
+        {
+          "id": "ad92007e-fdda-437b-ade5-7f6f85f7875b",
+          "is_selected": true,
+          "display_name": "id",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Unique technical identifier of the project (dimension key).",
+          "children": []
+        },
+        {
+          "id": "b03203bf-32bb-4f29-876d-22a804fdb293",
+          "is_selected": true,
+          "display_name": "project_key",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": "Functional identifier of the Dataiku project (business key used in analyses).",
+          "children": []
+        },
+        {
+          "id": "cceb4153-ca8c-48bf-b5ca-ef5d71b566e1",
+          "is_selected": true,
+          "display_name": "folder_path",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": "Hierarchical path of the project in the Dataiku structure.",
+          "children": []
+        },
+        {
+          "id": "c95c5816-6375-4b97-8995-3c4c6d0a830d",
+          "is_selected": true,
+          "display_name": "loaded_at",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Timestamp of record loading into the Lakehouse (ingestion).",
+          "children": []
+        },
+        {
+          "id": "5df7c597-071c-44d6-87fa-e108ba087dc9",
+          "is_selected": true,
+          "display_name": "updated_at",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Timestamp of the last record update (source or processing).",
+          "children": []
+        },
+        {
+          "id": "a6ec0c49-671d-4c20-b5f3-ab45b7908e3c",
+          "is_selected": true,
+          "display_name": "domain",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": "Business domain associated with the project.",
+          "children": []
+        },
+        {
+          "id": "326e87d2-38c5-43ba-a9b8-efa8ae724120",
+          "is_selected": true,
+          "display_name": "sub_domain",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": "Sub-domain associated with the project.",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "c18b9afc-07ef-4ae9-b3d1-63136dbe154e",
+      "is_selected": true,
+      "display_name": "dim_status_opt",
+      "type": "semantic_model.table",
+      "description": null,
+      "children": [
+        {
+          "id": "a285859a-d7a8-4e7b-a77b-baa91349f85e",
+          "is_selected": true,
+          "display_name": "id",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "0826e123-d06b-440a-a4f5-7754050f229c",
+          "is_selected": true,
+          "display_name": "status_label",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "0b0c4892-8ab5-4c65-9ae6-d8bbcc1b09aa",
+          "is_selected": true,
+          "display_name": "loaded_at",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "fc169ca7-c312-4483-b2ac-339ff72c2fb3",
+          "is_selected": true,
+          "display_name": "updated_at",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "3e715f60-138f-47ed-9680-1383e4b12c6d",
+      "is_selected": true,
+      "display_name": "dim_usage",
+      "type": "semantic_model.table",
+      "description": "Usage/activity dimension defining the type of Dataiku asset, the user activity performed, and the functional activity category used for adoption/usage analytics.",
+      "children": [
+        {
+          "id": "7c779ea9-319a-47db-84c5-d98907081949",
+          "is_selected": true,
+          "display_name": "asset",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": "Type of Dataiku object involved in the usage (e.g., dataset, project, scenario, job).",
+          "children": []
+        },
+        {
+          "id": "190eec59-d8d0-4f93-ad13-5c80b6135b5c",
+          "is_selected": true,
+          "display_name": "activity",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": "Action performed by the user on the asset (e.g., create-brach, get, run-from-recipe-ui, get-for-export, get-settings, ...).",
+          "children": []
+        },
+        {
+          "id": "96c10c3e-9046-440a-b6a2-fb815268357a",
+          "is_selected": true,
+          "display_name": "activity_type",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": "Functional category of the activity (e.g., Consultation, Développement, Industrialisation, Déploiement, Surveillance).",
+          "children": []
+        },
+        {
+          "id": "a71f66f4-a639-413b-9dea-6ce82fcea31a",
+          "is_selected": true,
+          "display_name": "id",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Unique technical identifier of the usage (dimension key).",
+          "children": []
+        },
+        {
+          "id": "30f10268-ae18-4300-9de5-73f6b68b3ff4",
+          "is_selected": true,
+          "display_name": "loaded_at",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Timestamp of record loading into the Lakehouse (ingestion).",
+          "children": []
+        },
+        {
+          "id": "05da0b8a-ed47-439b-90b1-91c4267c8a88",
+          "is_selected": true,
+          "display_name": "updated_at",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Timestamp of the last record update (source or processing).",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "d0c37c9d-45ae-45b7-9860-9cdcf8d27474",
+      "is_selected": true,
+      "display_name": "dim_utilisateur",
+      "type": "semantic_model.table",
+      "description": "User dimension containing Dataiku user identity and profile attributes (login, full name, email, profile/contract type, active flag), plus snapshot and ingestion metadata.",
+      "children": [
+        {
+          "id": "ee3bffc7-4721-4064-8d37-43ed2d2f9c89",
+          "is_selected": true,
+          "display_name": "id",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Unique technical identifier of the user (dimension key).",
+          "children": []
+        },
+        {
+          "id": "006d7c4d-41b8-4c01-b82a-8f96840aece3",
+          "is_selected": true,
+          "display_name": "username",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": "User login identifier (Dataiku login).",
+          "children": []
+        },
+        {
+          "id": "c429f91f-83c4-4e12-807d-5bff7acd954f",
+          "is_selected": true,
+          "display_name": "full_name",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": "Full name of the user (business display).",
+          "children": []
+        },
+        {
+          "id": "dce8ef34-d8a3-4f49-b669-101bb040e133",
+          "is_selected": true,
+          "display_name": "email",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": "User email address.",
+          "children": []
+        },
+        {
+          "id": "5c450566-35ff-4b48-b8fa-c65cd2c1ad44",
+          "is_selected": true,
+          "display_name": "profile_type",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": "User profile type (data scientist, data analyst, business, IT, etc.).",
+          "children": []
+        },
+        {
+          "id": "bb5f47db-b77f-4d07-b275-03c204d7ea17",
+          "is_selected": true,
+          "display_name": "contract_type",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": "User contract type (Internal, External).",
+          "children": []
+        },
+        {
+          "id": "48245b9b-a044-4e19-afa5-679affd6f780",
+          "is_selected": true,
+          "display_name": "active",
+          "type": "semantic_model.column",
+          "data_type": "Boolean",
+          "description": "Indicates whether the user is active (TRUE) or inactive (FALSE).",
+          "children": []
+        },
+        {
+          "id": "358366ce-0b3d-4c0f-875e-fb162ff67b48",
+          "is_selected": true,
+          "display_name": "creationdate",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "User creation date in the source system.",
+          "children": []
+        },
+        {
+          "id": "4ae80be7-24f1-4830-8f2b-ac999b74d90d",
+          "is_selected": true,
+          "display_name": "snapshot_dt",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Snapshot date of user data (useful for historization / SCD).",
+          "children": []
+        },
+        {
+          "id": "cc862ddc-90be-4ef9-a0dd-0b90d70c1d69",
+          "is_selected": true,
+          "display_name": "loaded_at",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Timestamp of record loading into the Lakehouse (ingestion).",
+          "children": []
+        },
+        {
+          "id": "86cfd78c-fc2a-41fd-be4e-fac751345af6",
+          "is_selected": true,
+          "display_name": "updated_at",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Timestamp of the last record update (source or processing).",
+          "children": []
+        },
+        {
+          "id": "c2faa613-acb1-4a37-84d2-879119710e53",
+          "is_selected": true,
+          "display_name": "group_norm",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": "Normalized user group or organizational grouping.",
+          "children": []
+        },
+        {
+          "id": "84aa4306-b596-445d-9030-9bb4f78c0b59",
+          "is_selected": true,
+          "display_name": "isTechAccount",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Indicates whether the account is a technical account (1 = yes, 0 = no).",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "1773cb5e-f09d-46a3-b6bb-d23569515724",
+      "is_selected": true,
+      "display_name": "fait_usage_dataiku_utilisateur",
+      "type": "semantic_model.table",
+      "description": "Fact table capturing user-level usage data and session activity on the Dataiku platform.",
+      "children": [
+        {
+          "id": "6c08bb43-c6ee-46da-a739-6b02c0c40756",
+          "is_selected": true,
+          "display_name": "timestamp_dt",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Technical timestamp of the usage event.",
+          "children": []
+        },
+        {
+          "id": "15698821-6d92-4f97-9cee-0d4c2ce518a8",
+          "is_selected": true,
+          "display_name": "session_number",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "User session number.",
+          "children": []
+        },
+        {
+          "id": "2dbf2037-a39c-4356-8a34-85ba21ac4045",
+          "is_selected": true,
+          "display_name": "session_duration_seconds",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Session duration in seconds.",
+          "children": []
+        },
+        {
+          "id": "484c9fb7-7e63-4216-b8b6-369e1db209da",
+          "is_selected": true,
+          "display_name": "session_duration_minutes",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Session duration in minutes.",
+          "children": []
+        },
+        {
+          "id": "9720090b-3a55-4cd6-8fd3-13e1ee6943a3",
+          "is_selected": true,
+          "display_name": "jobs_count",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Number of jobs executed during the session",
+          "children": []
+        },
+        {
+          "id": "d8adcd71-04ff-417d-a4f2-d55c58e3daaf",
+          "is_selected": true,
+          "display_name": "scenarios_count",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Number of scenarios executed during the session.",
+          "children": []
+        },
+        {
+          "id": "5b3e4b40-f5eb-446b-b630-85b94f6e67b8",
+          "is_selected": true,
+          "display_name": "session_start",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Session start timestamp.",
+          "children": []
+        },
+        {
+          "id": "3a94597c-1788-493d-9993-bc3df2daddb2",
+          "is_selected": true,
+          "display_name": "session_end",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Session end timestamp.",
+          "children": []
+        },
+        {
+          "id": "2cfc70f7-cdaf-45f9-9866-c237c14b5460",
+          "is_selected": true,
+          "display_name": "id",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": "Unique technical identifier of the record (fact key).",
+          "children": []
+        },
+        {
+          "id": "19922340-3c38-43f2-a441-be850fd0e8ea",
+          "is_selected": true,
+          "display_name": "loaded_at",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Timestamp when the record was loaded into the Lakehouse.",
+          "children": []
+        },
+        {
+          "id": "9e7f2011-02f9-4668-b44c-20a1433cfff0",
+          "is_selected": true,
+          "display_name": "updated_at",
+          "type": "semantic_model.column",
+          "data_type": "DateTime",
+          "description": "Timestamp of the last update of the record.",
+          "children": []
+        },
+        {
+          "id": "db4bcba3-2ae2-4627-bc04-91def0b0061f",
+          "is_selected": true,
+          "display_name": "licence_id",
+          "type": "semantic_model.column",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "342efde1-48e8-4438-ba6e-df47ebe29b1b",
+      "is_selected": false,
+      "display_name": "Icons",
+      "type": "semantic_model.table",
+      "description": null,
+      "children": [
+        {
+          "id": "c5e8eb28-4026-48c4-ad3d-899085826732",
+          "is_selected": true,
+          "display_name": "Name",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "5b8a1cd3-7bd3-4ab8-843d-545b60de2758",
+          "is_selected": true,
+          "display_name": "SVG",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "558fb0e0-1949-458c-8cb1-f534f017cb8a",
+          "is_selected": true,
+          "display_name": "DataUrl",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "f81baa74-7681-450d-9584-2953e0fc25b5",
+          "is_selected": true,
+          "display_name": "BookTextIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "343dc309-afc8-4fbc-a815-8ba2aefbbd3d",
+          "is_selected": true,
+          "display_name": "BookTextIconBackground",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "8aefc6d5-8cce-4bf3-8bb0-635d6b78de36",
+          "is_selected": true,
+          "display_name": "ChevronDownIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "6f461e16-6ee6-4d41-8e8b-b57b12e1c538",
+          "is_selected": true,
+          "display_name": "ChevronRightIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "b1d317da-c842-41f7-a17a-e0d7f58c1a1e",
+          "is_selected": true,
+          "display_name": "DynamicIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "5384a858-78bf-4a43-99bf-93b84a84c345",
+          "is_selected": true,
+          "display_name": "GoalIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "040c50cf-fb31-4983-abf8-4f1439a9681b",
+          "is_selected": true,
+          "display_name": "GoalIconBackground",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "3d89a36d-de5a-4808-a2da-90423a6b79bc",
+          "is_selected": true,
+          "display_name": "HelpIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "781bbd82-38bd-4d04-aee4-04b1c23c196e",
+          "is_selected": true,
+          "display_name": "HomeIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "357c9f97-d193-471a-bd72-654ed69dbaa4",
+          "is_selected": true,
+          "display_name": "HomeIconBackground",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "76e6eaa8-57ab-4621-86ab-3aea60a4ef9f",
+          "is_selected": true,
+          "display_name": "InfoIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "2c15036b-f4d6-4173-b136-ded0adfd6239",
+          "is_selected": true,
+          "display_name": "ListFilterIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "a8e4e469-b2a9-4775-a335-6a7b50bf885b",
+          "is_selected": true,
+          "display_name": "MemoryStickIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "0a5f4767-b98a-49a2-8d55-2714eb948e4b",
+          "is_selected": true,
+          "display_name": "MemoryStickIconBackground",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "366630c1-a580-4d44-84c8-61135bd64b8b",
+          "is_selected": true,
+          "display_name": "ShieldCheckIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "9e02986c-e943-465c-a8d1-5550e06b7e6c",
+          "is_selected": true,
+          "display_name": "ShieldCheckIconBackground",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "94731b94-4881-4273-8f61-05eb0afb6e6a",
+          "is_selected": true,
+          "display_name": "SquarePlayIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "7bfd4ed8-8f05-4980-bd07-64cc14ee9ba8",
+          "is_selected": true,
+          "display_name": "SquarePlayIconBackground",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "3e61b32e-207f-46db-92d2-f18a8098c16e",
+          "is_selected": true,
+          "display_name": "ThemeIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "88758a34-f945-420c-b5d0-96568a3eb738",
+          "is_selected": true,
+          "display_name": "XIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "c406e007-3f03-4eff-858d-5e5b71725359",
+          "is_selected": true,
+          "display_name": "XIconUnitedBlue",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "0f1afdd0-ca74-4263-a676-5324ff7c3de7",
+          "is_selected": true,
+          "display_name": "SearchIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "c101bcd6-600a-4ac8-aaa7-0864249a35a7",
+          "is_selected": true,
+          "display_name": "SearchIconBackground",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "3e8b3f43-0308-4607-9f58-e866650b2245",
+          "is_selected": true,
+          "display_name": "SendHorizontalIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "41305091-d872-4f3c-9e3a-822b3a483930",
+          "is_selected": true,
+          "display_name": "SendHorizontalIconBackground",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "0b37ee1c-7d40-4edf-9e13-35d8b48b4ce6",
+          "is_selected": true,
+          "display_name": "FileOutputIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "c80f7dbb-9ee8-42e1-9da8-3aa47c988bef",
+          "is_selected": true,
+          "display_name": "FileOutputIconBackground",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "06584538-9c8f-45f1-a3b5-843485f0158b",
+          "is_selected": true,
+          "display_name": "FolderTreeIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "f2d0b230-e054-4dbf-84f7-711b362ce70a",
+          "is_selected": true,
+          "display_name": "WorkflowIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "030e9ea0-105b-44b7-9aaa-668f0000e4cb",
+          "is_selected": true,
+          "display_name": "FolderKanbanIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "c306d057-bcf7-4e83-8035-9f6404b1a026",
+          "is_selected": true,
+          "display_name": "NotebookPenIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "936028a0-e49b-48ad-933c-66498c159eba",
+          "is_selected": true,
+          "display_name": "ScanHeartIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "22635102-2827-48e4-98ed-1c320b906239",
+          "is_selected": true,
+          "display_name": "ContactSVGIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "06faec38-313a-440c-8e5d-012772e7dd76",
+          "is_selected": true,
+          "display_name": "InfoSVGIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "2aba890b-147c-4707-9112-06b297298874",
+          "is_selected": true,
+          "display_name": "FileSVGIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "9c11ed33-fc13-4cfa-b1a8-04c54b805a1a",
+          "is_selected": true,
+          "display_name": "LockKeyholeIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "0c6caf07-144e-4e41-8a24-b51585836f5a",
+          "is_selected": true,
+          "display_name": "ChartPieIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "fe95cecb-5abb-43ea-a99a-c07e416d5d01",
+          "is_selected": true,
+          "display_name": "ExternalLinkIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "f36fa2c6-330f-47bd-a050-ea845d392d2d",
+          "is_selected": true,
+          "display_name": "TargetIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "24182056-1770-42f1-bce9-ab910f3c7cf8",
+          "is_selected": true,
+          "display_name": "MapIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "f660726a-d624-4b3c-9ada-803301453d5b",
+          "is_selected": true,
+          "display_name": "RouteIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "8d66b4ca-b86e-4c8e-b721-c3209ee9820d",
+          "is_selected": true,
+          "display_name": "CircleDollarSignIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "92eaf877-f006-4508-913d-ae89ccf9cb87",
+          "is_selected": true,
+          "display_name": "UsersIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "1118d1ae-00f2-4a12-b6ac-23ee3502bb6c",
+          "is_selected": true,
+          "display_name": "GaugeIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "ebb7cffd-78fb-4045-8043-48d581aaff73",
+          "is_selected": true,
+          "display_name": "MonitorCheckIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "ab9bb817-50cb-4416-9cbb-f3447a8cd55d",
+          "is_selected": true,
+          "display_name": "PackageIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "7842edf7-8b59-4be9-9020-4ef983721198",
+          "is_selected": true,
+          "display_name": "ChartColumnIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "34622f8f-2362-4cdb-81e4-a5a214ea2f65",
+          "is_selected": true,
+          "display_name": "DatabaseIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "e31195d8-2844-4cdd-bf79-1a28726a5749",
+          "is_selected": true,
+          "display_name": "MoveLeftIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "a848f57c-67fc-421d-8cb2-017822c3b255",
+          "is_selected": true,
+          "display_name": "MoveRightIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "68200452-03e4-4c6d-b29b-c11a6e240a49",
+          "is_selected": true,
+          "display_name": "CircleChevronRightIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "9cba4912-eb6a-4dbe-9172-048e57744ba7",
+          "is_selected": true,
+          "display_name": "CircleChevronLeftIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "e98456ed-2233-4b94-8339-4c35581424d0",
+          "is_selected": true,
+          "display_name": "CircleChevronLeftIconWhite",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "59a91697-5994-4d90-9334-fd1b94ee06e4",
+          "is_selected": true,
+          "display_name": "CircleChevronRightIconWhite",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "a0cea43c-6938-45de-a34d-3650c784e091",
+          "is_selected": true,
+          "display_name": "MoveLeftIconWhite",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "de8e0bff-3c15-4f40-9bbe-107167c655f4",
+          "is_selected": true,
+          "display_name": "MoveRightIconWhite",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "28bb50ef-f29c-480c-93e5-3c341c2a034b",
+          "is_selected": true,
+          "display_name": "SettingsIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "78f6bc1c-2f1d-43ad-9578-4ccfb07f8647",
+          "is_selected": true,
+          "display_name": "HexagonIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "4f74a93c-3220-480b-8897-231b7c097008",
+          "is_selected": true,
+          "display_name": "ListChevronsDownUpIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "75c5bc8d-de89-4db9-a459-3e713bbb0f2b",
+          "is_selected": true,
+          "display_name": "UnfoldVerticalIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "6393f1a7-27f1-4255-b428-66ef130d7456",
+          "is_selected": true,
+          "display_name": "MonitorDotIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "c35e2fbc-3fa1-4a89-b2c0-fe97aec36e43",
+          "is_selected": true,
+          "display_name": "ClipboardCheckIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "9f7ebdf0-3fc1-40f6-a7dd-72fc433c000b",
+          "is_selected": true,
+          "display_name": "ClipboardIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "a93cbdec-39a2-4004-bf2a-7c19f958a9db",
+          "is_selected": true,
+          "display_name": "LayersIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "7d9433c2-e413-48ec-9f7b-57c252470275",
+          "is_selected": true,
+          "display_name": "PlayIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "ce80222b-0184-4565-b867-648cb1b5e3bf",
+          "is_selected": true,
+          "display_name": "LoginIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "1985a087-2731-4e27-b687-0d632d4ea3cd",
+          "is_selected": true,
+          "display_name": "TimerIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "d74920ec-e324-4a7e-8951-862d12844ac4",
+          "is_selected": true,
+          "display_name": "MessageCircleMoreIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "57dad3be-3c83-4640-8c18-7afbe230ccd6",
+          "is_selected": true,
+          "display_name": "MessageCircleMoreSVGIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "5be36616-ddd8-4171-8033-1b50d56df125",
+          "is_selected": true,
+          "display_name": "CirclePauseIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "cf440386-05ef-4a90-8489-d2b0dd6d7629",
+          "is_selected": true,
+          "display_name": "CircleCheckIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "6411dd6f-41eb-420b-a41e-4917fa1e44ec",
+          "is_selected": true,
+          "display_name": "TrendingDownIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "0b8b07fc-b7eb-4e3c-bc3a-9e267f70fc77",
+          "is_selected": true,
+          "display_name": "TrendingUpIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "4633dbe4-5fba-42bd-905f-b7f97e5694c8",
+          "is_selected": true,
+          "display_name": "EraserIcon",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "76c9977c-e48f-4855-867e-5704fb8b798d",
+      "is_selected": true,
+      "display_name": "Indicateurs",
+      "type": "semantic_model.table",
+      "description": "Calculated measures table grouping business KPIs for adoption, usage intensity, license allocation/optimization, time evolution, and UI/HTML constants used in the report.",
+      "children": [
+        {
+          "id": "5711bd42-1872-4ace-a519-45a6b9c52e0d",
+          "is_selected": true,
+          "display_name": "Nb Sessions",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Total number of user sessions (count of rows in the usage fact table).",
+          "children": []
+        },
+        {
+          "id": "ae6dabb9-7415-42f2-a205-05ab7d3f2178",
+          "is_selected": true,
+          "display_name": "Nb Projets Actifs",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Number of distinct active projects (distinct project_id observed in usage).",
+          "children": []
+        },
+        {
+          "id": "e4d05bf3-2ee8-403d-992a-4091a5cb0496",
+          "is_selected": true,
+          "display_name": "Nb Nouveaux Utilisateurs",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Number of new users over the last 7 days (based on first connection date; ignores calendar filters).",
+          "children": []
+        },
+        {
+          "id": "013c0c11-2510-4885-bbe8-f8b34a9db103",
+          "is_selected": true,
+          "display_name": "Nb Utilisateurs Actifs",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Number of active users (distinct user_id observed in usage).",
+          "children": []
+        },
+        {
+          "id": "232f213a-3c75-4e87-9e5d-61fdbf8c072f",
+          "is_selected": true,
+          "display_name": "Nb Jobs Exécutés",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Total number of jobs executed (sum of jobs_count).",
+          "children": []
+        },
+        {
+          "id": "36cd2203-3db4-49a5-baa9-89fcef6ec31f",
+          "is_selected": true,
+          "display_name": "Nb Scénarios Exécutés",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Total number of scenarios executed (sum of scenarios_count).",
+          "children": []
+        },
+        {
+          "id": "712612b2-ff62-44a7-b701-98111dd7641f",
+          "is_selected": true,
+          "display_name": "Durée Totale Sessions (min)",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Total session duration in minutes (sum of session_duration_minutes).",
+          "children": []
+        },
+        {
+          "id": "6a60a45d-af2e-4c47-9050-9e1269d57b6b",
+          "is_selected": true,
+          "display_name": "Nb Moy Sessions / Utilisateur",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "Average number of sessions per active user.",
+          "children": []
+        },
+        {
+          "id": "2113b380-a877-427e-b307-a133aff7a11b",
+          "is_selected": true,
+          "display_name": "Durée Moy Session (min)",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "Average session duration in minutes (excluding zero-duration sessions).",
+          "children": []
+        },
+        {
+          "id": "258ff3ee-10b0-4d86-a67d-92a8da3a33b4",
+          "is_selected": true,
+          "display_name": "Nb Moy Scénarios / Session",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "Average number of scenarios executed per session.",
+          "children": []
+        },
+        {
+          "id": "f65d9d37-d807-498c-bc00-94fce533bb33",
+          "is_selected": true,
+          "display_name": "Nb Moy Jobs / Session",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "Average number of jobs executed per session.",
+          "children": []
+        },
+        {
+          "id": "697fad78-3d22-45ec-a14d-8208315557d4",
+          "is_selected": true,
+          "display_name": "Licences Max (Dotation)",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Maximum available licenses (allocation) excluding unlimited licenses.",
+          "children": []
+        },
+        {
+          "id": "90a12e86-9173-4455-8641-cd83d8a62b6e",
+          "is_selected": true,
+          "display_name": "Licences Attribuées",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Number of licenses assigned (distinct users with an assigned license).",
+          "children": []
+        },
+        {
+          "id": "ef4c139a-b578-4bf3-920c-8838d5f205e6",
+          "is_selected": true,
+          "display_name": "Licences Disponibles (Quotas)",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Number of remaining available licenses (allocation minus assigned).",
+          "children": []
+        },
+        {
+          "id": "dbb02929-b7a7-4735-bbed-433c1ddd4aeb",
+          "is_selected": true,
+          "display_name": "Taux Occupation Licences",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "License occupancy rate (assigned / allocation).",
+          "children": []
+        },
+        {
+          "id": "277baeba-673c-4d4f-bef2-f0d73d040599",
+          "is_selected": true,
+          "display_name": "Taux Activation Licences",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "License activation rate (active users / assigned licenses).",
+          "children": []
+        },
+        {
+          "id": "f9cf818a-5ae3-4b6f-8ec0-1f6461b2ae67",
+          "is_selected": true,
+          "display_name": "Nb Utilisateurs Sur-utilisés (Licence)",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Number of over-utilized users (license optimization status = \"Sur-utilisé\").",
+          "children": []
+        },
+        {
+          "id": "d6512dc3-c94f-4952-845a-98da5751672a",
+          "is_selected": true,
+          "display_name": "Nb Utilisateurs Sous-utilisés (Licence)",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Number of under-utilized users (license optimization status = \"Sous-utilisé\").",
+          "children": []
+        },
+        {
+          "id": "81d295a2-cb42-4982-8ad0-749d77b12d5c",
+          "is_selected": true,
+          "display_name": "Nb Utilisateurs Inactifs",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Number of inactive users from a license perspective (optimization status = \"Inactive\").",
+          "children": []
+        },
+        {
+          "id": "ff49211f-62f2-4157-8592-84c0a5d365c0",
+          "is_selected": true,
+          "display_name": "Nb Utilisateurs OK (Licence)",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Number of users with an OK license status (optimization status = \"ok\")",
+          "children": []
+        },
+        {
+          "id": "1d252d79-7368-49fc-9bfb-3ac6d0b61c5d",
+          "is_selected": true,
+          "display_name": "Date Dernière Activité (max)",
+          "type": "semantic_model.measure",
+          "data_type": "DateTime",
+          "description": "Most recent user activity date (maximum last action date)",
+          "children": []
+        },
+        {
+          "id": "7fed67a7-f19d-4ef6-894d-3e3c735bbb82",
+          "is_selected": true,
+          "display_name": "Jours depuis Dernière Activité",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Number of days since the last recorded user activity.",
+          "children": []
+        },
+        {
+          "id": "efe5f5bd-44d5-4e60-b409-ad981138e662",
+          "is_selected": true,
+          "display_name": "Nb Utilisateurs Actifs M-1",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Number of active users in the previous month (M-1).",
+          "children": []
+        },
+        {
+          "id": "0978d330-1e3b-40a8-bd2f-63f696530c34",
+          "is_selected": true,
+          "display_name": "Évolution Utilisateurs Actifs",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Month-over-month change in active users (current minus M-1).",
+          "children": []
+        },
+        {
+          "id": "2ecb1091-7f0c-4222-b282-e172c473c900",
+          "is_selected": true,
+          "display_name": "Nb Sessions M-1",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Number of sessions in the previous month (M-1).",
+          "children": []
+        },
+        {
+          "id": "cb6220ef-0670-41ff-9677-b6087e5b8cfc",
+          "is_selected": true,
+          "display_name": "Évolution Sessions",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Month-over-month change in sessions (current minus M-1).",
+          "children": []
+        },
+        {
+          "id": "1fe27639-5b2e-4fe1-9e8b-882ec3ba55b9",
+          "is_selected": true,
+          "display_name": "Nb Utilisateurs Actifs MTD",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Number of active users month-to-date (MTD).",
+          "children": []
+        },
+        {
+          "id": "220b6b20-8518-414b-80be-4cce4626413b",
+          "is_selected": true,
+          "display_name": "Logo",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": "UI constant: brand/logo text displayed in the report.",
+          "children": []
+        },
+        {
+          "id": "374c5af9-cb53-41a2-a4da-e852578b76f6",
+          "is_selected": true,
+          "display_name": "MainTitle",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": "UI constant: main dashboard title.",
+          "children": []
+        },
+        {
+          "id": "d8c48da8-35e5-46c1-bede-e17bb931abf6",
+          "is_selected": true,
+          "display_name": "CockpitLicencesTitle",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": "UI constant: cockpit licenses section title.",
+          "children": []
+        },
+        {
+          "id": "5c9d40ad-e3ee-429f-aedc-0fad6b3d0971",
+          "is_selected": true,
+          "display_name": "HtmlContainer",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": "HTML container used to render the page background styling",
+          "children": []
+        },
+        {
+          "id": "4e89cf97-9ec5-41b8-8721-eb5e740858f4",
+          "is_selected": true,
+          "display_name": "CockpitLicencesTitleHtml",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": "HTML title markup for the cockpit licenses page header.",
+          "children": []
+        },
+        {
+          "id": "9372d6ab-b6cd-4127-8192-137332555d82",
+          "is_selected": true,
+          "display_name": "AnimatedTitleIntro",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": "Animated HTML intro block displayed on the landing section of the report.",
+          "children": []
+        },
+        {
+          "id": "0d55dfb7-07a1-44d6-905a-877b4c140212",
+          "is_selected": true,
+          "display_name": "ButtonHoverEffect",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": "CSS/HTML hover effect styling for interactive buttons/links.",
+          "children": []
+        },
+        {
+          "id": "23f7ac3f-2c3f-4ae5-9b97-e9814f1f60d0",
+          "is_selected": true,
+          "display_name": "Évolution Utilisateurs Actifs Format",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": "Formatted month-over-month evolution label with arrow/icon and percent formatting.",
+          "children": []
+        },
+        {
+          "id": "49678724-22c8-46af-a915-2cdde9bf5e10",
+          "is_selected": true,
+          "display_name": "Count licence fait",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": "Helper measure: distinct count of users in the license fact table.",
+          "children": []
+        },
+        {
+          "id": "93a5b700-1a68-4420-bc11-7d2e5f31bcbd",
+          "is_selected": true,
+          "display_name": "AdoptionUsageTitle",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": "UI constant: adoption & usage section title.",
+          "children": []
+        },
+        {
+          "id": "7416afd3-125a-4bbe-b80e-b5964a5ca287",
+          "is_selected": true,
+          "display_name": "LicencesOtimisationTitle",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": "UI constant: licenses & optimization section title.",
+          "children": []
+        },
+        {
+          "id": "b1387929-29f8-4b19-a8b0-317a656f216d",
+          "is_selected": true,
+          "display_name": "AdoptionUsageTitleHtml",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": "HTML title markup for the adoption & usage page header.",
+          "children": []
+        },
+        {
+          "id": "2f5c6341-af3c-472e-9122-e3c89ba3ca88",
+          "is_selected": true,
+          "display_name": "LicencesOtimisationTitleHtml",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": "HTML title markup for the licenses & optimization page header.",
+          "children": []
+        },
+        {
+          "id": "7920c265-ca0d-4b5a-a892-c0adf5b62f8c",
+          "is_selected": true,
+          "display_name": "FloatingChatBot",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": "Floating chatbot button HTML/CSS linking to the Fabric Data Agent.",
+          "children": []
+        },
+        {
+          "id": "d79875ba-df43-43a0-a95e-f4ed0373a040",
+          "is_selected": true,
+          "display_name": "First Connection",
+          "type": "semantic_model.measure",
+          "data_type": "DateTime",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "9a2de839-85c3-46c0-80ff-be433bf26502",
+          "is_selected": true,
+          "display_name": "Status Optimisation Nonbre",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": "Calculates the utilization ratio by dividing the distinct count of usage timestamps by the distinct count of calendar dates in the current filter context.",
+          "children": []
+        },
+        {
+          "id": "0ec11333-b234-4172-b3ca-9dfa75cca34e",
+          "is_selected": true,
+          "display_name": "Status Optimisation",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": "Classifies optimisation status by computing the ratio of days with Dataiku user activity to total calendar days and returning a status label based on utilisation thresholds.",
+          "children": []
+        },
+        {
+          "id": "dbf10efd-bb9b-449c-b050-0222090133e8",
+          "is_selected": true,
+          "display_name": "Status_Ratio",
+          "type": "semantic_model.measure",
+          "data_type": "Double",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "7214415e-6f2f-4ceb-a162-5f4727d172c6",
+          "is_selected": true,
+          "display_name": "Nb_Licences_By_Status",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "fbeb6025-3992-4674-8dc5-6ff00f82153f",
+          "is_selected": true,
+          "display_name": "Status_Opt_Label",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "ddd6d56b-fe8c-456d-b970-324bd8f8a8e4",
+          "is_selected": true,
+          "display_name": "Status_Opt_Id",
+          "type": "semantic_model.measure",
+          "data_type": "Int64",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "e94fcd91-d9d1-4de9-9ccd-b67e71708c43",
+          "is_selected": true,
+          "display_name": "Last Connection",
+          "type": "semantic_model.measure",
+          "data_type": "DateTime",
+          "description": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "e6eeae2a-4c8d-4a56-9958-4955c6ad94ee",
+      "is_selected": false,
+      "display_name": "Theme",
+      "type": "semantic_model.table",
+      "description": null,
+      "children": [
+        {
+          "id": "c40ac536-9008-4a7e-ba9c-bf4f3cfedeb6",
+          "is_selected": true,
+          "display_name": "Mode",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "c27c5f8e-4d24-4fdb-9c59-b345a08cff92",
+          "is_selected": true,
+          "display_name": "Icon",
+          "type": "semantic_model.column",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "086aee16-9c49-40ab-a701-f23306b8edb6",
+          "is_selected": true,
+          "display_name": "IsDark",
+          "type": "semantic_model.measure",
+          "data_type": "Boolean",
+          "description": null,
+          "children": []
+        },
+        {
+          "id": "93e43483-a53d-418c-863d-d8d5c16725c9",
+          "is_selected": true,
+          "display_name": "SelectedTheme",
+          "type": "semantic_model.measure",
+          "data_type": "String",
+          "description": null,
+          "children": []
+        }
+      ]
+    }
+  ]
+}

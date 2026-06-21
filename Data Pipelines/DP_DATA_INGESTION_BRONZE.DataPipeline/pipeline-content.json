@@ -1,0 +1,66 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {
+            "SOURCE_HOST": "starburst.paas-datalake-data-2.dev.fdj.fr",
+            "SOURCE_PORT": "443",
+            "SOURCE_DATABASE": "lab_mnp_plt_hive",
+            "SOURCE_SCHEMA": "lab_mnp_plt_plt",
+            "SOURCE_INSTANCE_PREFIX_TABLE": "design",
+            "SOURCE_INSTANCE_VALUE": "design_monopole_dev",
+            "DESTINATION_SCHEMA": "bronze"
+          },
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "7b2866ce-1938-92b4-4dd8-07936c663ad1",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "2367e598-e14d-4c84-bf5e-d5a6455c9d72"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Starburst Instance Design Dev",
+        "dependsOn": []
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {
+            "SOURCE_HOST": "starburst.paas-datalake-data-2.int.fdj.fr",
+            "SOURCE_PORT": "443",
+            "SOURCE_DATABASE": "dlk_hive",
+            "SOURCE_SCHEMA": "mrt_mnp_plt_plt",
+            "SOURCE_INSTANCE_PREFIX_TABLE": "automation",
+            "SOURCE_INSTANCE_VALUE": "automation_monopole_int",
+            "DESTINATION_SCHEMA": "bronze"
+          },
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "7b2866ce-1938-92b4-4dd8-07936c663ad1",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "2367e598-e14d-4c84-bf5e-d5a6455c9d72"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Starburst Instance Automation Int",
+        "dependsOn": []
+      }
+    ]
+  }
+}
