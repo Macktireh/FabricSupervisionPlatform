@@ -1,0 +1,67 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "4562c891735ec2ce66bf",
+  "position": {
+    "x": 182.21024258760107,
+    "y": 108.89487870619946,
+    "z": 10000,
+    "height": 563.88140161725073,
+    "width": 1410.2425876010782,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_calendrier"
+                    }
+                  },
+                  "Property": "DATE"
+                }
+              },
+              "queryRef": "dim_calendrier.DATE",
+              "nativeQueryRef": "DATE"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indicateurs"
+                    }
+                  },
+                  "Property": "Nb Utilisateurs Actifs"
+                }
+              },
+              "queryRef": "Indicateurs.Nb Utilisateurs Actifs",
+              "nativeQueryRef": "Nb Utilisateurs Actifs"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indicateurs"
+                    }
+                  },
+                  "Property": "Nb Utilisateurs Actifs M-1"
+                }
+              },
+              "queryRef": "Indicateurs.Nb Utilisateurs Actifs M-1",
+              "nativeQueryRef": "Nb Utilisateurs Actifs M-1"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "isHidden": true
+}

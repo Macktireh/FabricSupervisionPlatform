@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "0eb5ec86546ddf8a2029",
+  "position": {
+    "x": 196.10788448329464,
+    "y": 2.635180200981627,
+    "z": 1000,
+    "height": 28.108588810470692,
+    "width": 28.670743345510907,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "image",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "imageUrl": {
+              "expr": {
+                "ResourcePackageItem": {
+                  "PackageName": "RegisteredResources",
+                  "PackageType": 1,
+                  "ItemName": "LOGO_FDJ_UNITED_1L_Blanc_BleuC3119164755158692.png"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "b7eeb30e20d9a6c5809e",
+  "howCreated": "InsertVisualButton"
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmarksMetadata/1.0.0/schema.json",
+  "items": [
+    {
+      "name": "b16d9301e0eec3b690be",
+      "displayName": "FilterPanelCockpitPage",
+      "children": [
+        "ccb18fb8722d15196399",
+        "d621c441d06b09155d90"
+      ]
+    },
+    {
+      "name": "dc90bf0ee9983b937df1",
+      "displayName": "FilterAdoptionUsagePage",
+      "children": [
+        "8991e644d0679f9f4c40",
+        "239e977b80017ccb572b"
+      ]
+    },
+    {
+      "name": "02b49ca2fb6fe4aa4ca7",
+      "displayName": "FilterOptimisationUsagePage",
+      "children": [
+        "770a3a80043e94dade87",
+        "c93534ca708274a748f1"
+      ]
+    }
+  ]
+}
