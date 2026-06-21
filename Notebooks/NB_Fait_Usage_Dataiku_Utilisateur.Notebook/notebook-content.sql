@@ -1,0 +1,343 @@
+-- Fabric notebook source
+
+-- METADATA ********************
+
+-- META {
+-- META   "kernel_info": {
+-- META     "name": "synapse_pyspark"
+-- META   },
+-- META   "dependencies": {
+-- META     "lakehouse": {
+-- META       "default_lakehouse": "e5a494bb-2c9c-44ec-9fd3-494add93bd08",
+-- META       "default_lakehouse_name": "Lakehouse_End_User_Platform",
+-- META       "default_lakehouse_workspace_id": "cae55539-e164-4a36-bb47-62c5bb2cbee7",
+-- META       "known_lakehouses": [
+-- META         {
+-- META           "id": "e5a494bb-2c9c-44ec-9fd3-494add93bd08"
+-- META         }
+-- META       ]
+-- META     },
+-- META     "environment": {}
+-- META   }
+-- META }
+
+-- MARKDOWN ********************
+
+-- Chargement de la table de faits **Fait_Usage_Dataiku_Utilisateur**.  
+-- 
+-- Le chargement s’effectue en mode incrémental depuis la dernière date de chargement réussi (`end_time IS NOT NULL`).  
+-- 
+-- La table de faits calculée dans ce notebook contient l’information concernant **la session** – une séquence d’actions dont l’intervalle entre chacune ne dépasse pas 1 heure. Au-delà, on considère qu’une nouvelle session a été démarrée.  
+-- 
+-- Les sessions sont regroupées selon les attributs suivants :  
+-- - instance  
+-- - utilisateur  
+-- - projet  
+-- - date  
+-- - usage (asset + action)  
+-- 
+-- Pour chaque session, on calcule le nombre de jobs et de scénarios exécutés, la durée de la session ainsi que les horodatages de début et de fin. Pour détecter quels jobs/scénarios ont été exécutés pendant cette session, on cherche les jobs/scénarios exécutés dans la même plage d’exécution que la session (on cherche l’intersection entre la période d’exécution d’un job/scénario `[heure_debut; heure_fin]` et `[session_start; session_end]`). Pour cela, on utilise l’expression :  
+-- 
+-- ```
+--     heure_debut < session_end
+--     AND session_start < heure_fin
+-- ```
+-- 
+-- L’id de cette table est un hash xxhash64 des champs clés par lesquels on groupe les sessions. Cela nous permet de garder le chargement idempotent (parce qu’on utilise le MERGE). Même si on relance le chargement avec une mauvaise date de début, on ne duplique pas les données parce qu’elles auront les mêmes IDs.
+
+
+-- CELL ********************
+
+-- MAGIC %%pyspark
+-- MAGIC %run NB_Utils
+
+-- METADATA ********************
+
+-- META {
+-- META   "language": "python",
+-- META   "language_group": "synapse_pyspark"
+-- META }
+
+-- CELL ********************
+
+-- MAGIC %%pyspark
+-- MAGIC 
+-- MAGIC schema = 'gold'
+-- MAGIC table = 'Fait_Usage_Dataiku_Utilisateur'
+-- MAGIC usage_execution_log = ExecutionLogger(schema, table)
+-- MAGIC usage_execution_log.execution_start()
+
+
+-- METADATA ********************
+
+-- META {
+-- META   "language": "python",
+-- META   "language_group": "synapse_pyspark"
+-- META }
+
+-- CELL ********************
+
+-- MAGIC %%pyspark
+-- MAGIC last_execution_time = usage_execution_log.get_last_execution_time()
+-- MAGIC merge_results = spark.sql(f"""MERGE INTO gold.fait_usage_dataiku_utilisateur AS tgt
+-- MAGIC USING (
+-- MAGIC --create or replace table gold.fait_usage_dataiku_utilisateur AS
+-- MAGIC     WITH last_loading_time(
+-- MAGIC         SELECT 
+-- MAGIC            to_timestamp(
+-- MAGIC             '{last_execution_time:%Y-%m-%d %H:%M:%S.%f}'
+-- MAGIC         ) AS start_time
+-- MAGIC     ), 
+-- MAGIC     events AS (
+-- MAGIC         SELECT
+-- MAGIC             instance,
+-- MAGIC             inst.id as instance_id,
+-- MAGIC             user,
+-- MAGIC             usr.id as user_id,
+-- MAGIC             prj.id AS project_id,
+-- MAGIC             ilu.licence_id,
+-- MAGIC             audit.projectkey,
+-- MAGIC             timestamp_dt,
+-- MAGIC             timestamp,
+-- MAGIC             usage.id as activity_type,
+-- MAGIC             LAG(timestamp) OVER (
+-- MAGIC                 PARTITION BY instance, user, projectkey, timestamp_dt, usage.id
+-- MAGIC                 ORDER BY timestamp
+-- MAGIC             ) AS prev_timestamp
+-- MAGIC         FROM 
+-- MAGIC             silver.audit_logs audit
+-- MAGIC         CROSS JOIN
+-- MAGIC             last_loading_time llt
+-- MAGIC         
+-- MAGIC         INNER JOIN
+-- MAGIC             gold.dim_utilisateur usr
+-- MAGIC         ON
+-- MAGIC             usr.username = user 
+-- MAGIC         INNER JOIN
+-- MAGIC             gold.dim_instance inst
+-- MAGIC         ON
+-- MAGIC             UPPER(inst.instance_name) = UPPER(instance)
+-- MAGIC         LEFT OUTER JOIN 
+-- MAGIC             gold.dim_usage usage
+-- MAGIC         ON 
+-- MAGIC             audit.asset = usage.asset 
+-- MAGIC             AND audit.action = usage.activity
+-- MAGIC         LEFT OUTER JOIN
+-- MAGIC             gold.dim_project prj
+-- MAGIC         ON
+-- MAGIC             prj.project_key = audit.projectkey
+-- MAGIC         
+-- MAGIC         LEFT OUTER JOIN
+-- MAGIC             gold.dim_instance_licence_utilisateur ilu
+-- MAGIC         ON
+-- MAGIC             ilu.user_id = usr.id
+-- MAGIC             AND ilu.instance_id = inst.id
+-- MAGIC             AND ilu.snapshot_dt=timestamp_dt
+-- MAGIC         WHERE 
+-- MAGIC             audit.updated_at >= llt.start_time 
+-- MAGIC     ),
+-- MAGIC 
+-- MAGIC     session_flags AS (
+-- MAGIC         SELECT
+-- MAGIC             *,
+-- MAGIC             CASE
+-- MAGIC                 WHEN prev_timestamp IS NULL THEN 1
+-- MAGIC                 WHEN DATEDIFF(SECOND, prev_timestamp, timestamp) > 3600 THEN 1
+-- MAGIC                 ELSE 0
+-- MAGIC             END AS is_new_session
+-- MAGIC         FROM events
+-- MAGIC     ),
+-- MAGIC 
+-- MAGIC     sessionized AS (
+-- MAGIC         SELECT
+-- MAGIC             *,
+-- MAGIC             SUM(is_new_session) OVER (
+-- MAGIC                 PARTITION BY instance, user, project_id, timestamp_dt, activity_type
+-- MAGIC                 ORDER BY timestamp
+-- MAGIC                 ROWS UNBOUNDED PRECEDING
+-- MAGIC             ) AS session_number
+-- MAGIC         FROM session_flags
+-- MAGIC     ),
+-- MAGIC 
+-- MAGIC     session_info AS (
+-- MAGIC         SELECT
+-- MAGIC             instance,
+-- MAGIC             instance_id,
+-- MAGIC             user,
+-- MAGIC             user_id,
+-- MAGIC             licence_id,
+-- MAGIC             project_id,
+-- MAGIC             projectkey,
+-- MAGIC             timestamp_dt,
+-- MAGIC             session_number,
+-- MAGIC             activity_type,
+-- MAGIC             MIN(timestamp) AS session_start,
+-- MAGIC             MAX(timestamp) AS session_end,
+-- MAGIC             DATEDIFF(SECOND, MIN(timestamp), MAX(timestamp)) AS session_duration_seconds,
+-- MAGIC             DATEDIFF(MINUTE, MIN(timestamp), MAX(timestamp)) AS session_duration_minutes,
+-- MAGIC             COUNT(*) AS actions_count
+-- MAGIC         FROM sessionized 
+-- MAGIC         GROUP BY
+-- MAGIC             instance,
+-- MAGIC             instance_id,
+-- MAGIC             user,
+-- MAGIC             user_id,
+-- MAGIC             licence_id,
+-- MAGIC             project_id,
+-- MAGIC             projectkey,
+-- MAGIC             timestamp_dt,
+-- MAGIC             session_number,
+-- MAGIC             activity_type
+-- MAGIC     )
+-- MAGIC 
+-- MAGIC     SELECT 
+-- MAGIC         xxhash64(
+-- MAGIC             array_join(
+-- MAGIC                 array(
+-- MAGIC                     sess.instance_id,
+-- MAGIC                     user_id,
+-- MAGIC                     projectkey, 
+-- MAGIC                     sess.timestamp_dt,
+-- MAGIC                     session_number,
+-- MAGIC                     activity_type
+-- MAGIC                 ),
+-- MAGIC                 '|'
+-- MAGIC             )
+-- MAGIC         ) AS id,
+-- MAGIC         sess.instance_id,
+-- MAGIC         user_id,
+-- MAGIC         licence_id,
+-- MAGIC         project_id,
+-- MAGIC         sess.timestamp_dt,
+-- MAGIC         session_number,
+-- MAGIC         activity_type as usage_id,
+-- MAGIC         session_start,
+-- MAGIC         session_end,
+-- MAGIC         session_duration_seconds,
+-- MAGIC         session_duration_minutes,
+-- MAGIC         COUNT(DISTINCT job_id) AS jobs_count,
+-- MAGIC         COUNT(DISTINCT scenarios.scenario_id) AS scenarios_count,
+-- MAGIC         current_timestamp as loaded_at,
+-- MAGIC         current_timestamp as updated_at
+-- MAGIC     FROM 
+-- MAGIC         session_info sess
+-- MAGIC     LEFT OUTER JOIN
+-- MAGIC         bronze.jobs_prep jobs
+-- MAGIC     ON 
+-- MAGIC         jobs.instance = sess.instance
+-- MAGIC         AND UPPER(jobs.job_def_initiator) = UPPER(sess.user)
+-- MAGIC         AND jobs.time_start < sess.session_end
+-- MAGIC         AND sess.session_start < jobs.time_end
+-- MAGIC         AND jobs.job_project_key = sess.projectkey
+-- MAGIC     LEFT OUTER JOIN
+-- MAGIC         bronze.scenario_runs_prep scenarios
+-- MAGIC     ON 
+-- MAGIC         UPPER(scenarios.instance) = UPPER(sess.instance)
+-- MAGIC         AND UPPER(scenarios.run_as_user_identifier) = UPPER(sess.user)
+-- MAGIC         AND scenarios.time_start < sess.session_end
+-- MAGIC         AND sess.session_start < scenarios.time_end
+-- MAGIC         AND scenarios.scenario_project_key = sess.projectkey
+-- MAGIC     GROUP BY
+-- MAGIC         sess.instance_id,
+-- MAGIC         user_id,
+-- MAGIC         licence_id,
+-- MAGIC         projectkey,
+-- MAGIC         project_id,
+-- MAGIC         sess.timestamp_dt,
+-- MAGIC         session_start,
+-- MAGIC         session_end,
+-- MAGIC         session_number,
+-- MAGIC         session_duration_seconds,
+-- MAGIC         session_duration_minutes,
+-- MAGIC         actions_count,
+-- MAGIC         activity_type
+-- MAGIC ) AS src
+-- MAGIC ON tgt.id = src.id
+-- MAGIC 
+-- MAGIC WHEN MATCHED THEN UPDATE SET
+-- MAGIC     tgt.instance_id                = src.instance_id,
+-- MAGIC     tgt.user_id                    = src.user_id,
+-- MAGIC     tgt.licence_id                 = src.licence_id,
+-- MAGIC     tgt.project_id                 = src.project_id,
+-- MAGIC     tgt.timestamp_dt               = src.timestamp_dt,
+-- MAGIC     tgt.session_number             = src.session_number,
+-- MAGIC     tgt.usage_id                   = src.usage_id,
+-- MAGIC     tgt.session_start              = src.session_start,
+-- MAGIC     tgt.session_end                = src.session_end,
+-- MAGIC     tgt.session_duration_seconds   = src.session_duration_seconds,
+-- MAGIC     tgt.session_duration_minutes   = src.session_duration_minutes,
+-- MAGIC     tgt.jobs_count                 = src.jobs_count,
+-- MAGIC     tgt.scenarios_count            = src.scenarios_count,
+-- MAGIC     tgt.updated_at                 = current_timestamp
+-- MAGIC 
+-- MAGIC WHEN NOT MATCHED THEN INSERT (
+-- MAGIC     id,
+-- MAGIC     instance_id,
+-- MAGIC     user_id,
+-- MAGIC     licence_id,
+-- MAGIC     project_id,
+-- MAGIC     timestamp_dt,
+-- MAGIC     session_number,
+-- MAGIC     usage_id,
+-- MAGIC     session_start,
+-- MAGIC     session_end,
+-- MAGIC     session_duration_seconds,
+-- MAGIC     session_duration_minutes,
+-- MAGIC     jobs_count,
+-- MAGIC     scenarios_count,
+-- MAGIC     loaded_at,
+-- MAGIC     updated_at
+-- MAGIC )
+-- MAGIC VALUES (
+-- MAGIC     src.id,
+-- MAGIC     src.instance_id,
+-- MAGIC     src.user_id,
+-- MAGIC     src.licence_id,
+-- MAGIC     src.project_id,
+-- MAGIC     src.timestamp_dt,
+-- MAGIC     src.session_number,
+-- MAGIC     src.usage_id,
+-- MAGIC     src.session_start,
+-- MAGIC     src.session_end,
+-- MAGIC     src.session_duration_seconds,
+-- MAGIC     src.session_duration_minutes,
+-- MAGIC     src.jobs_count,
+-- MAGIC     src.scenarios_count,
+-- MAGIC     src.loaded_at,
+-- MAGIC     src.updated_at
+-- MAGIC ); """)
+
+
+-- METADATA ********************
+
+-- META {
+-- META   "language": "python",
+-- META   "language_group": "synapse_pyspark"
+-- META }
+
+-- CELL ********************
+
+-- MAGIC %%pyspark
+-- MAGIC metrics = {
+-- MAGIC     "inserted": merge_results.first()["num_inserted_rows"],
+-- MAGIC     "updated" : merge_results.first()["num_updated_rows"]
+-- MAGIC }
+
+-- METADATA ********************
+
+-- META {
+-- META   "language": "python",
+-- META   "language_group": "synapse_pyspark"
+-- META }
+
+-- CELL ********************
+
+-- MAGIC %%pyspark
+-- MAGIC usage_execution_log.execution_end(metrics)
+
+-- METADATA ********************
+
+-- META {
+-- META   "language": "python",
+-- META   "language_group": "synapse_pyspark"
+-- META }
