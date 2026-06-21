@@ -1,0 +1,1294 @@
+table Colors
+	lineageTag: 1a60455f-59ca-4ed4-a5bd-f802bdc5b771
+
+	measure TextColor = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Text"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Text")
+			)
+			
+			```
+		displayFolder: _Palette\Text
+		lineageTag: 9a0b2e91-ebfe-4e28-9b24-93989d790808
+
+	measure TextColor_100 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Text-100"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Text-100")
+			)
+			
+			```
+		displayFolder: _Palette\Text
+		lineageTag: 2b2fb603-6aca-4b0a-9acd-5411fb3bf812
+
+	measure TextColor_200 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Text-200"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Text-100")
+			)
+			
+			```
+		displayFolder: _Palette\Text
+		lineageTag: 4d340856-d486-41fd-80c9-205d385304db
+
+	measure TextColor_300 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Text-300"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Text-300")
+			)
+			
+			```
+		displayFolder: _Palette\Text
+		lineageTag: de94e2af-5493-4cec-a448-f93556b80a00
+
+	measure TextColor_400 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Text-400"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Text-400")
+			)
+			
+			```
+		displayFolder: _Palette\Text
+		lineageTag: 2dea5ea6-a802-435f-8a9f-0e85b64cb0ec
+
+	measure TextColor_500 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Text-500"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Text-500")
+			)
+			
+			```
+		displayFolder: _Palette\Text
+		lineageTag: b0998707-f5bd-4c6d-901a-8c101b641ed8
+
+	measure TextColor_600 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Text-600"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Text-600")
+			)
+			
+			```
+		displayFolder: _Palette\Text
+		lineageTag: 1db3fdfe-61c5-4a50-ab98-538ffb776838
+
+	measure TextColor_700 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Text-700"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Text-700")
+			)
+			
+			```
+		displayFolder: _Palette\Text
+		lineageTag: 5b3a95ea-8913-42e8-80b0-e5d8c613513b
+
+	measure TextColor_800 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Text-800"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Text-800")
+			)
+			
+			```
+		displayFolder: _Palette\Text
+		lineageTag: 8f899415-3c63-4286-8be3-a8d589fb21ce
+
+	measure TextColor_900 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Text-900"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Text-900")
+			)
+			
+			```
+		displayFolder: _Palette\Text
+		lineageTag: 7576a7c9-70fb-4306-beed-fc36df75d3db
+
+	measure BackgroundColor = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Background"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Background")
+			)
+			
+			```
+		displayFolder: _Palette\Background
+		lineageTag: fba7c19f-b5ee-44a1-9b2f-15ac261aa8fd
+
+	measure BackgroundColor_100 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Background-100"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Background-100")
+			)
+			
+			```
+		displayFolder: _Palette\Background
+		lineageTag: 377d2193-2d7c-442d-bab4-54d8249ad8bb
+
+	measure BackgroundColor_200 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Background-200"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Background-200")
+			)
+			
+			```
+		displayFolder: _Palette\Background
+		lineageTag: 8685d108-ae05-4b6e-8bc9-a89500d49df2
+
+	measure BackgroundColor_300 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Background-300"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Background-300")
+			)
+			
+			```
+		displayFolder: _Palette\Background
+		lineageTag: 30359ce4-6fbd-44ee-8302-9f48221c241f
+
+	measure BackgroundColor_400 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Background-400"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Background-400")
+			)
+			
+			```
+		displayFolder: _Palette\Background
+		lineageTag: fdcbdf90-c2a0-4380-b394-27633e6b4a30
+
+	measure BackgroundColor_500 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Background-500"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Background-500")
+			)
+			
+			```
+		displayFolder: _Palette\Background
+		lineageTag: a8052966-700a-42d6-8839-23d3851a802e
+
+	measure BackgroundColor_600 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Background-600"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Background-600")
+			)
+			
+			```
+		displayFolder: _Palette\Background
+		lineageTag: c6832132-1198-4d1b-b40d-00187b6a82ed
+
+	measure BackgroundColor_700 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Background-700"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Background-700")
+			)
+			
+			```
+		displayFolder: _Palette\Background
+		lineageTag: d4068965-68fe-4a04-aa6f-d47175d909c2
+
+	measure BackgroundColor_800 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Background-800"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Background-800")
+			)
+			
+			```
+		displayFolder: _Palette\Background
+		lineageTag: 400c2a2e-871e-4944-bffe-8b7da91c76db
+
+	measure BackgroundColor_900 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Background-900"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Background-900")
+			)
+			
+			```
+		displayFolder: _Palette\Background
+		lineageTag: f7de0c51-346a-419e-b0cb-0f37c0ab0ee3
+
+	measure PrimaryColor = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Primary"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Primary")
+			)
+			```
+		displayFolder: _Palette\Primary
+		lineageTag: b4ebe046-5e34-4742-905e-7b491997a26d
+
+	measure PrimaryColor_100 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Primary-100"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Primary-100")
+			)
+			
+			```
+		displayFolder: _Palette\Primary
+		lineageTag: ed0233a6-44df-492b-8834-cdef295a3632
+
+	measure PrimaryColor_200 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Primary-200"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Primary-200")
+			)
+			
+			```
+		displayFolder: _Palette\Primary
+		lineageTag: 8387080f-5d32-438d-8eca-aeb872b47078
+
+	measure PrimaryColor_300 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Primary-300"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Primary-300")
+			)
+			
+			```
+		displayFolder: _Palette\Primary
+		lineageTag: 8624831a-50d1-40ea-a2d3-40fc5b87338e
+
+	measure PrimaryColor_400 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Primary-400"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Primary-400")
+			)
+			
+			```
+		displayFolder: _Palette\Primary
+		lineageTag: 661d847c-25f4-49c9-be45-20b04ba7bc42
+
+	measure PrimaryColor_500 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Primary-500"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Primary-500")
+			)
+			
+			```
+		displayFolder: _Palette\Primary
+		lineageTag: e158c637-135a-4f55-8ea4-ae15ab78acf9
+
+	measure PrimaryColor_600 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Primary-600"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Primary-600")
+			)
+			
+			```
+		displayFolder: _Palette\Primary
+		lineageTag: 7ff9d692-8f77-4096-bbd8-fccbfea394f0
+
+	measure PrimaryColor_700 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Primary-700"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Primary-700")
+			)
+			
+			```
+		displayFolder: _Palette\Primary
+		lineageTag: c495f5a1-1bc2-4e8e-826b-81b796f41236
+
+	measure PrimaryColor_800 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Primary-800"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Primary-800")
+			)
+			
+			```
+		displayFolder: _Palette\Primary
+		lineageTag: 49c1a67e-e814-42e6-ad24-9fd3517e054a
+
+	measure PrimaryColor_900 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Primary-900"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Primary-900")
+			)
+			
+			```
+		displayFolder: _Palette\Primary
+		lineageTag: a69f58ac-a436-499d-9f33-f2fffb4290bd
+
+	measure PrimaryColor_950 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Primary-950"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Primary-950")
+			)
+			
+			```
+		displayFolder: _Palette\Primary
+		lineageTag: ae7762dc-d058-4471-96b0-f7e781f16f00
+
+	measure SecondaryColor = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Secondary"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Secondary")
+			)
+			```
+		displayFolder: _Palette\Secondary
+		lineageTag: ae9b0f8b-ad0b-42c7-93b7-8a79838f764f
+
+	measure SecondaryColor_100 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Secondary-100"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Secondary-100")
+			)
+			
+			```
+		displayFolder: _Palette\Secondary
+		lineageTag: babf158e-ac90-46fb-a398-cefe8bd3e389
+
+	measure SecondaryColor_200 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Secondary-200"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Secondary-200")
+			)
+			
+			```
+		displayFolder: _Palette\Secondary
+		lineageTag: fb94fef7-623c-4f88-ad91-0f2e170c2fc5
+
+	measure SecondaryColor_300 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Secondary-300"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Secondary-300")
+			)
+			
+			```
+		displayFolder: _Palette\Secondary
+		lineageTag: a81c14ed-e9a1-43dc-8c68-2a0e7efa39b8
+
+	measure SecondaryColor_400 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Secondary-400"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Secondary-400")
+			)
+			
+			```
+		displayFolder: _Palette\Secondary
+		lineageTag: 0138d8af-a51e-43d4-9574-d9fd1a457556
+
+	measure SecondaryColor_500 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Secondary-500"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Secondary-500")
+			)
+			
+			```
+		displayFolder: _Palette\Secondary
+		lineageTag: 30aa093e-415c-4a59-a15d-9b2beb3672ac
+
+	measure SecondaryColor_600 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Secondary-600"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Secondary-600")
+			)
+			
+			```
+		displayFolder: _Palette\Secondary
+		lineageTag: 9028b278-df71-4f3b-af1f-c3e10a421e8b
+
+	measure SecondaryColor_700 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Secondary-700"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Secondary-700")
+			)
+			
+			```
+		displayFolder: _Palette\Secondary
+		lineageTag: e8d3ce38-15f8-4203-a37c-8c2ef666ba23
+
+	measure SecondaryColor_800 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Secondary-800"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Secondary-800")
+			)
+			
+			```
+		displayFolder: _Palette\Secondary
+		lineageTag: 29f4c889-e012-49b3-be6d-783b5decc1a4
+
+	measure SecondaryColor_900 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Secondary-900"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Secondary-900")
+			)
+			
+			```
+		displayFolder: _Palette\Secondary
+		lineageTag: 68f953c4-7521-4fb3-a8b1-c87b98cd4a8e
+
+	measure SecondaryColor_950 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Secondary-950"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Secondary-950")
+			)
+			
+			```
+		displayFolder: _Palette\Secondary
+		lineageTag: 671b07a5-4710-456b-adf6-78ab6b19f873
+
+	measure ResponsibleGreen = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "ResponsibleGreen"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "ResponsibleGreen")
+			)
+			
+			```
+		displayFolder: _Palette\ResponsibleGreen
+		lineageTag: b2f78d09-e8d9-4a20-80a4-0493428df004
+
+	measure ResponsibleGreen_100 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "ResponsibleGreen-100"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "ResponsibleGreen-100")
+			)
+			
+			```
+		displayFolder: _Palette\ResponsibleGreen
+		lineageTag: 998bcd66-8fcf-4560-a1ed-b5e2d52af480
+
+	measure ResponsibleGreen_200 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "ResponsibleGreen-200"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "ResponsibleGreen-200")
+			)
+			
+			```
+		displayFolder: _Palette\ResponsibleGreen
+		lineageTag: 42c91141-e8cc-4591-bf68-97c1fdc2f7ff
+
+	measure ResponsibleGreen_300 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "ResponsibleGreen-300"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "ResponsibleGreen-300")
+			)
+			
+			```
+		displayFolder: _Palette\ResponsibleGreen
+		lineageTag: 617bf43f-7654-42fc-b9c3-09b16ce1f81a
+
+	measure ResponsibleGreen_400 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "ResponsibleGreen-400"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "ResponsibleGreen-400")
+			)
+			
+			```
+		displayFolder: _Palette\ResponsibleGreen
+		lineageTag: b3d9542b-013b-434f-b810-dbef66201a5c
+
+	measure ResponsibleGreen_500 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "ResponsibleGreen-500"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "ResponsibleGreen-500")
+			)
+			
+			```
+		displayFolder: _Palette\ResponsibleGreen
+		lineageTag: c6c12a17-1f89-4e65-998d-8f35ab3bcad4
+
+	measure ResponsibleGreen_600 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "ResponsibleGreen-600"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "ResponsibleGreen-600")
+			)
+			
+			```
+		displayFolder: _Palette\ResponsibleGreen
+		lineageTag: 9fec27ea-b297-44f0-992b-cf19fa920406
+
+	measure ResponsibleGreen_700 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "ResponsibleGreen-700"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "ResponsibleGreen-700")
+			)
+			
+			```
+		displayFolder: _Palette\ResponsibleGreen
+		lineageTag: 3539abc7-d08e-4bc0-b1bb-0baeb14381c2
+
+	measure ResponsibleGreen_800 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "ResponsibleGreen-800"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "ResponsibleGreen-800")
+			)
+			
+			```
+		displayFolder: _Palette\ResponsibleGreen
+		lineageTag: fcfa56e9-be75-43f0-ac07-52ace3743ef4
+
+	measure ResponsibleGreen_900 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "ResponsibleGreen-900"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "ResponsibleGreen-900")
+			)
+			
+			```
+		displayFolder: _Palette\ResponsibleGreen
+		lineageTag: dbfce06a-3696-4ae5-b86b-05cefd45b606
+
+	measure ResponsibleGreen_950 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "ResponsibleGreen-950"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "ResponsibleGreen-950")
+			)
+			
+			```
+		displayFolder: _Palette\ResponsibleGreen
+		lineageTag: 98e8eba7-83fa-404c-9951-77d284162fff
+
+	measure LightPurple = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "LightPurple"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "LightPurple")
+			)
+			
+			```
+		displayFolder: _Palette\LightPurple
+		lineageTag: 5ec40ad5-e82e-42c9-8f44-710383eaf39c
+
+	measure LightPurple_100 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "LightPurple-100"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "LightPurple-100")
+			)
+			
+			```
+		displayFolder: _Palette\LightPurple
+		lineageTag: 92f5af83-45b1-40f3-a397-742273d18f97
+
+	measure LightPurple_200 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "LightPurple-200"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "LightPurple-200")
+			)
+			
+			```
+		displayFolder: _Palette\LightPurple
+		lineageTag: 15d56f0e-6405-4d6c-8d5d-2937d9ea7d68
+
+	measure LightPurple_300 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "LightPurple-300"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "LightPurple-300")
+			)
+			
+			```
+		displayFolder: _Palette\LightPurple
+		lineageTag: 1f6b4490-eccd-4dac-9e66-fbd4faabd548
+
+	measure LightPurple_400 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "LightPurple-400"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "LightPurple-400")
+			)
+			
+			```
+		displayFolder: _Palette\LightPurple
+		lineageTag: 5c92f6f7-e74d-4d48-9362-b9759b2e1064
+
+	measure LightPurple_500 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "LightPurple-500"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "LightPurple-500")
+			)
+			
+			```
+		displayFolder: _Palette\LightPurple
+		lineageTag: 285649a7-3fc9-40ea-93a3-51a1dca09f64
+
+	measure LightPurple_600 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "LightPurple-600"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "LightPurple-600")
+			)
+			
+			```
+		displayFolder: _Palette\LightPurple
+		lineageTag: 26551664-55ed-4caf-934f-e33c7be02047
+
+	measure LightPurple_700 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "LightPurple-700"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "LightPurple-700")
+			)
+			
+			```
+		displayFolder: _Palette\LightPurple
+		lineageTag: 85b403e2-11a8-4e4e-a689-bd5cf28b01a2
+
+	measure LightPurple_800 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "LightPurple-800"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "LightPurple-800")
+			)
+			
+			```
+		displayFolder: _Palette\LightPurple
+		lineageTag: cc999ee9-7664-4072-8109-f550a9d74636
+
+	measure LightPurple_900 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "LightPurple-900"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "LightPurple-900")
+			)
+			
+			```
+		displayFolder: _Palette\LightPurple
+		lineageTag: 519fc521-4f34-4806-a65c-41170c1b32ee
+
+	measure LightPurple_950 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "LightPurple-950"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "LightPurple-950")
+			)
+			
+			```
+		displayFolder: _Palette\LightPurple
+		lineageTag: 4f5444af-0aae-4dd5-9aec-0df3fac8a0ea
+
+	measure VibrantRed = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "VibrantRed"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "VibrantRed")
+			)
+			
+			```
+		displayFolder: _Palette\VibrantRed
+		lineageTag: 89220a5f-65ea-422e-9367-d79ca31e0ec4
+
+	measure VibrantRed_100 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "VibrantRed-100"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "VibrantRed-100")
+			)
+			
+			```
+		displayFolder: _Palette\VibrantRed
+		lineageTag: a37e410b-1f13-4a97-bea8-58d8c6f53af6
+
+	measure VibrantRed_200 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "VibrantRed-200"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "VibrantRed-200")
+			)
+			
+			```
+		displayFolder: _Palette\VibrantRed
+		lineageTag: 869222cc-8125-4f25-9b0e-66b55a5d8986
+
+	measure VibrantRed_300 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "VibrantRed-300"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "VibrantRed-300")
+			)
+			
+			```
+		displayFolder: _Palette\VibrantRed
+		lineageTag: 22263319-1de6-400a-bfae-f6b082b9e3e7
+
+	measure VibrantRed_400 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "VibrantRed-400"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "VibrantRed-400")
+			)
+			
+			```
+		displayFolder: _Palette\VibrantRed
+		lineageTag: 18da9a68-fc67-4b33-8f68-236639b9a910
+
+	measure VibrantRed_500 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "VibrantRed-500"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "VibrantRed-500")
+			)
+			
+			```
+		displayFolder: _Palette\VibrantRed
+		lineageTag: 60e478e5-c7ca-4de5-91cb-d9a8fa71a172
+
+	measure VibrantRed_600 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "VibrantRed-600"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "VibrantRed-600")
+			)
+			
+			```
+		displayFolder: _Palette\VibrantRed
+		lineageTag: 9868e252-c583-4d4c-81aa-4ead97651d8b
+
+	measure VibrantRed_700 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "VibrantRed-700"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "VibrantRed-700")
+			)
+			
+			```
+		displayFolder: _Palette\VibrantRed
+		lineageTag: 0f2164e0-6cd3-4d8d-8b80-50c2cfd1bfd9
+
+	measure VibrantRed_800 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "VibrantRed-800"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "VibrantRed-800")
+			)
+			
+			```
+		displayFolder: _Palette\VibrantRed
+		lineageTag: 9c45ddbc-d21d-4c0c-aa35-9ee787b4af69
+
+	measure VibrantRed_900 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "VibrantRed-900"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "VibrantRed-900")
+			)
+			
+			```
+		displayFolder: _Palette\VibrantRed
+		lineageTag: 834869cc-2b9f-44f5-a45b-f613635fd68f
+
+	measure VibrantRed_950 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "VibrantRed-950"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "VibrantRed-950")
+			)
+			
+			```
+		displayFolder: _Palette\VibrantRed
+		lineageTag: 44896b2d-5d71-465e-b263-2755350aff45
+
+	measure WhiteColor = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "White"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "White")
+			)
+			```
+		displayFolder: _Palette\White
+		lineageTag: 31e08364-85dc-499c-b732-f9268b04b182
+
+	measure WhiteColor_100 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "White-100"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "White-100")
+			)
+			
+			```
+		displayFolder: _Palette\White
+		lineageTag: 1f5d2743-cf0b-4f0c-a3e1-41723caf49fc
+
+	measure WhiteColor_200 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "White-200"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "White-200")
+			)
+			
+			```
+		displayFolder: _Palette\White
+		lineageTag: e0d2b58d-3ed7-4bf1-bae3-8549d9e8b952
+
+	measure WhiteColor_300 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "White-300"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "White-300")
+			)
+			
+			```
+		displayFolder: _Palette\White
+		lineageTag: deca2860-afc0-4450-b784-e2e9e2d95719
+
+	measure WhiteColor_400 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "White-400"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "White-400")
+			)
+			
+			```
+		displayFolder: _Palette\White
+		lineageTag: 44ee3078-6bab-4e47-8966-91823a86a965
+
+	measure WhiteColor_500 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "White-500"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "White-500")
+			)
+			
+			```
+		displayFolder: _Palette\White
+		lineageTag: b9acca0e-3232-47ed-9f9d-a6f62aa55bbf
+
+	measure WhiteColor_600 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "White-600"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "White-600")
+			)
+			
+			```
+		displayFolder: _Palette\White
+		lineageTag: f58dd89a-e314-43b7-b772-dcca49850984
+
+	measure WhiteColor_700 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "White-700"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "White-700")
+			)
+			
+			```
+		displayFolder: _Palette\White
+		lineageTag: 09df2b29-fafa-4aaa-94b4-559cfa1b36a1
+
+	measure WhiteColor_800 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "White-800"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "White-800")
+			)
+			
+			```
+		displayFolder: _Palette\White
+		lineageTag: 0c78bff9-c7c0-47f5-92f0-963e754a6614
+
+	measure WhiteColor_900 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "White-900"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "White-900")
+			)
+			
+			```
+		displayFolder: _Palette\White
+		lineageTag: 71fa87d0-1f8f-4dd8-a5c3-a73c875a833c
+
+	measure WhiteColor_950 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "White-950"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "White-950")
+			)
+			
+			```
+		displayFolder: _Palette\White
+		lineageTag: c7a2a9cf-04b4-491d-a789-6ccd7af766a3
+
+	measure BlackColor = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Black"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Black")
+			)
+			```
+		displayFolder: _Palette\Black
+		lineageTag: 5e433b38-5484-4024-8775-55b45d164c18
+
+	measure BlackColor_100 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Black-100"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Black-100")
+			)
+			
+			```
+		displayFolder: _Palette\Black
+		lineageTag: 2a3a2113-0adb-4dfe-858e-10a8835591dd
+
+	measure BlackColor_200 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Black-200"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Black-200")
+			)
+			
+			```
+		displayFolder: _Palette\Black
+		lineageTag: 0a136619-2c0d-4436-9834-b99a1f0f448b
+
+	measure BlackColor_300 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Black-300"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Black-300")
+			)
+			
+			```
+		displayFolder: _Palette\Black
+		lineageTag: 20ca97cc-c733-4e90-b96b-9dc238512dcc
+
+	measure BlackColor_400 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Black-400"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Black-400")
+			)
+			
+			```
+		displayFolder: _Palette\Black
+		lineageTag: e39f00d0-7a78-4cdb-ab48-75046865c441
+
+	measure BlackColor_500 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Black-500"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Black-500")
+			)
+			
+			```
+		displayFolder: _Palette\Black
+		lineageTag: 4ff0c64c-1b00-43ba-833b-c59e04e56999
+
+	measure BlackColor_600 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Black-600"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Black-600")
+			)
+			
+			```
+		displayFolder: _Palette\Black
+		lineageTag: 1c965d11-f397-4141-adfc-506a52ad3ca6
+
+	measure BlackColor_700 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Black-700"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Black-700")
+			)
+			
+			```
+		displayFolder: _Palette\Black
+		lineageTag: 5345e1a9-d667-4ed9-8c15-59d7130db3dd
+
+	measure BlackColor_800 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Black-800"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Black-800")
+			)
+			
+			```
+		displayFolder: _Palette\Black
+		lineageTag: e2aed037-5e4f-4e0f-acd1-bcff168bacee
+
+	measure BlackColor_900 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Black-900"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Black-900")
+			)
+			
+			```
+		displayFolder: _Palette\Black
+		lineageTag: a077451e-27f8-4a33-ba88-8b470e3cd868
+
+	measure BlackColor_950 = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "Black-950"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "Black-950")
+			)
+			
+			```
+		displayFolder: _Palette\Black
+		lineageTag: 21a53519-5f20-4670-8e22-e8ccaef8e5eb
+
+	measure BgLinearGradientColor = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "BackgroundGradient"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "BackgroundGradient")
+			)
+			```
+		displayFolder: _Palette\Gradient
+		lineageTag: 6d2ee347-3b55-479a-8ec7-75b2a775e4ad
+
+	measure PageTitleGradientColor = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "PageTitleGradient"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "PageTitleGradient")
+			)
+			```
+		displayFolder: _Palette\Gradient
+		lineageTag: 0647f22f-8245-4361-8c3a-fd46f7e72a39
+
+	measure AliceBlueColor = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "AliceBlue"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "AliceBlue")
+			)
+			```
+		displayFolder: _Palette\Others
+		lineageTag: b07ad222-ae3f-4492-93b4-dfb7a98bd3e6
+
+	measure DynamicColor = ```
+			
+			VAR SelectedColorName = SELECTEDVALUE(Colors[Name])
+			RETURN
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], SelectedColorName),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], SelectedColorName)
+			)
+			
+			```
+		displayFolder: _Palette\Others
+		lineageTag: 33e88604-e89f-4a8c-8a83-38d4bb089278
+
+	measure TransparentColor = "#00000000"
+		displayFolder: _Palette\Others
+		lineageTag: e99e79da-5b31-4f93-b470-10877759f690
+
+	measure UnitedBlueColor = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "UnitedBlue"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "UnitedBlue")
+			)
+			```
+		displayFolder: _Palette\Others
+		lineageTag: d90f253b-b8c7-4065-b744-66a0aa583cc0
+
+	measure UnitedBlueTextColor = ```
+			
+			SWITCH(
+			    LOWER([SelectedTheme]), 
+			    "light", LOOKUPVALUE(Colors[LightMode], Colors[Name], "UnitedBlueText"),
+			    "dark", LOOKUPVALUE(Colors[DarkMode], Colors[Name], "UnitedBlueText")
+			)
+			```
+		displayFolder: _Palette\Others
+		lineageTag: 81d2912d-efb4-42de-b7f9-48d9946b1191
+
+	column Name
+		dataType: string
+		lineageTag: 3291b638-b0ba-40f4-994e-abd000841f84
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column LightMode
+		dataType: string
+		lineageTag: 17ae5b79-f304-4bc6-8b5c-990b430e9659
+		summarizeBy: none
+		sourceColumn: LightMode
+
+		annotation SummarizationSetBy = Automatic
+
+	column DarkMode
+		dataType: string
+		lineageTag: 977ef31f-cb65-4b4e-8d4f-456bcfb4e5c9
+		summarizeBy: none
+		sourceColumn: DarkMode
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: d02b27fe-5434-46ef-96bf-56220a77ba50
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Shade
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a3754a8-cd22-48d5-be09-169037e7f4d5
+		summarizeBy: sum
+		sourceColumn: Shade
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Colors = m
+		mode: import
+		source =
+				let
+				  Source = SharePoint.Tables(SHAREPOINT_SITE_THEME_MANAGER, [Implementation = "2.0", ViewMode = "All"]),
+				  #"82ca65b7-74aa-4405-8e57-47f71747569e" = Source{[Id="f20a4848-a234-4fad-b055-c629293fcf21"]}[Items],
+				  RemovedOtherColumns = Table.SelectColumns(#"82ca65b7-74aa-4405-8e57-47f71747569e",{"Titre", "LightMode", "DarkMode"}),
+				  RenamedColumns = Table.RenameColumns(RemovedOtherColumns,{{"Titre", "Name"}}),
+				  DuplicatedColumn = Table.DuplicateColumn(RenamedColumns, "Name", "Name - Copy"),
+				  SplitColumnbyDelimiter = Table.SplitColumn(DuplicatedColumn, "Name - Copy", Splitter.SplitTextByDelimiter("-", QuoteStyle.Csv), {"Category", "Shade"}),
+				  ReplacedValue = Table.ReplaceValue(SplitColumnbyDelimiter, each [Category], each if Text.Contains([Category], "Gradient") then "Gradient" else [Category],Replacer.ReplaceText,{"Category"}),
+				  ChangedType = Table.TransformColumnTypes(ReplacedValue,{{"Name", type text}, {"LightMode", type text}, {"DarkMode", type text}, {"Shade", Int64.Type}})
+				in
+				  ChangedType
+
+	annotation PBI_ResultType = Table
+

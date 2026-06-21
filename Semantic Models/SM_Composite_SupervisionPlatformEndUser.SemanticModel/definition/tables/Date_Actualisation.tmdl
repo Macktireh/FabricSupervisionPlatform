@@ -1,0 +1,44 @@
+table Date_Actualisation
+	lineageTag: 37f1a9c3-89fe-478d-ae0c-d5260982f819
+
+	column Date_Actualisation
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a94b4d43-f756-46e3-b3d5-627d8d3f23a2
+		summarizeBy: none
+		sourceColumn: Date_Actualisation
+
+		variation Variation
+			isDefault
+			relationship: de7990a0-2cd8-4e7a-9361-c6ea0c94ca55
+			defaultHierarchy: LocalDateTable_79485caa-2534-41a9-bf14-e8a3499f31ea.日付の階層
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date_Actualisation = m
+		mode: import
+		source =
+				let
+				  // Heure UTC actuelle
+				  utcNow = DateTimeZone.FixedUtcNow(),
+				  // Date sans l'heure
+				  currentDate = DateTime.Date(utcNow),
+				  // Dernier dimanche de mars (début heure d'été)
+				  startDST = Date.AddDays(
+				      #date(Date.Year(currentDate), 3, 31), -Date.DayOfWeek(#date(Date.Year(currentDate), 3, 31), Day.Sunday)
+				  ),
+				  // Dernier dimanche d'octobre (fin heure d'été)
+				  endDST = Date.AddDays(
+				      #date(Date.Year(currentDate), 10, 31), -Date.DayOfWeek(#date(Date.Year(currentDate), 10, 31), Day.Sunday)
+				  ),
+				  // Vérifie si on est en heure d'été
+				  isDST = currentDate >= startDST and currentDate < endDST,
+				  // Décalage horaire : 2 si heure d'été, sinon 1
+				  offset = if isDST then 2 else 1,
+				  // Heure locale ajustée
+				  localTime = DateTimeZone.SwitchZone(utcNow, offset)
+				in
+				  localTime
+
+	annotation PBI_ResultType = DateTimeZone
+

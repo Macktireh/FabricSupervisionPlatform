@@ -1,0 +1,90 @@
+/// Usage/activity dimension defining the type of Dataiku asset, the user activity performed, and the functional activity category used for adoption/usage analytics.
+table dim_usage
+	lineageTag: 3e715f60-138f-47ed-9680-1383e4b12c6d
+	sourceLineageTag: [gold].[dim_usage]
+
+	/// Type of Dataiku object involved in the usage (e.g., dataset, project, scenario, job).
+	column asset
+		dataType: string
+		lineageTag: 7c779ea9-319a-47db-84c5-d98907081949
+		sourceLineageTag: asset
+		summarizeBy: none
+		sourceColumn: asset
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Action performed by the user on the asset (e.g., create-brach, get, run-from-recipe-ui, get-for-export, get-settings, ...).
+	column activity
+		dataType: string
+		lineageTag: 190eec59-d8d0-4f93-ad13-5c80b6135b5c
+		sourceLineageTag: activity
+		summarizeBy: none
+		sourceColumn: activity
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Functional category of the activity (e.g., Consultation, Développement, Industrialisation, Déploiement, Surveillance).
+	column activity_type
+		dataType: string
+		lineageTag: 96c10c3e-9046-440a-b6a2-fb815268357a
+		sourceLineageTag: activity_type
+		summarizeBy: none
+		sourceColumn: activity_type
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Unique technical identifier of the usage (dimension key).
+	column id
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: a71f66f4-a639-413b-9dea-6ce82fcea31a
+		sourceLineageTag: id
+		summarizeBy: none
+		sourceColumn: id
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Timestamp of record loading into the Lakehouse (ingestion).
+	column loaded_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 30f10268-ae18-4300-9de5-73f6b68b3ff4
+		sourceLineageTag: loaded_at
+		summarizeBy: none
+		sourceColumn: loaded_at
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Timestamp of the last record update (source or processing).
+	column updated_at
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 05da0b8a-ed47-439b-90b1-91c4267c8a88
+		sourceLineageTag: updated_at
+		summarizeBy: none
+		sourceColumn: updated_at
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_usage = entity
+		mode: directLake
+		source
+			entityName: dim_usage
+			schemaName: gold
+			expressionSource: 'DirectLake - Lakehouse_End_User_Platform'
+
+	changedProperty = Description
+

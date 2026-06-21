@@ -1,0 +1,80 @@
+/// Helper/mapping table identifying, per user, the relevant license type and the highest-priority license assignment reference used for allocation/optimization logic.
+table dim_max_user_licence
+	lineageTag: 7dcc2786-ea6a-4037-b5b2-6644e96ce86b
+	sourceLineageTag: [gold].[dim_max_user_licence]
+
+	/// User login identifier (Dataiku username).
+	column username
+		dataType: string
+		lineageTag: c08ac7fd-864b-44c4-8d78-6da9af8d7676
+		sourceLineageTag: username
+		summarizeBy: none
+		sourceColumn: username
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Unique technical identifier of the user (foreign key).
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 7ae17e4a-ad9b-46eb-b5c0-c989131c18a6
+		sourceLineageTag: user_id
+		summarizeBy: none
+		sourceColumn: user_id
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = User
+
+	/// Type of Dataiku license associated with the user.
+	column type
+		dataType: string
+		lineageTag: a42b3680-8e88-4e34-af55-a3b54bb5d669
+		sourceLineageTag: type
+		summarizeBy: none
+		sourceColumn: type
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Identifier of the highest priority license assigned to the user.
+	column max_priority_licence_id
+		dataType: int64
+		formatString: 0
+		lineageTag: af062aeb-5ada-470f-9ead-2b63d73a719a
+		sourceLineageTag: max_priority_licence_id
+		summarizeBy: none
+		sourceColumn: max_priority_licence_id
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = User
+
+	column loaded_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: fbbb43ac-fee2-419c-9e53-5f64d2c416af
+		sourceLineageTag: loaded_at
+		summarizeBy: none
+		sourceColumn: loaded_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column updated_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6f3607c0-917e-40bc-aba3-de316d027d7a
+		sourceLineageTag: updated_at
+		summarizeBy: none
+		sourceColumn: updated_at
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_max_user_licence = entity
+		mode: directLake
+		source
+			entityName: dim_max_user_licence
+			schemaName: gold
+			expressionSource: 'DirectLake - Lakehouse_End_User_Platform'
+
+	changedProperty = Description
+

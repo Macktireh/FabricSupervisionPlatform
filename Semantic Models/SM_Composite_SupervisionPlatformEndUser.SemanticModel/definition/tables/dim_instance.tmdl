@@ -1,0 +1,90 @@
+/// Reference dimension for Dataiku platform instances/environments (DEV/INT/RPP/PROD) and related metadata (instance name, timestamps).
+table dim_instance
+	lineageTag: 433fbf91-e2bf-4cba-9e71-47b2cfe108b5
+	sourceLineageTag: [gold].[dim_instance]
+
+	/// Unique technical identifier of the license (dimension key).
+	column id
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: 1cb9d310-27f9-482b-b621-39c01d2936fe
+		sourceLineageTag: id
+		summarizeBy: none
+		sourceColumn: id
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Platform environment (DEV, INT, RPP, PROD).
+	column environment
+		dataType: string
+		lineageTag: 613e7682-ee9f-407e-94f4-83f808a198c9
+		sourceLineageTag: environment
+		summarizeBy: none
+		sourceColumn: environment
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Dataiku instance type (design, automation…).
+	column type
+		dataType: string
+		lineageTag: c0daa13f-a3f7-4f7d-a281-fa35e65d4667
+		sourceLineageTag: type
+		summarizeBy: none
+		sourceColumn: type
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Dataiku instance name (logical/technical platform identifier e.g.: automation_monopole_int).
+	column instance_name
+		dataType: string
+		lineageTag: 6e88c04e-49da-4eb7-a068-d123eeeeb9e2
+		sourceLineageTag: instance_name
+		summarizeBy: none
+		sourceColumn: instance_name
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Timestamp of record loading into the Lakehouse (ingestion).
+	column loaded_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7629d4dd-a905-4e51-b78c-1a2a3c461965
+		sourceLineageTag: loaded_at
+		summarizeBy: none
+		sourceColumn: loaded_at
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Timestamp of the last record update (source or processing).
+	column updated_at
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: c985cd13-5018-403e-82c9-ac4009b3aa1f
+		sourceLineageTag: updated_at
+		summarizeBy: none
+		sourceColumn: updated_at
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_instance = entity
+		mode: directLake
+		source
+			entityName: dim_instance
+			schemaName: gold
+			expressionSource: 'DirectLake - Lakehouse_End_User_Platform'
+
+	changedProperty = Description
+

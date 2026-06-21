@@ -1,0 +1,250 @@
+/// Fact table capturing user-level usage data and session activity on the Dataiku platform.
+table fait_usage_dataiku_utilisateur
+	lineageTag: 1773cb5e-f09d-46a3-b6bb-d23569515724
+	sourceLineageTag: [gold].[fait_usage_dataiku_utilisateur]
+
+	/// Technical timestamp of the usage event.
+	column timestamp_dt
+		dataType: dateTime
+		formatString: Short Date
+		isAvailableInMdx: false
+		lineageTag: 6c08bb43-c6ee-46da-a739-6b02c0c40756
+		sourceLineageTag: timestamp_dt
+		summarizeBy: none
+		sourceColumn: timestamp_dt
+
+		changedProperty = Description
+
+		changedProperty = IsHidden
+
+		changedProperty = DataType
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// User session number.
+	column session_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 15698821-6d92-4f97-9cee-0d4c2ce518a8
+		sourceLineageTag: session_number
+		summarizeBy: none
+		sourceColumn: session_number
+
+		changedProperty = Description
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = User
+
+	/// Session duration in seconds.
+	column session_duration_seconds
+		dataType: int64
+		formatString: 0
+		lineageTag: 2dbf2037-a39c-4356-8a34-85ba21ac4045
+		sourceLineageTag: session_duration_seconds
+		summarizeBy: none
+		sourceColumn: session_duration_seconds
+
+		changedProperty = Description
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = User
+
+	/// Session duration in minutes.
+	column session_duration_minutes
+		dataType: int64
+		formatString: 0
+		lineageTag: 484c9fb7-7e63-4216-b8b6-369e1db209da
+		sourceLineageTag: session_duration_minutes
+		summarizeBy: none
+		sourceColumn: session_duration_minutes
+
+		changedProperty = Description
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = User
+
+	/// Number of jobs executed during the session
+	column jobs_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 9720090b-3a55-4cd6-8fd3-13e1ee6943a3
+		sourceLineageTag: jobs_count
+		summarizeBy: none
+		sourceColumn: jobs_count
+
+		changedProperty = Description
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = User
+
+	/// Number of scenarios executed during the session.
+	column scenarios_count
+		dataType: int64
+		formatString: 0
+		lineageTag: d8adcd71-04ff-417d-a4f2-d55c58e3daaf
+		sourceLineageTag: scenarios_count
+		summarizeBy: none
+		sourceColumn: scenarios_count
+
+		changedProperty = Description
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = User
+
+	/// Session start timestamp.
+	column session_start
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5b3e4b40-f5eb-446b-b630-85b94f6e67b8
+		sourceLineageTag: session_start
+		summarizeBy: none
+		sourceColumn: session_start
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Session end timestamp.
+	column session_end
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3a94597c-1788-493d-9993-bc3df2daddb2
+		sourceLineageTag: session_end
+		summarizeBy: none
+		sourceColumn: session_end
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Identifier of the project associated with the session (foreign key).
+	column project_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		isAvailableInMdx: false
+		lineageTag: 3ebc35ce-0b55-44dd-9cc4-29cfd9ace6c2
+		sourceLineageTag: project_id
+		summarizeBy: none
+		sourceColumn: project_id
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Unique technical identifier of the record (fact key).
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2cfc70f7-cdaf-45f9-9866-c237c14b5460
+		sourceLineageTag: id
+		summarizeBy: none
+		sourceColumn: id
+
+		changedProperty = Description
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = User
+
+	/// Timestamp when the record was loaded into the Lakehouse.
+	column loaded_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 19922340-3c38-43f2-a441-be850fd0e8ea
+		sourceLineageTag: loaded_at
+		summarizeBy: none
+		sourceColumn: loaded_at
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Timestamp of the last update of the record.
+	column updated_at
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 9e7f2011-02f9-4668-b44c-20a1433cfff0
+		sourceLineageTag: updated_at
+		summarizeBy: none
+		sourceColumn: updated_at
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Identifier of the Dataiku instance (foreign key).
+	column instance_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		isAvailableInMdx: false
+		lineageTag: 68f80da5-a0f0-4b92-aad3-6937ac360fb4
+		sourceLineageTag: instance_id
+		summarizeBy: none
+		sourceColumn: instance_id
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Identifier of the user (foreign key).
+	column user_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		isAvailableInMdx: false
+		lineageTag: 18bb8931-0504-405c-81d9-bcf4418eaaef
+		sourceLineageTag: user_id
+		summarizeBy: none
+		sourceColumn: user_id
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Identifier of the usage type (foreign key to dim_usage).
+	column usage_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		isAvailableInMdx: false
+		lineageTag: 1a450795-4266-4702-a862-b25946d6e84c
+		sourceLineageTag: usage_id
+		summarizeBy: none
+		sourceColumn: usage_id
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column licence_id
+		dataType: int64
+		formatString: 0
+		lineageTag: db4bcba3-2ae2-4627-bc04-91def0b0061f
+		sourceLineageTag: licence_id
+		summarizeBy: none
+		sourceColumn: licence_id
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = User
+
+	partition fait_usage_dataiku_utilisateur = entity
+		mode: directLake
+		source
+			entityName: fait_usage_dataiku_utilisateur
+			schemaName: gold
+			expressionSource: 'DirectLake - Lakehouse_End_User_Platform'
+
+	changedProperty = Description
+

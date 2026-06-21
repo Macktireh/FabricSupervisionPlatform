@@ -1,0 +1,898 @@
+table Icons
+	lineageTag: 342efde1-48e8-4438-ba6e-df47ebe29b1b
+
+	measure BookTextIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "BookText")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: f81baa74-7681-450d-9584-2953e0fc25b5
+
+	measure BookTextIconBackground = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "BookText")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [BackgroundColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 343dc309-afc8-4fbc-a815-8ba2aefbbd3d
+
+	measure ChevronDownIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "ChevronDown")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 8aefc6d5-8cce-4bf3-8bb0-635d6b78de36
+
+	measure ChevronRightIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "ChevronRight")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 6f461e16-6ee6-4d41-8e8b-b57b12e1c538
+
+	measure DynamicIcon =
+			
+			VAR
+			    SelectedIconName = SELECTEDVALUE(Icons[Name])
+			VAR
+			    Icon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], SelectedIconName)
+			RETURN
+			    SUBSTITUTE(Icon, "#ffffff", [TextColor])
+		displayFolder: _Packs
+		lineageTag: b1d317da-c842-41f7-a17a-e0d7f58c1a1e
+
+	measure GoalIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Goal")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 5384a858-78bf-4a43-99bf-93b84a84c345
+
+	measure GoalIconBackground = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Goal")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [BackgroundColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 040c50cf-fb31-4983-abf8-4f1439a9681b
+
+	measure HelpIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Help")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 3d89a36d-de5a-4808-a2da-90423a6b79bc
+
+	measure HomeIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Home")
+			VAR 
+			    SvgIconThemed = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconThemed
+			```
+		displayFolder: _Packs
+		lineageTag: 781bbd82-38bd-4d04-aee4-04b1c23c196e
+		dataCategory: Uncategorized
+
+	measure HomeIconBackground = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Home")
+			VAR 
+			    SvgIconThemed = SUBSTITUTE(SvgIcon, "#ffffff", [BackgroundColor])
+			RETURN
+			    SvgIconThemed
+			```
+		displayFolder: _Packs
+		lineageTag: 357c9f97-d193-471a-bd72-654ed69dbaa4
+
+	measure InfoIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Info")
+			VAR 
+			    SvgIconThemed = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconThemed
+			```
+		displayFolder: _Packs
+		lineageTag: 76e6eaa8-57ab-4621-86ab-3aea60a4ef9f
+
+	measure ListFilterIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "ListFilter")
+			VAR 
+			    SvgIconThemed = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconThemed
+			```
+		displayFolder: _Packs
+		lineageTag: 2c15036b-f4d6-4173-b136-ded0adfd6239
+
+	measure MemoryStickIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "MemoryStick")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: a8e4e469-b2a9-4775-a335-6a7b50bf885b
+
+	measure MemoryStickIconBackground = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "MemoryStick")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [BackgroundColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 0a5f4767-b98a-49a2-8d55-2714eb948e4b
+
+	measure ShieldCheckIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "ShieldCheck")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 366630c1-a580-4d44-84c8-61135bd64b8b
+
+	measure ShieldCheckIconBackground = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "ShieldCheck")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [BackgroundColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 9e02986c-e943-465c-a8d1-5550e06b7e6c
+
+	measure SquarePlayIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "SquarePlay")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 94731b94-4881-4273-8f61-05eb0afb6e6a
+
+	measure SquarePlayIconBackground = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "SquarePlay")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [BackgroundColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 7bfd4ed8-8f05-4980-bd07-64cc14ee9ba8
+
+	measure ThemeIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Theme[Icon], Theme[Mode], [SelectedTheme])
+			VAR 
+			    SvgIconUnitedBlueColor = IF([IsDark], SUBSTITUTE(SvgIcon, "#ffffff", [UnitedBlueColor]), SvgIcon)
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 3e61b32e-207f-46db-92d2-f18a8098c16e
+
+	measure XIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "X")
+			VAR 
+			    SvgIconThemed = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconThemed
+			```
+		displayFolder: _Packs
+		lineageTag: 88758a34-f945-420c-b5d0-96568a3eb738
+
+	measure XIconUnitedBlue = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "X")
+			VAR 
+			    SvgIconThemed = SUBSTITUTE(SvgIcon, "#ffffff", [UnitedBlueColor])
+			RETURN
+			    SvgIconThemed
+			```
+		displayFolder: _Packs
+		lineageTag: c406e007-3f03-4eff-858d-5e5b71725359
+
+	measure SearchIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Search")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 0f1afdd0-ca74-4263-a676-5324ff7c3de7
+
+	measure SearchIconBackground = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Search")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [BackgroundColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: c101bcd6-600a-4ac8-aaa7-0864249a35a7
+
+	measure SendHorizontalIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "SendHorizontal")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 3e8b3f43-0308-4607-9f58-e866650b2245
+
+	measure SendHorizontalIconBackground = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "SendHorizontal")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [BackgroundColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 41305091-d872-4f3c-9e3a-822b3a483930
+
+	measure FileOutputIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "FileOutput")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 0b37ee1c-7d40-4edf-9e13-35d8b48b4ce6
+
+	measure FileOutputIconBackground = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "FileOutput")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [BackgroundColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: c80f7dbb-9ee8-42e1-9da8-3aa47c988bef
+
+	measure FolderTreeIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "FolderTree")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 06584538-9c8f-45f1-a3b5-843485f0158b
+
+	measure WorkflowIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Workflow")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: f2d0b230-e054-4dbf-84f7-711b362ce70a
+
+	measure FolderKanbanIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "FolderKanban")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 030e9ea0-105b-44b7-9aaa-668f0000e4cb
+
+	measure NotebookPenIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "NotebookPen")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: c306d057-bcf7-4e83-8035-9f6404b1a026
+
+	measure ScanHeartIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "ScanHeart")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 936028a0-e49b-48ad-933c-66498c159eba
+
+	measure ContactSVGIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[SVG], Icons[Name], "Contact")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 22635102-2827-48e4-98ed-1c320b906239
+
+	measure InfoSVGIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[SVG], Icons[Name], "Info")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 06faec38-313a-440c-8e5d-012772e7dd76
+
+	measure FileSVGIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[SVG], Icons[Name], "File")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 2aba890b-147c-4707-9112-06b297298874
+
+	measure LockKeyholeIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "LockKeyhole")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 9c11ed33-fc13-4cfa-b1a8-04c54b805a1a
+
+	measure ChartPieIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "ChartPie")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 0c6caf07-144e-4e41-8a24-b51585836f5a
+
+	measure ExternalLinkIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "ExternalLink")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: fe95cecb-5abb-43ea-a99a-c07e416d5d01
+
+	measure TargetIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Target")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: f36fa2c6-330f-47bd-a050-ea845d392d2d
+
+	measure MapIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Map")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 24182056-1770-42f1-bce9-ab910f3c7cf8
+
+	measure RouteIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Route")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: f660726a-d624-4b3c-9ada-803301453d5b
+
+	measure CircleDollarSignIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "CircleDollarSign")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 8d66b4ca-b86e-4c8e-b721-c3209ee9820d
+
+	measure UsersIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Users")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 92eaf877-f006-4508-913d-ae89ccf9cb87
+
+	measure GaugeIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Gauge")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 1118d1ae-00f2-4a12-b6ac-23ee3502bb6c
+
+	measure MonitorCheckIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "MonitorCheck")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: ebb7cffd-78fb-4045-8043-48d581aaff73
+
+	measure PackageIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Package")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: ab9bb817-50cb-4416-9cbb-f3447a8cd55d
+
+	measure ChartColumnIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "ChartColumn")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 7842edf7-8b59-4be9-9020-4ef983721198
+
+	measure DatabaseIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Database")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 34622f8f-2362-4cdb-81e4-a5a214ea2f65
+
+	measure MoveLeftIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "MoveLeft")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: e31195d8-2844-4cdd-bf79-1a28726a5749
+
+	measure MoveRightIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "MoveRight")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: a848f57c-67fc-421d-8cb2-017822c3b255
+
+	measure CircleChevronRightIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "CircleChevronRight")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 68200452-03e4-4c6d-b29b-c11a6e240a49
+
+	measure CircleChevronLeftIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "CircleChevronLeft")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 9cba4912-eb6a-4dbe-9172-048e57744ba7
+
+	measure CircleChevronLeftIconWhite = SUBSTITUTE([CircleChevronLeftIcon], [TextColor], [UnitedBlueTextColor])
+		displayFolder: _Packs
+		lineageTag: e98456ed-2233-4b94-8339-4c35581424d0
+
+	measure CircleChevronRightIconWhite = SUBSTITUTE([CircleChevronRightIcon], [TextColor], [UnitedBlueTextColor])
+		displayFolder: _Packs
+		lineageTag: 59a91697-5994-4d90-9334-fd1b94ee06e4
+
+	measure MoveLeftIconWhite = SUBSTITUTE([MoveLeftIcon], [TextColor], [UnitedBlueTextColor])
+		displayFolder: _Packs
+		lineageTag: a0cea43c-6938-45de-a34d-3650c784e091
+
+	measure MoveRightIconWhite = SUBSTITUTE([MoveRightIcon], [TextColor], [UnitedBlueTextColor])
+		displayFolder: _Packs
+		lineageTag: de8e0bff-3c15-4f40-9bbe-107167c655f4
+
+	measure SettingsIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Settings")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 28bb50ef-f29c-480c-93e5-3c341c2a034b
+
+	measure HexagonIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Hexagon")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 78f6bc1c-2f1d-43ad-9578-4ccfb07f8647
+
+	measure ListChevronsDownUpIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "ListChevronsDownUp")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 4f74a93c-3220-480b-8897-231b7c097008
+
+	measure UnfoldVerticalIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "UnfoldVertical")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 75c5bc8d-de89-4db9-a459-3e713bbb0f2b
+
+	measure MonitorDotIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "MonitorDot")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 6393f1a7-27f1-4255-b428-66ef130d7456
+
+	measure ClipboardCheckIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "ClipboardCheck")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: c35e2fbc-3fa1-4a89-b2c0-fe97aec36e43
+
+	measure ClipboardIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Clipboard")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 9f7ebdf0-3fc1-40f6-a7dd-72fc433c000b
+
+	measure LayersIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Layers")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: a93cbdec-39a2-4004-bf2a-7c19f958a9db
+
+	measure PlayIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Play")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 7d9433c2-e413-48ec-9f7b-57c252470275
+
+	measure LoginIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Login")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: ce80222b-0184-4565-b867-648cb1b5e3bf
+
+	measure TimerIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Timer")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 1985a087-2731-4e27-b687-0d632d4ea3cd
+
+	measure MessageCircleMoreIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "MessageCircleMore")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: d74920ec-e324-4a7e-8951-862d12844ac4
+
+	measure MessageCircleMoreSVGIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[SVG], Icons[Name], "MessageCircleMore")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 57dad3be-3c83-4640-8c18-7afbe230ccd6
+
+	measure CirclePauseIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "CirclePause")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 5be36616-ddd8-4171-8033-1b50d56df125
+
+	measure CircleCheckIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "CircleCheck")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: cf440386-05ef-4a90-8489-d2b0dd6d7629
+
+	measure TrendingDownIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "TrendingDown")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 6411dd6f-41eb-420b-a41e-4917fa1e44ec
+
+	measure TrendingUpIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "TrendingUp")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [TextColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 0b8b07fc-b7eb-4e3c-bc3a-9e267f70fc77
+
+	measure EraserIcon = ```
+			
+			VAR 
+			    SvgIcon = LOOKUPVALUE(Icons[DataUrl], Icons[Name], "Eraser")
+			VAR 
+			    SvgIconUnitedBlueColor = SUBSTITUTE(SvgIcon, "#ffffff", [UnitedBlueColor])
+			RETURN
+			    SvgIconUnitedBlueColor
+			```
+		displayFolder: _Packs
+		lineageTag: 4633dbe4-5fba-42bd-905f-b7f97e5694c8
+
+	column Name
+		dataType: string
+		lineageTag: c5e8eb28-4026-48c4-ad3d-899085826732
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column SVG
+		dataType: string
+		lineageTag: 5b8a1cd3-7bd3-4ab8-843d-545b60de2758
+		summarizeBy: none
+		sourceColumn: SVG
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataUrl
+		dataType: string
+		lineageTag: 558fb0e0-1949-458c-8cb1-f534f017cb8a
+		summarizeBy: none
+		sourceColumn: DataUrl
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Icons = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Tables(SHAREPOINT_SITE_THEME_MANAGER, [Implementation="2.0", ViewMode="All"]),
+				    #"dc37e933-d819-4750-98b4-1d329687c7d1" = Source{[Id="dc37e933-d819-4750-98b4-1d329687c7d1"]}[Items],
+				    RemovedOtherColumns = Table.SelectColumns(#"dc37e933-d819-4750-98b4-1d329687c7d1",{"Titre", "SVG"}),
+				    RenamedColumns = Table.RenameColumns(RemovedOtherColumns,{{"Titre", "Name"}}),
+				    AddedDataUrlColumn = Table.AddColumn(RenamedColumns, "DataUrl", each Text.Combine({"data:image/svg+xml;utf8,", [SVG]}, ""), type text),
+				    ChangedType = Table.TransformColumnTypes(AddedDataUrlColumn,{{"Name", type text}, {"SVG", type text}, {"DataUrl", type text}})
+				in
+				    ChangedType
+
+	annotation PBI_ResultType = Table
+

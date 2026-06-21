@@ -1,0 +1,98 @@
+/// Project dimension for Dataiku projects, including technical ID, business project key, folder hierarchy path, and domain/sub-domain classification.
+table dim_project
+	lineageTag: 62ecccd5-7a08-4697-9190-2cda1e48e0cf
+	sourceLineageTag: [gold].[dim_project]
+
+	/// Unique technical identifier of the project (dimension key).
+	column id
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: ad92007e-fdda-437b-ade5-7f6f85f7875b
+		sourceLineageTag: id
+		summarizeBy: none
+		sourceColumn: id
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Functional identifier of the Dataiku project (business key used in analyses).
+	column project_key
+		dataType: string
+		lineageTag: b03203bf-32bb-4f29-876d-22a804fdb293
+		sourceLineageTag: project_key
+		summarizeBy: none
+		sourceColumn: project_key
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Hierarchical path of the project in the Dataiku structure.
+	column folder_path
+		dataType: string
+		lineageTag: cceb4153-ca8c-48bf-b5ca-ef5d71b566e1
+		sourceLineageTag: folder_path
+		summarizeBy: none
+		sourceColumn: folder_path
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Timestamp of record loading into the Lakehouse (ingestion).
+	column loaded_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c95c5816-6375-4b97-8995-3c4c6d0a830d
+		sourceLineageTag: loaded_at
+		summarizeBy: none
+		sourceColumn: loaded_at
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Timestamp of the last record update (source or processing).
+	column updated_at
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 5df7c597-071c-44d6-87fa-e108ba087dc9
+		sourceLineageTag: updated_at
+		summarizeBy: none
+		sourceColumn: updated_at
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Business domain associated with the project.
+	column domain
+		dataType: string
+		lineageTag: a6ec0c49-671d-4c20-b5f3-ab45b7908e3c
+		sourceLineageTag: domain
+		summarizeBy: none
+		sourceColumn: domain
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Sub-domain associated with the project.
+	column sub_domain
+		dataType: string
+		lineageTag: 326e87d2-38c5-43ba-a9b8-efa8ae724120
+		sourceLineageTag: sub_domain
+		summarizeBy: none
+		sourceColumn: sub_domain
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_project = entity
+		mode: directLake
+		source
+			entityName: dim_project
+			schemaName: gold
+			expressionSource: 'DirectLake - Lakehouse_End_User_Platform'
+
+	changedProperty = Description
+

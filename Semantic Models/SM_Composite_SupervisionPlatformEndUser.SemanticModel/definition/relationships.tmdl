@@ -1,0 +1,47 @@
+relationship 406476cf-318b-e574-92b6-cdd2974dce10
+	fromColumn: dim_instance_licence_utilisateur.instance_id
+	toColumn: dim_instance.id
+
+relationship 8a59bd8f-44c6-1318-e567-2fe8acc5f0b1
+	fromColumn: dim_instance_licence_utilisateur.licence_id
+	toColumn: dim_licence.id
+
+relationship 585fd7a8-f297-cb26-6708-6c89ab2980fd
+	fromColumn: dim_instance_licence_utilisateur.user_id
+	toColumn: dim_utilisateur.id
+
+relationship 5fd751bb-3b4c-f111-77a9-99a87f4df203
+	fromColumn: fait_usage_dataiku_utilisateur.instance_id
+	toColumn: dim_instance.id
+
+relationship 63e92bb6-d35b-05a8-2390-f41d8aa5fe6c
+	fromColumn: fait_usage_dataiku_utilisateur.project_id
+	toColumn: dim_project.id
+
+relationship 9922b290-a28d-f026-2fe4-cf26b73fbc41
+	fromColumn: fait_usage_dataiku_utilisateur.user_id
+	toColumn: dim_utilisateur.id
+
+relationship 988003a5-1251-980b-a84c-2b1c7e3d5400
+	fromColumn: fait_usage_dataiku_utilisateur.timestamp_dt
+	toColumn: dim_calendrier.DATE
+
+relationship 21a84471-83d4-812f-4bda-23c034b31173
+	fromColumn: fait_usage_dataiku_utilisateur.usage_id
+	toColumn: dim_usage.id
+
+relationship de7990a0-2cd8-4e7a-9361-c6ea0c94ca55
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Date_Actualisation.Date_Actualisation
+	toColumn: LocalDateTable_79485caa-2534-41a9-bf14-e8a3499f31ea.Date
+
+relationship 86904225-02e5-d97f-a73c-0271024db51d
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: dim_max_user_licence.user_id
+	toColumn: dim_utilisateur.id
+
+relationship 722ee5c7-3483-2e7a-aae0-651de281295f
+	fromColumn: fait_usage_dataiku_utilisateur.licence_id
+	toColumn: dim_licence.id
+

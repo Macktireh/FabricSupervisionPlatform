@@ -1,0 +1,922 @@
+/// Calculated measures table grouping business KPIs for adoption, usage intensity, license allocation/optimization, time evolution, and UI/HTML constants used in the report.
+table Indicateurs
+	lineageTag: 76c9977c-e48f-4855-867e-5704fb8b798d
+
+	/// Total number of user sessions (count of rows in the usage fact table).
+	measure 'Nb Sessions' =
+			
+			COUNTROWS(fait_usage_dataiku_utilisateur)
+		formatString: #,0
+		displayFolder: Adoption
+		lineageTag: 5711bd42-1872-4ace-a519-45a6b9c52e0d
+
+	/// Number of distinct active projects (distinct project_id observed in usage).
+	measure 'Nb Projets Actifs' =
+			
+			DISTINCTCOUNT(fait_usage_dataiku_utilisateur[project_id])
+		formatString: #,0
+		displayFolder: Adoption
+		lineageTag: ae6dabb9-7415-42f2-a205-05ab7d3f2178
+
+	/// Number of new users over the last 7 days (based on first connection date; ignores calendar filters).
+	measure 'Nb Nouveaux Utilisateurs' =
+			
+			VAR EndDate = TODAY()
+			VAR StartDate = EndDate - 7
+			RETURN
+			CALCULATE(
+			    DISTINCTCOUNT( fait_usage_dataiku_utilisateur[user_id] ),
+			    REMOVEFILTERS( dim_calendrier[DATE] ),
+			    KEEPFILTERS(
+			        FILTER(
+			            VALUES(fait_usage_dataiku_utilisateur[user_id]),
+			            [First Connection] >= StartDate
+			                && [First Connection] <= EndDate
+			        )
+			    )
+			)
+		formatString: 0
+		displayFolder: Adoption
+		lineageTag: e4d05bf3-2ee8-403d-992a-4091a5cb0496
+
+	/// Number of active users (distinct user_id observed in usage).
+	measure 'Nb Utilisateurs Actifs' =
+			
+			DISTINCTCOUNT(fait_usage_dataiku_utilisateur[user_id])
+		formatString: 0
+		displayFolder: Adoption
+		lineageTag: 013c0c11-2510-4885-bbe8-f8b34a9db103
+
+	/// Total number of jobs executed (sum of jobs_count).
+	measure 'Nb Jobs Exécutés' =
+			
+			SUM(fait_usage_dataiku_utilisateur[jobs_count])
+		formatString: #,0
+		displayFolder: Adoption
+		lineageTag: 232f213a-3c75-4e87-9e5d-61fdbf8c072f
+
+	/// Total number of scenarios executed (sum of scenarios_count).
+	measure 'Nb Scénarios Exécutés' =
+			
+			SUM(fait_usage_dataiku_utilisateur[scenarios_count])
+		formatString: #,0
+		displayFolder: Adoption
+		lineageTag: 36cd2203-3db4-49a5-baa9-89fcef6ec31f
+
+	/// Total session duration in minutes (sum of session_duration_minutes).
+	measure 'Durée Totale Sessions (min)' =
+			
+			SUM(fait_usage_dataiku_utilisateur[session_duration_minutes])
+		formatString: 0
+		displayFolder: Intensité d’usage
+		lineageTag: 712612b2-ff62-44a7-b701-98111dd7641f
+
+	/// Average number of sessions per active user.
+	measure 'Nb Moy Sessions / Utilisateur' =
+			
+			DIVIDE([Nb Sessions], [Nb Utilisateurs Actifs])
+		formatString: 0
+		displayFolder: Intensité d’usage
+		lineageTag: 6a60a45d-af2e-4c47-9050-9e1269d57b6b
+
+	/// Average session duration in minutes (excluding zero-duration sessions).
+	measure 'Durée Moy Session (min)' =
+			
+			AVERAGEX(
+				FILTER(
+					fait_usage_dataiku_utilisateur,
+					fait_usage_dataiku_utilisateur[session_duration_minutes] > 0
+				),
+				fait_usage_dataiku_utilisateur[session_duration_minutes]
+			)
+		formatString: 0
+		displayFolder: Intensité d’usage
+		lineageTag: 2113b380-a877-427e-b307-a133aff7a11b
+
+	/// Average number of scenarios executed per session.
+	measure 'Nb Moy Scénarios / Session' =
+			
+			DIVIDE([Nb Scénarios Exécutés], [Nb Sessions])
+		displayFolder: Intensité d’usage
+		lineageTag: 258ff3ee-10b0-4d86-a67d-92a8da3a33b4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Average number of jobs executed per session.
+	measure 'Nb Moy Jobs / Session' =
+			
+			DIVIDE([Nb Jobs Exécutés], [Nb Sessions])
+		formatString: 0
+		displayFolder: Intensité d’usage
+		lineageTag: f65d9d37-d807-498c-bc00-94fce533bb33
+
+	/// Maximum available licenses (allocation) excluding unlimited licenses.
+	measure 'Licences Max (Dotation)' =
+			
+			CALCULATE(
+				SUM(dim_licence[max_licences]),
+				dim_licence[unlimited] = FALSE()
+			)
+		formatString: 0
+		displayFolder: Licences & Dotation
+		lineageTag: 697fad78-3d22-45ec-a14d-8208315557d4
+
+	/// Number of licenses assigned (distinct users with an assigned license).
+	measure 'Licences Attribuées' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT('dim_instance_licence_utilisateur'[user_id])
+			    // KEEPFILTERS(
+			    //     FILTER(
+			    //         'dim_licence',
+			    //         'dim_licence'[type] <> "none"
+			    //             && NOT ISBLANK('dim_licence'[type])
+			    //     )
+			    // )
+			)
+		formatString: 0
+		displayFolder: Licences & Dotation
+		lineageTag: 90a12e86-9173-4455-8641-cd83d8a62b6e
+
+	/// Number of remaining available licenses (allocation minus assigned).
+	measure 'Licences Disponibles (Quotas)' =
+			
+			[Licences Max (Dotation)] - [Licences Attribuées]
+		formatString: 0
+		displayFolder: Licences & Dotation
+		lineageTag: ef4c139a-b578-4bf3-920c-8838d5f205e6
+
+	/// License occupancy rate (assigned / allocation).
+	measure 'Taux Occupation Licences' =
+			
+			DIVIDE([Licences Attribuées], [Licences Max (Dotation)])
+		formatString: 0%;-0%;0%
+		displayFolder: Licences & Dotation
+		lineageTag: dbb02929-b7a7-4735-bbed-433c1ddd4aeb
+
+	/// License activation rate (active users / assigned licenses).
+	measure 'Taux Activation Licences' =
+			
+			DIVIDE([Nb Utilisateurs Actifs], [Licences Attribuées])
+		formatString: 0%;-0%;0%
+		displayFolder: Licences & Dotation
+		lineageTag: 277baeba-673c-4d4f-bef2-f0d73d040599
+
+	/// Number of over-utilized users (license optimization status = "Sur-utilisé").
+	measure 'Nb Utilisateurs Sur-utilisés (Licence)' =
+			
+			VAR UsersToEvaluate =
+			    VALUES ( fait_usage_dataiku_utilisateur[user_id])
+			
+			RETURN
+			    COUNTROWS (
+			        FILTER (
+			            UsersToEvaluate,
+			            CALCULATE ( [Status_Opt_Id] ) = 3
+			        )
+			    )
+		formatString: 0
+		displayFolder: Optimisation des licences
+		lineageTag: f9cf818a-5ae3-4b6f-8ec0-1f6461b2ae67
+
+	/// Number of under-utilized users (license optimization status = "Sous-utilisé").
+	measure 'Nb Utilisateurs Sous-utilisés (Licence)' =
+			
+			VAR UsersToEvaluate =
+			    VALUES (fait_usage_dataiku_utilisateur[user_id] )
+			
+			RETURN
+			    COUNTROWS (
+			        FILTER (
+			            UsersToEvaluate,
+			            CALCULATE ( [Status_Opt_Id] ) =1
+			        )
+			    )
+		formatString: 0
+		displayFolder: Optimisation des licences
+		lineageTag: d6512dc3-c94f-4952-845a-98da5751672a
+
+	/// Number of inactive users from a license perspective (optimization status = "Inactive").
+	measure 'Nb Utilisateurs Inactifs' =
+			
+			VAR UsersToEvaluate =
+			    VALUES (fait_usage_dataiku_utilisateur[user_id] )
+			
+			RETURN
+			    COUNTROWS (
+			        FILTER (
+			            UsersToEvaluate,
+			            CALCULATE ( [Status_Opt_Id] ) = 0
+			        )
+			    )
+		formatString: 0
+		displayFolder: Optimisation des licences
+		lineageTag: 81d295a2-cb42-4982-8ad0-749d77b12d5c
+
+	/// Number of users with an OK license status (optimization status = "ok")
+	measure 'Nb Utilisateurs OK (Licence)' =
+			
+			VAR UsersToEvaluate =
+			    VALUES ( fait_usage_dataiku_utilisateur[user_id])
+			
+			RETURN
+			    COUNTROWS (
+			        FILTER (
+			            UsersToEvaluate,
+			            CALCULATE ( [Status_Opt_Id] ) = 2
+			        )
+			    )
+		formatString: 0
+		displayFolder: Optimisation des licences
+		lineageTag: ff49211f-62f2-4157-8592-84c0a5d365c0
+
+	/// Most recent user activity date (maximum last action date)
+	measure 'Date Dernière Activité (max)' =
+			
+			CALCULATE(
+			MAX(fait_usage_dataiku_utilisateur[timestamp_dt]),
+			REMOVEFILTERS(dim_calendrier)
+			)
+		formatString: General Date
+		displayFolder: Optimisation des licences
+		lineageTag: 1d252d79-7368-49fc-9bfb-3ac6d0b61c5d
+
+	/// Number of days since the last recorded user activity.
+	measure 'Jours depuis Dernière Activité' =
+			
+			DATEDIFF(
+				[Date Dernière Activité (max)],
+				TODAY(),
+				DAY
+			)
+		formatString: 0
+		displayFolder: Optimisation des licences
+		lineageTag: 7fed67a7-f19d-4ef6-894d-3e3c735bbb82
+
+	/// Number of active users in the previous month (M-1).
+	measure 'Nb Utilisateurs Actifs M-1' =
+			
+			CALCULATE(
+				[Nb Utilisateurs Actifs],
+				DATEADD(dim_calendrier[DATE], -1, MONTH)
+			)
+		formatString: 0
+		displayFolder: Évolution temporelle
+		lineageTag: efe5f5bd-44d5-4e60-b409-ad981138e662
+
+	/// Month-over-month change in active users (current minus M-1).
+	measure 'Évolution Utilisateurs Actifs' =
+			
+			[Nb Utilisateurs Actifs] - [Nb Utilisateurs Actifs M-1]
+		formatString: 0
+		displayFolder: Évolution temporelle
+		lineageTag: 0978d330-1e3b-40a8-bd2f-63f696530c34
+
+	/// Number of sessions in the previous month (M-1).
+	measure 'Nb Sessions M-1' =
+			
+			CALCULATE(
+				[Nb Sessions],
+				DATEADD(dim_calendrier[DATE], -1, MONTH)
+			)
+		formatString: 0
+		displayFolder: Évolution temporelle
+		lineageTag: 2ecb1091-7f0c-4222-b282-e172c473c900
+
+	/// Month-over-month change in sessions (current minus M-1).
+	measure 'Évolution Sessions' =
+			
+			[Nb Sessions] - [Nb Sessions M-1]
+		formatString: 0
+		displayFolder: Évolution temporelle
+		lineageTag: cb6220ef-0670-41ff-9677-b6087e5b8cfc
+
+	/// Number of active users month-to-date (MTD).
+	measure 'Nb Utilisateurs Actifs MTD' =
+			
+			CALCULATE(
+				[Nb Utilisateurs Actifs],
+				DATESMTD(dim_calendrier[DATE])
+			)
+		formatString: 0
+		displayFolder: Évolution temporelle
+		lineageTag: 1fe27639-5b2e-4fe1-9e8b-882ec3ba55b9
+
+	/// UI constant: brand/logo text displayed in the report.
+	measure Logo = "FDJ UNITED"
+		displayFolder: UI\Constants
+		lineageTag: 220b6b20-8518-414b-80be-4cce4626413b
+
+	/// UI constant: main dashboard title.
+	measure MainTitle = "Supervision Platform End User"
+		displayFolder: UI\Constants
+		lineageTag: 374c5af9-cb53-41a2-a4da-e852578b76f6
+
+	/// UI constant: cockpit licenses section title.
+	measure CockpitLicencesTitle = "Cockpit licences"
+		displayFolder: UI\Constants
+		lineageTag: d8c48da8-35e5-46c1-bede-e17bb931abf6
+
+	/// HTML container used to render the page background styling
+	measure HtmlContainer =
+			
+			"
+			<div
+			    style=""
+			    width: 100%;
+			    height: 718px;
+			    background-image:  " & [BgLinearGradientColor] & ";
+			    ""
+			></div>
+			"
+		displayFolder: UI\Html
+		lineageTag: 5c9d40ad-e3ee-429f-aedc-0fad6b3d0971
+
+	/// HTML title markup for the cockpit licenses page header.
+	measure CockpitLicencesTitleHtml =
+			
+			"<h1
+			    style=""
+			        font-size:  20px;
+			        text-align: center;
+			        font-weight: 600;
+			        background:  " & [PageTitleGradientColor] & ";
+			        -webkit-background-clip: text;
+			        -webkit-text-fill-color: transparent;
+			    ""
+			>
+			    " & [MainTitle] & " - " & [CockpitLicencesTitle] & "
+			</h1>"
+		displayFolder: UI\Html
+		lineageTag: 4e89cf97-9ec5-41b8-8721-eb5e740858f4
+
+	/// Animated HTML intro block displayed on the landing section of the report.
+	measure AnimatedTitleIntro = ```
+			
+			VAR _Title = "Supervision Platform End User"
+			RETURN
+			"
+			<div class='hero'>
+			  <div class='content'>
+			    <div class='title'>" & _Title & "</div>
+			    <div class='intro'>
+			      <p><b>🔎 Bienvenue sur le tableau de bord de supervision Dataiku</b></p>
+			      <br>
+			      <p>
+			        Cet tableau de bord permet de piloter l’usage de Dataiku
+			        afin d’optimiser les licences, suivre l’adoption et améliorer la performance des équipe.
+			      </p>
+			      
+			    </div>
+			  </div>
+			</div>
+			
+			<style>
+			  .hero{
+			    width:100%;
+			    height:100%;
+			    min-height:220px;
+			    color:" & [TextColor] & ";
+			    font-family: Segoe UI, Arial, sans-serif;
+			
+			    display:flex;
+			    align-items:center;
+			    padding-left:6%;
+			    padding-right:6%;
+			    box-sizing:border-box;
+			    overflow:hidden;
+			  }
+			
+			  .content{
+			    max-width:820px;
+			  }
+			
+			  .title{
+			    font-size:42px;
+			    font-weight:760;
+			    line-height:1.08;
+			
+			    opacity:0;
+			    transform: translateY(14px);
+			    animation: inTitle .85s cubic-bezier(.2,.8,.2,1) forwards;
+			    animation-delay:.10s;
+			  }
+			
+			  .intro{
+			    margin-top:34px;
+			    //padding:16px 18px;
+			    //border-radius:14px;
+			    //border:1px solid " & [BackgroundColor_100] & ";
+			    //background: " & [BackgroundColor_100] & ";
+			
+			    opacity:0;
+			    transform: translateY(12px);
+			    animation: inIntro .75s cubic-bezier(.2,.8,.2,1) forwards;
+			    animation-delay:.34s;
+			  }
+			
+			  .intro p{
+			    color:" & [TextColor] & " !important;
+			    align-items:center;
+			    margin:0;
+			    font-size:20px;
+			    line-height:1.5;
+			    color: rgba(255,255,255,.82);
+			  }
+			
+			  @keyframes inKicker { to{opacity:1; transform:none;} }
+			  @keyframes inTitle  { to{opacity:1; transform:none;} }
+			  @keyframes inIntro  { to{opacity:1; transform:none;} }
+			
+			  @media (prefers-reduced-motion: reduce){
+			    .kicker,.title,.intro{ animation:none !important; opacity:1 !important; transform:none !important; }
+			  }
+			</style>
+			"
+			```
+		displayFolder: UI\Html
+		lineageTag: 9372d6ab-b6cd-4127-8192-137332555d82
+
+	/// CSS/HTML hover effect styling for interactive buttons/links.
+	measure ButtonHoverEffect = ```
+			
+			VAR _FileSVGIcon = [FileSVGIcon]
+			VAR _InfoSVGIcon = [InfoSVGIcon]
+			VAR _ContactSVGIcon = [ContactSVGIcon]
+			RETURN
+			"
+			<style>
+			* {
+			  margin: 0;
+			  padding: 0;
+			  box-sizing: border-box;
+			  font-family: ""Poppins"", sans-serif;
+			}
+			
+			body {
+			  display: flex;
+			  justify-content: center;
+			  align-items: center;
+			  min-height: 100vh;
+			}
+			
+			ul {
+			  display: flex;
+			  justify-content: center;
+			  align-items: center;
+			  //flex-direction: column;
+			  position: relative;
+			  gap: 25px;
+			  margin: auto;
+			}
+			
+			ul li {
+			  position: relative;
+			  list-style: none;
+			  width: 50px;
+			  height: 50px;
+			  
+			  //box-shadow: 0 10px 25px " & [BlackColor_200] & ";
+			  border-radius: 60px;
+			  cursor: pointer;
+			  display: flex;
+			  justify-content: center;
+			  align-items: center;
+			  transition: 0.5s;
+			}
+			
+			ul li::before {
+			  content: "";
+			  position: absolute;
+			  inset: 0;
+			  border-radius: 60px;
+			  background: red;
+			  opacity: 0;
+			  transition: 0.5s;
+			}
+			
+			ul li::after {
+			  content: "";
+			  position: absolute;
+			  top: 10px;
+			  width: 100%;
+			  height: 100%;
+			  border-radius: 60px;
+			  background: " & [TextColor_100] & ";
+			  transition: 0.5s;
+			  filter: blur(15px);
+			  z-index: -1;
+			  opacity: 0;
+			}
+			
+			ul li:hover {
+			  width: 180px;
+			  background: " & [PrimaryColor] & ";
+			  box-shadow: 0 5px 15px " & [BlackColor_500] & ";
+			}
+			
+			ul li:hover::before {
+			  opacity: 1;
+			}
+			
+			ul li:hover::after {
+			  opacity: 0.5;
+			}
+			
+			ul li svg {
+			  color: #777;
+			  font-size: 1.75em;
+			  transition: 0.5s;
+			  transition-delay: 0.25s;
+			}
+			
+			ul li:hover svg {
+			  transform: scale(0);
+			  color: #fff;
+			  transition-delay: 0s;
+			}
+			
+			ul li span {
+			  position: absolute;
+			}
+			
+			ul li .title {
+			  color: " & [AliceBlueColor] & ";
+			  font-size: 1.1em;
+			  letter-spacing: 0.1em;
+			  text-transform: uppercase;
+			  transform: scale(0);
+			  transition: 0.5s;
+			  transition-delay: 0s;
+			}
+			
+			ul li:hover .title {
+			  transform: scale(1);
+			  transition-delay: 0.25s;
+			}
+			</style>
+			<link rel=""preconnect"" href=""https://fonts.googleapis.com"">
+			<link rel=""preconnect"" href=""https://fonts.gstatic.com"" crossorigin>
+			<link href=""https://fonts.googleapis.com/css2?family=Poppins&display=swap"" rel=""stylesheet"">
+			<ul>
+			  <a href=""https://fdj.atlassian.net/wiki/spaces/PDTDATPLF/pages/681869407/SFFEAT0011042+Supervision+de+la+platform+End+User"">
+			    <li>
+			      <span class=""icon"">" & _FileSVGIcon & "</span>
+			      <span class=""title"">Documentation</span>
+			    </li>
+			  </a>
+			  <a href=""https://fdj.atlassian.net/wiki/spaces/PDTDATPLF/pages/681869407/SFFEAT0011042+Supervision+de+la+platform+End+User"">
+			    <li style=""--i:#56CCF2;--j:#2F80ED"">
+			        <span class=""icon"">" & _InfoSVGIcon & "</span>
+			        <span class=""title"">Information</span>
+			    </li>
+			  </a>
+			  <!--<a href=""mailto:bpleynet@lfdj.com"">
+			    <li style=""--i:#FF9966;--j:#FF5E62"">
+			        <span class=""icon"">" & _ContactSVGIcon & "</span>
+			        <span class=""title"">Contact</span>
+			    </li>
+			  </a>-->
+			</ul>
+			"
+			```
+		displayFolder: UI\Html
+		lineageTag: 0d55dfb7-07a1-44d6-905a-877b4c140212
+
+	/// Formatted month-over-month evolution label with arrow/icon and percent formatting.
+	measure 'Évolution Utilisateurs Actifs Format' = ```
+			
+			VAR _evol = [Évolution Utilisateurs Actifs]
+			VAR _format = 
+			    SWITCH(
+			        TRUE(),
+			        _evol > 0, UNICHAR(11165) & " " & FORMAT(_evol, "0%"),
+			        _evol < 0, UNICHAR(11167) & " " & FORMAT(_evol, "0%"),
+			        UNICHAR(10134) & " " & FORMAT(_evol, "0%")
+			    )
+			RETURN
+			    _format
+			```
+		displayFolder: Évolution temporelle
+		lineageTag: 23f7ac3f-2c3f-4ae5-9b97-e9814f1f60d0
+
+	/// Helper measure: distinct count of users in the license fact table.
+	measure 'Count licence fait' = DISTINCTCOUNT(fait_usage_dataiku_utilisateur[user_id])
+		formatString: 0
+		displayFolder: Optimisation des licences
+		lineageTag: 49678724-22c8-46af-a915-2cdde9bf5e10
+
+	/// UI constant: adoption & usage section title.
+	measure AdoptionUsageTitle = "Adoption & usage"
+		displayFolder: UI\Constants
+		lineageTag: 93a5b700-1a68-4420-bc11-7d2e5f31bcbd
+
+	/// UI constant: licenses & optimization section title.
+	measure LicencesOtimisationTitle = "Licences & optimisation"
+		displayFolder: UI\Constants
+		lineageTag: 7416afd3-125a-4bbe-b80e-b5964a5ca287
+
+	/// HTML title markup for the adoption & usage page header.
+	measure AdoptionUsageTitleHtml =
+			
+			"<h1
+			    style=""
+			        font-size:  20px;
+			        text-align: center;
+			        font-weight: 600;
+			        background:  " & [PageTitleGradientColor] & ";
+			        -webkit-background-clip: text;
+			        -webkit-text-fill-color: transparent;
+			    ""
+			>
+			    " & [MainTitle] & " - " & [AdoptionUsageTitle] & "
+			</h1>"
+		displayFolder: UI\Html
+		lineageTag: b1387929-29f8-4b19-a8b0-317a656f216d
+
+	/// HTML title markup for the licenses & optimization page header.
+	measure LicencesOtimisationTitleHtml =
+			
+			"<h1
+			    style=""
+			        font-size:  20px;
+			        text-align: center;
+			        font-weight: 600;
+			        background:  " & [PageTitleGradientColor] & ";
+			        -webkit-background-clip: text;
+			        -webkit-text-fill-color: transparent;
+			    ""
+			>
+			    " & [MainTitle] & " - " & [LicencesOtimisationTitle] & "
+			</h1>"
+		displayFolder: UI\Html
+		lineageTag: 2f5c6341-af3c-472e-9122-e3c89ba3ca88
+
+	/// Floating chatbot button HTML/CSS linking to the Fabric Data Agent.
+	measure FloatingChatBot =
+			
+			VAR _Url = "https://app.fabric.microsoft.com/groups/cae55539-e164-4a36-bb47-62c5bb2cbee7/aiskills/21d54468-df12-4101-8272-92cd0eb3a792?experience=fabric-developer"
+			VAR _TooltipText = "Chat Data Agent"
+			VAR _FabBgColor = [PrimaryColor]
+			VAR _FabIconColor = [WhiteColor]
+			VAR _TooltipBgColor = [BackgroundColor_900]
+			VAR _TooltipTextColor = [BackgroundColor_100]
+			VAR _ShadowColor = [BlackColor_400]
+			VAR _RingColor = [PrimaryColor]
+			VAR _ChatSVG = SUBSTITUTE([MessageCircleMoreSVGIcon], [TextColor], [AliceBlueColor])
+			RETURN
+			"
+			<div class='fdj-chatbot-root'>
+			
+			<style>
+			/* Root scoped */
+			.fdj-chatbot-root { position: relative; }
+			
+			/* Lien (clic) */
+			.fdj-chatbot-link {
+			  text-decoration: none;
+			}
+			
+			/* Bouton flottant */
+			.fdj-chatbot-fab {
+			  position: fixed;
+			  right: 24px;
+			  bottom: 24px;
+			  width: 48px;
+			  height: 48px;
+			  border-radius: 999px;
+			  background: " & _FabBgColor & ";
+			  display: flex;
+			  align-items: center;
+			  justify-content: center;
+			  box-shadow: 0 10px 25px " & _ShadowColor & ";
+			  cursor: pointer;
+			  z-index: 9999;
+			  transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+			}
+			
+			/* Effet hover */
+			.fdj-chatbot-fab:hover {
+			  transform: scale(1.07);
+			  box-shadow: 0 14px 34px " & _ShadowColor & ";
+			  filter: brightness(1.02);
+			}
+			
+			/* Icône */
+			.fdj-chatbot-fab svg {
+			  width: 30px;
+			  height: 30px;
+			}
+			
+			/* Tooltip */
+			.fdj-chatbot-tooltip {
+			  position: absolute;
+			  right: 56px;
+			  bottom: 50%;
+			  transform: translateY(50%) translateX(10px);
+			  background: " & _TooltipBgColor & ";
+			  color: " & _TooltipTextColor & ";
+			  padding: 6px 8px;
+			  border-radius: 12px;
+			  font-size: 11px;
+			  font-weight: 600;
+			  white-space: nowrap;
+			  opacity: 0;
+			  pointer-events: none;
+			  transition: opacity 180ms ease, transform 180ms ease;
+			  box-shadow: 0 10px 25px " & _ShadowColor & ";
+			}
+			
+			.fdj-chatbot-fab:hover .fdj-chatbot-tooltip {
+			  opacity: 1;
+			  transform: translateY(50%) translateX(0);
+			}
+			
+			/* Animation ""pulse"" discrète */
+			.fdj-chatbot-fab::after{
+			  content: '';
+			  position: absolute;
+			  inset: 0;
+			  border-radius: 999px;
+			  background: " & _RingColor & ";
+			  opacity: 0.6;
+			  z-index: -1;
+			  animation: fdjPulse 2.2s ease-out infinite;
+			}
+			
+			@keyframes fdjPulse {
+			  0%   { transform: scale(1.1);   opacity: 0.6; }
+			  70%  { transform: scale(1.75); opacity: 0; }
+			  100% { transform: scale(1.75); opacity: 0; }
+			}
+			
+			/* Résilience lorsqu'on est sur un petit écran */
+			@media (max-width: 480px){
+			  .fdj-chatbot-fab { width: 58px; height: 58px; right: 14px; bottom: 14px; }
+			  .fdj-chatbot-tooltip { display: none; }
+			}
+			</style>
+			
+			<a class='fdj-chatbot-link' href='" & _Url & "' target='_blank' rel='noopener noreferrer'>
+			  <div class='fdj-chatbot-fab' aria-label='Ouvrir le Data Agent Fabric'>
+			    <div class='fdj-chatbot-tooltip'>" & _TooltipText & "</div>
+			    " & _ChatSVG & "
+			  </div>
+			</a>
+			
+			</div>
+			"
+		displayFolder: UI\Html
+		lineageTag: 7920c265-ca0d-4b5a-a892-c0adf5b62f8c
+
+	measure 'First Connection' =
+			CALCULATE(
+			    MIN(fait_usage_dataiku_utilisateur[timestamp_dt]),
+			    REMOVEFILTERS(dim_calendrier)
+			)
+		formatString: Short Date
+		displayFolder: Évolution temporelle
+		lineageTag: d79875ba-df43-43a0-a95e-f4ed0373a040
+
+	/// Calculates the utilization ratio by dividing the distinct count of usage timestamps by the distinct count of calendar dates in the current filter context.
+	measure 'Status Optimisation Nonbre' =
+			
+			VAR JUTIL = SUMX ( DISTINCT ( fait_usage_dataiku_utilisateur[timestamp_dt] ), 1 )
+			VAR J = SUMX( DISTINCT(dim_calendrier[DATE]), 1)
+			VAR Util = DIVIDE(JUTIL, J, 0)
+			RETURN
+			Util
+		displayFolder: Optimisation des licences
+		lineageTag: 9a2de839-85c3-46c0-80ff-be433bf26502
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Classifies optimisation status by computing the ratio of days with Dataiku user activity to total calendar days and returning a status label based on utilisation thresholds.
+	measure 'Status Optimisation' =
+			
+			VAR JUTIL = SUMX ( DISTINCT ( fait_usage_dataiku_utilisateur[timestamp_dt] ), 1 )
+			VAR J = SUMX( DISTINCT(dim_calendrier[DATE]), 1)
+			VAR Util = DIVIDE(JUTIL, J, 0)
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    Util = 0, "Inactive",
+			    Util < 3/7, "Sous-utilisé",
+			    Util < 5/7, "OK",
+			    "Sur-utilisé"
+			)
+		displayFolder: Optimisation des licences
+		lineageTag: 0ec11333-b234-4172-b3ca-9dfa75cca34e
+
+	measure Status_Ratio =
+			
+			VAR HasCurrentUserType =
+			    CALCULATE (
+			        COUNTROWS ( dim_max_user_licence ),
+			        TREATAS (
+			            VALUES ( dim_utilisateur[id] ),
+			            dim_max_user_licence[user_id]
+			        )
+			    )
+			var ratio = DIVIDE (
+			    DISTINCTCOUNT ( fait_usage_dataiku_utilisateur[timestamp_dt] ),
+			    DISTINCTCOUNT ( dim_calendrier[DATE] ),
+			    0
+			)
+			RETURN IF(HasCurrentUserType=0, Blank(), Coalesce(ratio, 0))
+		formatString: 0%;-0%;0%
+		displayFolder: Optimisation des licences
+		lineageTag: dbf10efd-bb9b-449c-b050-0222090133e8
+
+	measure Nb_Licences_By_Status =
+			
+			VAR SelectedStatus =
+			    SELECTEDVALUE (dim_status_opt[id])
+			
+			VAR result =
+			    SUMX (
+			        VALUES ( dim_utilisateur[id] ),
+			        VAR value_st = [Status_Opt_Id]
+			
+			        //VAR status_id =
+			        //    SWITCH (
+			        //        TRUE(),
+			        //        ISBLANK ( value_st ), BLANK(),
+			        //        value_st = 0, 0,
+			        //        value_st < 3 / 7, 1,
+			        //        value_st < 5 / 7, 2,
+			        //        3
+			        //    )
+			
+			        RETURN
+			            IF ( value_st = SelectedStatus, 1, 0 )
+			    )
+			
+			RETURN
+			    IF (
+			        ISBLANK ( SelectedStatus )
+			            || ISBLANK ( result )
+			            || result = 0,
+			        BLANK(),
+			        result
+			    )
+		formatString: 0
+		displayFolder: Optimisation des licences
+		lineageTag: 7214415e-6f2f-4ceb-a162-5f4727d172c6
+
+	measure Status_Opt_Label =
+			
+			VAR value_st = [Status_Opt_Id]
+			RETURN
+			    SWITCH (
+			        TRUE(),
+			        ISBLANK ( value_st ), BLANK(),
+			        value_st = 0, "Inactive",
+			        value_st = 1, "Sous-utilisé",
+			        value_st = 2, "OK",
+			        "Sur-utilisé"
+			    )
+		displayFolder: Optimisation des licences
+		lineageTag: fbeb6025-3992-4674-8dc5-6ff00f82153f
+
+	measure Status_Opt_Id =
+			
+			VAR value_st = [Status_Ratio]
+			RETURN
+			    SWITCH (
+			        TRUE(),
+			        ISBLANK ( value_st ), BLANK(),
+			        value_st = 0, 0,
+			        value_st < 3 / 7, 1,
+			        value_st < 5 / 7, 2,
+			        3
+			    )
+		formatString: 0
+		displayFolder: Optimisation des licences
+		lineageTag: ddd6d56b-fe8c-456d-b970-324bd8f8a8e4
+
+	measure 'Last Connection' =
+			CALCULATE(
+			    MAX(fait_usage_dataiku_utilisateur[timestamp_dt]),
+			    REMOVEFILTERS(dim_calendrier)
+			)
+		formatString: Short Date
+		displayFolder: Évolution temporelle
+		lineageTag: e94fcd91-d9d1-4de9-9ccd-b67e71708c43
+
+	column _
+		isHidden
+		formatString: 0
+		lineageTag: 979a75dc-9015-4805-bd67-ebd0145701be
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [_]
+
+		annotation SummarizationSetBy = User
+
+	partition Indicateurs = calculated
+		mode: import
+		source = Row("_", BLANK())
+
+	annotation PBI_Id = b56996bf0e9b4a8b947af8b315088a9e
+

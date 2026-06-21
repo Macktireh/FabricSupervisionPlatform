@@ -1,0 +1,163 @@
+/// License dimension describing Dataiku license types, allocations (max licenses), unlimited flag, validity dates, and related metadata.
+table dim_licence
+	lineageTag: 803b53ed-87de-4e4b-b5fd-d33394228790
+	sourceLineageTag: [gold].[dim_licence]
+
+	/// Unique technical identifier of the license (dimension key).
+	column id
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: 36d6d9c4-6903-41a5-bc98-a2685cc3f169
+		sourceLineageTag: id
+		summarizeBy: none
+		sourceColumn: id
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Dataiku license type (platform admin, designer, explorer…).
+	column type
+		dataType: string
+		lineageTag: 8bad3455-6f76-4b44-8d3b-e83e31f32d00
+		sourceLineageTag: type
+		summarizeBy: none
+		sourceColumn: type
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Total number of available licenses (allocation).
+	column max_licences
+		dataType: int64
+		formatString: 0
+		lineageTag: 326ba44f-91cf-4df3-b528-2894ce1db663
+		sourceLineageTag: max_licences
+		summarizeBy: none
+		sourceColumn: max_licences
+
+		changedProperty = Description
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = User
+
+	/// Number of licenses currently in use/assigned.
+	column licences_used
+		dataType: int64
+		formatString: 0
+		lineageTag: f7447a1f-989f-4960-9456-9c81fa7d13a1
+		sourceLineageTag: licences_used
+		summarizeBy: none
+		sourceColumn: licences_used
+
+		changedProperty = Description
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = User
+
+	/// Number of remaining available licenses (calculated: max_licences - licences_used).
+	column quotas
+		dataType: int64
+		formatString: 0
+		lineageTag: 778a32ca-2814-4fca-8bb2-6d4e9aec8bd1
+		sourceLineageTag: quotas
+		summarizeBy: none
+		sourceColumn: quotas
+
+		changedProperty = Description
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = User
+
+	/// Indicates whether the license is unlimited (TRUE) or subject to quota (FALSE).
+	column unlimited
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7b6caa56-7785-47d2-8f25-212646060d04
+		sourceLineageTag: unlimited
+		summarizeBy: none
+		sourceColumn: unlimited
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// License end date.
+	column end_date
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: f53c6777-1c7f-4231-821f-7d4174688845
+		sourceLineageTag: end_date
+		summarizeBy: none
+		sourceColumn: end_date
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// License start date.
+	column start_date
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 063201a7-7444-4e2f-8640-da1c22815070
+		sourceLineageTag: start_date
+		summarizeBy: none
+		sourceColumn: start_date
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Timestamp of record loading into the Lakehouse (ingestion).
+	column loaded_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 08ce4c8b-c991-4315-9aad-0e3c88393afb
+		sourceLineageTag: loaded_at
+		summarizeBy: none
+		sourceColumn: loaded_at
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Timestamp of the last record update (source or processing).
+	column updated_at
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 2ff1e97a-c732-4aa6-9623-9a2965cd96dc
+		sourceLineageTag: updated_at
+		summarizeBy: none
+		sourceColumn: updated_at
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Priority level of the license
+	column priority
+		dataType: int64
+		formatString: 0
+		lineageTag: 43b338d3-a72e-4105-b376-0d3ee80e58ea
+		sourceLineageTag: priority
+		summarizeBy: none
+		sourceColumn: priority
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = User
+
+	partition dim_licence = entity
+		mode: directLake
+		source
+			entityName: dim_licence
+			schemaName: gold
+			expressionSource: 'DirectLake - Lakehouse_End_User_Platform'
+
+	changedProperty = Description
+

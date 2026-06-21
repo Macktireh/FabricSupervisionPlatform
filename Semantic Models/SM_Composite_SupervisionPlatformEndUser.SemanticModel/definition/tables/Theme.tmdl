@@ -1,0 +1,43 @@
+table Theme
+	lineageTag: e6eeae2a-4c8d-4a56-9958-4955c6ad94ee
+
+	measure IsDark = LOWER([SelectedTheme]) = "dark"
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: _Utils
+		lineageTag: 086aee16-9c49-40ab-a701-f23306b8edb6
+
+	measure SelectedTheme = SELECTEDVALUE(Theme[Mode], "Light")
+		displayFolder: _Utils
+		lineageTag: 93e43483-a53d-418c-863d-d8d5c16725c9
+
+	column Mode
+		dataType: string
+		lineageTag: c40ac536-9008-4a7e-ba9c-bf4f3cfedeb6
+		summarizeBy: none
+		sourceColumn: Mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column Icon
+		dataType: string
+		lineageTag: c27c5f8e-4d24-4fdb-9c59-b345a08cff92
+		summarizeBy: none
+		sourceColumn: Icon
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Theme = m
+		mode: import
+		source =
+				let
+				  Source = SharePoint.Tables(SHAREPOINT_SITE_THEME_MANAGER, [Implementation = "2.0", ViewMode = "All"]),
+				  #"9f666f8d-1999-46b9-9d3f-9744e7183297" = Source{[Id="876442ce-9f81-48bc-af43-80c78baf8a77"]}[Items],
+				  RemovedOtherColumns = Table.SelectColumns(#"9f666f8d-1999-46b9-9d3f-9744e7183297",{"Titre", "Icon_Url"}),
+				  RenamedColumns = Table.RenameColumns(RemovedOtherColumns,{{"Titre", "Mode"}, {"Icon_Url", "Icon"}}),
+				  ReplacedValue = Table.ReplaceValue(RenamedColumns,each [Icon], each Text.Combine({"data:image/svg+xml;utf8,", [Icon]}, ""),Replacer.ReplaceText,{"Icon"}),
+				  ChangedType = Table.TransformColumnTypes(ReplacedValue,{{"Mode", type text}, {"Icon", type text}})
+				in
+				  ChangedType
+
+	annotation PBI_ResultType = Table
+

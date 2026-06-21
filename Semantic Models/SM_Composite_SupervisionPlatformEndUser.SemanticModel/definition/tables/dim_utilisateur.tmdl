@@ -1,0 +1,176 @@
+/// User dimension containing Dataiku user identity and profile attributes (login, full name, email, profile/contract type, active flag), plus snapshot and ingestion metadata.
+table dim_utilisateur
+	lineageTag: d0c37c9d-45ae-45b7-9860-9cdcf8d27474
+	sourceLineageTag: [gold].[dim_utilisateur]
+
+	/// Unique technical identifier of the user (dimension key).
+	column id
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: ee3bffc7-4721-4064-8d37-43ed2d2f9c89
+		sourceLineageTag: id
+		summarizeBy: none
+		sourceColumn: id
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// User login identifier (Dataiku login).
+	column username
+		dataType: string
+		lineageTag: 006d7c4d-41b8-4c01-b82a-8f96840aece3
+		sourceLineageTag: username
+		summarizeBy: none
+		sourceColumn: username
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Full name of the user (business display).
+	column full_name
+		dataType: string
+		lineageTag: c429f91f-83c4-4e12-807d-5bff7acd954f
+		sourceLineageTag: full_name
+		summarizeBy: none
+		sourceColumn: full_name
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// User email address.
+	column email
+		dataType: string
+		lineageTag: dce8ef34-d8a3-4f49-b669-101bb040e133
+		sourceLineageTag: email
+		summarizeBy: none
+		sourceColumn: email
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// User profile type (data scientist, data analyst, business, IT, etc.).
+	column profile_type
+		dataType: string
+		lineageTag: 5c450566-35ff-4b48-b8fa-c65cd2c1ad44
+		sourceLineageTag: profile_type
+		summarizeBy: none
+		sourceColumn: profile_type
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// User contract type (Internal, External).
+	column contract_type
+		dataType: string
+		lineageTag: bb5f47db-b77f-4d07-b275-03c204d7ea17
+		sourceLineageTag: contract_type
+		summarizeBy: none
+		sourceColumn: contract_type
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Indicates whether the user is active (TRUE) or inactive (FALSE).
+	column active
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 48245b9b-a044-4e19-afa5-679affd6f780
+		sourceLineageTag: active
+		summarizeBy: none
+		sourceColumn: active
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// User creation date in the source system.
+	column creationdate
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 358366ce-0b3d-4c0f-875e-fb162ff67b48
+		sourceLineageTag: creationdate
+		summarizeBy: none
+		sourceColumn: creationdate
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Snapshot date of user data (useful for historization / SCD).
+	column snapshot_dt
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4ae80be7-24f1-4830-8f2b-ac999b74d90d
+		sourceLineageTag: snapshot_dt
+		summarizeBy: none
+		sourceColumn: snapshot_dt
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Timestamp of record loading into the Lakehouse (ingestion).
+	column loaded_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: cc862ddc-90be-4ef9-a0dd-0b90d70c1d69
+		sourceLineageTag: loaded_at
+		summarizeBy: none
+		sourceColumn: loaded_at
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Timestamp of the last record update (source or processing).
+	column updated_at
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 86cfd78c-fc2a-41fd-be4e-fac751345af6
+		sourceLineageTag: updated_at
+		summarizeBy: none
+		sourceColumn: updated_at
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Normalized user group or organizational grouping.
+	column group_norm
+		dataType: string
+		lineageTag: c2faa613-acb1-4a37-84d2-879119710e53
+		sourceLineageTag: group_norm
+		summarizeBy: none
+		sourceColumn: group_norm
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Indicates whether the account is a technical account (1 = yes, 0 = no).
+	column isTechAccount
+		dataType: int64
+		formatString: 0
+		lineageTag: 84aa4306-b596-445d-9030-9bb4f78c0b59
+		sourceLineageTag: isTechAccount
+		summarizeBy: none
+		sourceColumn: isTechAccount
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = User
+
+	partition dim_utilisateur = entity
+		mode: directLake
+		source
+			entityName: dim_utilisateur
+			schemaName: gold
+			expressionSource: 'DirectLake - Lakehouse_End_User_Platform'
+
+	changedProperty = Description
+

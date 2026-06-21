@@ -1,0 +1,395 @@
+/// Calendar/date dimension providing ISO, Gregorian, and business decision (décisionnel) time attributes to support time intelligence and period comparisons.
+table dim_calendrier
+	lineageTag: f55ee467-299d-4ac2-a040-128a32cfd563
+	sourceLineageTag: [gold].[dim_calendrier]
+	dataCategory: Time
+
+	/// Full date (calendar dimension key).
+	column DATE
+		dataType: dateTime
+		isKey
+		formatString: mm/dd/yyyy
+		lineageTag: a3f08839-9c4f-4e50-8834-fb9499cf9e48
+		sourceLineageTag: DATE
+		summarizeBy: none
+		sourceColumn: DATE
+
+		changedProperty = FormatString
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	/// Numeric identifier of the day.
+	column CD_JOUR
+		dataType: int64
+		formatString: 0
+		lineageTag: c400992e-9d29-48dd-bda9-969602831c6d
+		sourceLineageTag: CD_JOUR
+		summarizeBy: none
+		sourceColumn: CD_JOUR
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// ISO year (ISO 8601 standard).
+	column ANNEE_ISO
+		dataType: int64
+		formatString: 0
+		lineageTag: 050d72c9-52a1-4143-a0fe-0454828aa0ff
+		sourceLineageTag: ANNEE_ISO
+		summarizeBy: none
+		sourceColumn: ANNEE_ISO
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Day within the ISO year.
+	column JOUR_ANNEE_ISO
+		dataType: int64
+		formatString: 0
+		lineageTag: 060e4dad-f383-4376-bb94-672f33b9a398
+		sourceLineageTag: JOUR_ANNEE_ISO
+		summarizeBy: none
+		sourceColumn: JOUR_ANNEE_ISO
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// ISO quarter.
+	column TRIMESTRE_ISO
+		dataType: int64
+		formatString: 0
+		lineageTag: 1fca1ac6-eb9f-4116-8241-7749cf2af7c9
+		sourceLineageTag: TRIMESTRE_ISO
+		summarizeBy: none
+		sourceColumn: TRIMESTRE_ISO
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Day within the ISO quarter.
+	column JOUR_TRIMESTRE_ISO
+		dataType: int64
+		formatString: 0
+		lineageTag: ff548b74-9fd0-4247-9844-ebe782ad46a6
+		sourceLineageTag: JOUR_TRIMESTRE_ISO
+		summarizeBy: none
+		sourceColumn: JOUR_TRIMESTRE_ISO
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// ISO month.
+	column MOIS_ISO
+		dataType: int64
+		formatString: 0
+		lineageTag: 478080c9-737b-4e04-9a18-7c888e51ea3d
+		sourceLineageTag: MOIS_ISO
+		summarizeBy: none
+		sourceColumn: MOIS_ISO
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Day within the ISO month.
+	column JOUR_MOIS_ISO
+		dataType: int64
+		formatString: 0
+		lineageTag: 641542cd-5a3d-40f7-af3c-d8efca789845
+		sourceLineageTag: JOUR_MOIS_ISO
+		summarizeBy: none
+		sourceColumn: JOUR_MOIS_ISO
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// ISO week.
+	column SEMAINE_ISO
+		dataType: int64
+		formatString: 0
+		lineageTag: 11a4da6d-e5d6-433f-949a-202e51781cc1
+		sourceLineageTag: SEMAINE_ISO
+		summarizeBy: none
+		sourceColumn: SEMAINE_ISO
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// ISO day of the week.
+	column JOUR_SEMAINE_ISO
+		dataType: int64
+		formatString: 0
+		lineageTag: 29c40209-8a73-4b55-9c1a-c7fce546bc22
+		sourceLineageTag: JOUR_SEMAINE_ISO
+		summarizeBy: none
+		sourceColumn: JOUR_SEMAINE_ISO
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Gregorian year.
+	column ANNEE_GREGORIEN
+		dataType: int64
+		formatString: 0
+		lineageTag: 09426414-7c8c-4760-b381-d07c627407bb
+		sourceLineageTag: ANNEE_GREGORIEN
+		summarizeBy: none
+		sourceColumn: ANNEE_GREGORIEN
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Day within the Gregorian year.
+	column JOUR_ANNEE_GREGORIEN
+		dataType: int64
+		formatString: 0
+		lineageTag: b0ac50b9-1e83-4c6e-913f-3cd3e6b9856e
+		sourceLineageTag: JOUR_ANNEE_GREGORIEN
+		summarizeBy: none
+		sourceColumn: JOUR_ANNEE_GREGORIEN
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Gregorian quarter.
+	column TRIMESTRE_GREGORIEN
+		dataType: int64
+		formatString: 0
+		lineageTag: acb8a641-ef03-4184-8739-6419083c6b2b
+		sourceLineageTag: TRIMESTRE_GREGORIEN
+		summarizeBy: none
+		sourceColumn: TRIMESTRE_GREGORIEN
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Day within the Gregorian quarter.
+	column JOUR_TRIMESTRE_GREGORIEN
+		dataType: int64
+		formatString: 0
+		lineageTag: a43f70c6-1320-435b-b2b3-e8be25ed887e
+		sourceLineageTag: JOUR_TRIMESTRE_GREGORIEN
+		summarizeBy: none
+		sourceColumn: JOUR_TRIMESTRE_GREGORIEN
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Gregorian month.
+	column MOIS_GREGORIEN
+		dataType: int64
+		formatString: 0
+		lineageTag: b0bc8ffb-688d-48e9-bad8-c7f7686ebe0c
+		sourceLineageTag: MOIS_GREGORIEN
+		summarizeBy: none
+		sourceColumn: MOIS_GREGORIEN
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Day within the Gregorian month.
+	column JOUR_MOIS_GREGORIEN
+		dataType: int64
+		formatString: 0
+		lineageTag: 06a9e2f8-1461-40c0-b917-e9f4cb6fbb9b
+		sourceLineageTag: JOUR_MOIS_GREGORIEN
+		summarizeBy: none
+		sourceColumn: JOUR_MOIS_GREGORIEN
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Business decision year.
+	column ANNEE_DECISIONNEL
+		dataType: int64
+		formatString: 0
+		lineageTag: 05c78058-0dd9-44ee-8634-095ccc2e62e8
+		sourceLineageTag: ANNEE_DECISIONNEL
+		summarizeBy: none
+		sourceColumn: ANNEE_DECISIONNEL
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Day within the business decision year.
+	column JOUR_ANNEE_DECISIONNEL
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a426603-99d3-477d-a52e-5bc8cb60e665
+		sourceLineageTag: JOUR_ANNEE_DECISIONNEL
+		summarizeBy: none
+		sourceColumn: JOUR_ANNEE_DECISIONNEL
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Business decision quarter.
+	column TRIMESTRE_DECISIONNEL
+		dataType: int64
+		formatString: 0
+		lineageTag: 5b096b1f-de75-404b-a0ac-979cbe0f3dcd
+		sourceLineageTag: TRIMESTRE_DECISIONNEL
+		summarizeBy: none
+		sourceColumn: TRIMESTRE_DECISIONNEL
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Day within the business decision quarter.
+	column JOUR_TRIMESTRE_DECISIONNEL
+		dataType: int64
+		formatString: 0
+		lineageTag: 4f144c6e-5229-416e-a3ec-351f71d4cd32
+		sourceLineageTag: JOUR_TRIMESTRE_DECISIONNEL
+		summarizeBy: none
+		sourceColumn: JOUR_TRIMESTRE_DECISIONNEL
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Business decision month.
+	column MOIS_DECISIONNEL
+		dataType: int64
+		formatString: 0
+		lineageTag: cfa0d572-fdd2-4aa9-9aba-be81f0272017
+		sourceLineageTag: MOIS_DECISIONNEL
+		summarizeBy: none
+		sourceColumn: MOIS_DECISIONNEL
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Day within the business decision month.
+	column JOUR_MOIS_DECISIONNEL
+		dataType: int64
+		formatString: 0
+		lineageTag: 814de341-ba8a-48d9-9dcf-b2459dd63a9d
+		sourceLineageTag: JOUR_MOIS_DECISIONNEL
+		summarizeBy: none
+		sourceColumn: JOUR_MOIS_DECISIONNEL
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Business decision week.
+	column SEMAINE_DECISIONNEL
+		dataType: int64
+		formatString: 0
+		lineageTag: c1fd5053-e40f-445f-9421-9ef2c559cca6
+		sourceLineageTag: SEMAINE_DECISIONNEL
+		summarizeBy: none
+		sourceColumn: SEMAINE_DECISIONNEL
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Business decision day of week.
+	column JOUR_SEMAINE_DECISIONNEL
+		dataType: int64
+		formatString: 0
+		lineageTag: b20565a5-5b6d-457b-af94-51f18ae77e51
+		sourceLineageTag: JOUR_SEMAINE_DECISIONNEL
+		summarizeBy: none
+		sourceColumn: JOUR_SEMAINE_DECISIONNEL
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Indicates whether the year is a leap year.
+	column FLAG_ANNEE_BISSEXTILE
+		dataType: string
+		lineageTag: 7e5dca8f-489a-4aa0-b7d4-e8d0bbb3ab89
+		sourceLineageTag: FLAG_ANNEE_BISSEXTILE
+		summarizeBy: none
+		sourceColumn: FLAG_ANNEE_BISSEXTILE
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Indicates whether the year contains 53 weeks.
+	column FLAG_ANNEE_53_SEMAINES
+		dataType: string
+		lineageTag: a7f94323-8188-4432-9270-0328421251be
+		sourceLineageTag: FLAG_ANNEE_53_SEMAINES
+		summarizeBy: none
+		sourceColumn: FLAG_ANNEE_53_SEMAINES
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Attachment date to the business decision week.
+	column BI_DATE_RATTACH_SEM_DECISIONNEL
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 54cc2f13-e173-47d9-bcbc-a32e3328e5e4
+		sourceLineageTag: BI_DATE_RATTACH_SEM_DECISIONNEL
+		summarizeBy: none
+		sourceColumn: BI_DATE_RATTACH_SEM_DECISIONNEL
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Business decision comparison week.
+	column BI_SEM_COMPAR_DECISIONNEL
+		dataType: int64
+		formatString: 0
+		lineageTag: 9ac7d384-3542-433d-a754-eb7d22e6f4a0
+		sourceLineageTag: BI_SEM_COMPAR_DECISIONNEL
+		summarizeBy: none
+		sourceColumn: BI_SEM_COMPAR_DECISIONNEL
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Attachment date for business decision comparison.
+	column BI_DATE_RATTACH_SEM_COMPAR_DECISIONNEL
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: c70d2ed8-f91b-46b2-968b-9fd45cbf88d0
+		sourceLineageTag: BI_DATE_RATTACH_SEM_COMPAR_DECISIONNEL
+		summarizeBy: none
+		sourceColumn: BI_DATE_RATTACH_SEM_COMPAR_DECISIONNEL
+
+		changedProperty = Description
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_calendrier = entity
+		mode: directLake
+		source
+			entityName: dim_calendrier
+			schemaName: gold
+			expressionSource: 'DirectLake - Lakehouse_End_User_Platform'
+
+	changedProperty = Description
+
