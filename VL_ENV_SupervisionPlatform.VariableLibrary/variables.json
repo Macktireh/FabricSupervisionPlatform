@@ -1,0 +1,53 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/variableLibrary/definition/variables/1.0.0/schema.json",
+  "variables": [
+    {
+      "name": "WorkspaceId",
+      "note": "",
+      "type": "Guid",
+      "value": "cae55539-e164-4a36-bb47-62c5bb2cbee7"
+    },
+    {
+      "name": "LakehouseSupervisionPlatform",
+      "note": "",
+      "type": "ItemReference",
+      "value": {
+        "itemId": "e5a494bb-2c9c-44ec-9fd3-494add93bd08",
+        "workspaceId": "cae55539-e164-4a36-bb47-62c5bb2cbee7"
+      }
+    },
+    {
+      "name": "SourceServer",
+      "note": "",
+      "type": "String",
+      "value": "tdadev"
+    },
+    {
+      "name": "SourceEnv",
+      "note": "",
+      "type": "String",
+      "value": "INT3"
+    },
+    {
+      "name": "SourceConnectionId",
+      "note": "",
+      "type": "Guid",
+      "value": "9366a7fd-3206-4f60-aefe-540bc1e07bcf"
+    },
+    {
+      "name": "LakehouseId",
+      "note": "",
+      "type": "Guid",
+      "value": "e5a494bb-2c9c-44ec-9fd3-494add93bd08"
+    },
+    {
+      "name": "DataflowStarburstLakehouseLoaderAppend",
+      "note": "",
+      "type": "ItemReference",
+      "value": {
+        "itemId": "ee4a2808-d90e-435e-83ee-6c333a205737",
+        "workspaceId": "cae55539-e164-4a36-bb47-62c5bb2cbee7"
+      }
+    }
+  ]
+}

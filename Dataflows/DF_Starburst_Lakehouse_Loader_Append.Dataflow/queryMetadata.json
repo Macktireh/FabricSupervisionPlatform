@@ -1,0 +1,211 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {
+    "allowModernEvaluationEngine": true
+  },
+  "name": "DF_Bronze",
+  "queryGroups": [
+    {
+      "id": "fd5f2bc3-ee91-4195-97a6-637c08faf0c0",
+      "name": "VariableLibrary",
+      "description": ""
+    },
+    {
+      "id": "8399908b-8627-409a-9375-ed554f3624ae",
+      "name": "Parameters",
+      "description": "",
+      "order": 1
+    },
+    {
+      "id": "807c65d5-3e1a-487b-bb1d-8406d32bec97",
+      "name": "Source",
+      "description": "",
+      "parentId": "8399908b-8627-409a-9375-ed554f3624ae"
+    },
+    {
+      "id": "35c44cb7-193d-44e8-afb2-d0507dcfc20b",
+      "name": "Destination",
+      "description": "",
+      "parentId": "8399908b-8627-409a-9375-ed554f3624ae",
+      "order": 1
+    },
+    {
+      "id": "821a363e-f767-4b7b-a3d7-641c9059113b",
+      "name": "Functions",
+      "description": "",
+      "order": 2
+    }
+  ],
+  "documentLocale": "fr-FR",
+  "gatewayObjectId": "bb62fdef-cbd9-49fb-bc1b-95b771b265eb",
+  "queriesMetadata": {
+    "usage_licences_prep": {
+      "queryId": "c433d57b-9181-43d1-9abf-5fad471cc6ae",
+      "queryName": "usage_licences_prep",
+      "loadEnabled": false
+    },
+    "WorkspaceId": {
+      "queryId": "8c730333-6963-4885-8baf-5ab113712bc7",
+      "queryName": "WorkspaceId",
+      "queryGroupId": "fd5f2bc3-ee91-4195-97a6-637c08faf0c0",
+      "loadEnabled": false
+    },
+    "LakehouseId": {
+      "queryId": "44c01c4f-b311-4568-9973-c027b4125e28",
+      "queryName": "LakehouseId",
+      "queryGroupId": "fd5f2bc3-ee91-4195-97a6-637c08faf0c0",
+      "loadEnabled": false
+    },
+    "SOURCE_HOST": {
+      "queryId": "de466b9d-0702-490e-ae31-b6f5bebf7b8b",
+      "queryName": "SOURCE_HOST",
+      "queryGroupId": "807c65d5-3e1a-487b-bb1d-8406d32bec97",
+      "loadEnabled": false
+    },
+    "SOURCE_PORT": {
+      "queryId": "9b0c837e-a901-4814-a19e-96f26b235dc5",
+      "queryName": "SOURCE_PORT",
+      "queryGroupId": "807c65d5-3e1a-487b-bb1d-8406d32bec97",
+      "loadEnabled": false
+    },
+    "SOURCE_DATABASE": {
+      "queryId": "a275514e-4289-4922-bdf9-7cdcc1e738ac",
+      "queryName": "SOURCE_DATABASE",
+      "queryGroupId": "807c65d5-3e1a-487b-bb1d-8406d32bec97",
+      "loadEnabled": false
+    },
+    "SOURCE_SCHEMA": {
+      "queryId": "e530bfc3-6d8e-4799-a5b1-bc6a5fc471df",
+      "queryName": "SOURCE_SCHEMA",
+      "queryGroupId": "807c65d5-3e1a-487b-bb1d-8406d32bec97",
+      "loadEnabled": false
+    },
+    "SOURCE_INSTANCE_PREFIX_TABLE": {
+      "queryId": "3485d1c5-26a5-42d2-af16-41051b74d626",
+      "queryName": "SOURCE_INSTANCE_PREFIX_TABLE",
+      "queryGroupId": "807c65d5-3e1a-487b-bb1d-8406d32bec97",
+      "loadEnabled": false
+    },
+    "SOURCE_INSTANCE_VALUE": {
+      "queryId": "1341633e-f490-4b6b-bfb2-dd90a0953ccf",
+      "queryName": "SOURCE_INSTANCE_VALUE",
+      "queryGroupId": "807c65d5-3e1a-487b-bb1d-8406d32bec97",
+      "loadEnabled": false
+    },
+    "DESTINATION_SCHEMA": {
+      "queryId": "84378eac-ae82-4172-ae62-71ad35842f12",
+      "queryName": "DESTINATION_SCHEMA",
+      "queryGroupId": "35c44cb7-193d-44e8-afb2-d0507dcfc20b",
+      "loadEnabled": false
+    },
+    "getCurrentParisDateTime": {
+      "queryId": "faceea78-6999-4c7a-8b16-d28e56f13d99",
+      "queryName": "getCurrentParisDateTime",
+      "queryGroupId": "821a363e-f767-4b7b-a3d7-641c9059113b",
+      "loadEnabled": false
+    },
+    "project_folder_prep": {
+      "queryId": "0f50c6f6-9784-49a6-b4c3-35cc26f4149a",
+      "queryName": "project_folder_prep",
+      "loadEnabled": false
+    },
+    "getLatestSnapshotDateFromLakehouseTable": {
+      "queryId": "3e3fda00-e71b-4525-933d-ae01ac93cd2c",
+      "queryName": "getLatestSnapshotDateFromLakehouseTable",
+      "queryGroupId": "821a363e-f767-4b7b-a3d7-641c9059113b",
+      "loadEnabled": false
+    },
+    "users_prep": {
+      "queryId": "b0d1ffef-2089-47ae-a183-1bb60d2289e8",
+      "queryName": "users_prep",
+      "loadEnabled": false
+    },
+    "scenario_runs_prep": {
+      "queryId": "9230f5f0-860d-4f8a-80ca-21e38771f8e8",
+      "queryName": "scenario_runs_prep",
+      "loadEnabled": false
+    },
+    "jobs_prep": {
+      "queryId": "10a52012-bc37-4aca-be50-dc365878456b",
+      "queryName": "jobs_prep",
+      "loadEnabled": false
+    },
+    "audit_logs_prep": {
+      "queryId": "af5f0d15-15c7-4962-a108-149d4beee6df",
+      "queryName": "audit_logs_prep",
+      "loadEnabled": false
+    },
+    "cluster_tasks_prep": {
+      "queryId": "e8289e3b-cf9d-4df6-9402-a5bb4dbb3df0",
+      "queryName": "cluster_tasks_prep",
+      "loadEnabled": false
+    },
+    "loadIncrementalStarburstTable": {
+      "queryId": "d8be4b90-ae2f-4aa0-be54-61656e2218b8",
+      "queryName": "loadIncrementalStarburstTable",
+      "queryGroupId": "821a363e-f767-4b7b-a3d7-641c9059113b",
+      "loadEnabled": false
+    },
+    "usage_licences_prep_DataDestination": {
+      "queryId": "12bdbac7-add4-4be1-bf8d-8c63345c9234",
+      "queryName": "usage_licences_prep_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "project_folder_prep_DataDestination": {
+      "queryId": "f9d429e4-6c19-4299-a5b2-e9b412c9a1a9",
+      "queryName": "project_folder_prep_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "users_prep_DataDestination": {
+      "queryId": "c05199ba-23ad-4de5-968c-c559c2c7edbc",
+      "queryName": "users_prep_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "scenario_runs_prep_DataDestination": {
+      "queryId": "bb5f2485-ad5a-49d9-87e1-552aa647ff45",
+      "queryName": "scenario_runs_prep_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "jobs_prep_DataDestination": {
+      "queryId": "9c67be39-1ab2-43ca-87a9-eeb52d67ba6f",
+      "queryName": "jobs_prep_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "audit_logs_prep_DataDestination": {
+      "queryId": "57a532db-f3a0-4eae-bcc7-4c82915324ed",
+      "queryName": "audit_logs_prep_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "cluster_tasks_prep_DataDestination": {
+      "queryId": "2033cfe4-869b-439b-8b34-cba8721ed400",
+      "queryName": "cluster_tasks_prep_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "{\"Host\":\"starburst.paas-datalake-data-2.dev.fdj.fr\",\"Port\":443}",
+      "kind": "StarburstPresto",
+      "connectionId": "{\"ClusterId\":\"bb62fdef-cbd9-49fb-bc1b-95b771b265eb\",\"DatasourceId\":\"17c56bcc-60a9-4331-97ca-4f54d0d570a2\"}"
+    },
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"28c72d3a-95e3-4544-8989-cc457ddab83e\",\"DatasourceId\":\"076aba51-4fb7-4f83-b39e-6a00e624a331\"}"
+    },
+    {
+      "path": "{\"Host\":\"starburst.paas-datalake-data-2.int.fdj.fr\",\"Port\":443}",
+      "kind": "StarburstPresto",
+      "connectionId": "{\"ClusterId\":\"bb62fdef-cbd9-49fb-bc1b-95b771b265eb\",\"DatasourceId\":\"bc258cd9-dc2f-4df5-9c2f-2070ab65bd0e\"}"
+    }
+  ],
+  "fastCombine": true,
+  "parametric": true
+}
