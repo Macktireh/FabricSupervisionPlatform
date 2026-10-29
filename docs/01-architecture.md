@@ -6,7 +6,7 @@ La plateforme de supervision implémente une **architecture en médaillon** (Med
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│                        SOURCES (Starburst)                      │
+│                        SOURCES (Starburst)                               │
 │   DEV · INT · RPP · PROD  – instances Dataiku DSS                        │
 └────────────────────────────────┬─────────────────────────────────────────┘
                                  │  Dataflow Gen2 (Power Query M)
@@ -39,17 +39,17 @@ La plateforme de supervision implémente une **architecture en médaillon** (Med
                                  │  DirectLake
                                  ▼
 ┌──────────────────────────────────────────────────────────────────────────┐
-│  EXPOSITION                                                               │
+│  EXPOSITION                                                              │
 │  ┌─────────────────────────────────┐  ┌────────────────────────────────┐ │
-│  │  Semantic Model (TMDL)          │  │  Rapport Power BI (4 pages)    │ │
+│  │  Semantic Model (TMDL)          │  │  Rapport Power BI              │ │
 │  │  Relations · Mesures DAX        │  │  Thème FDJ dark/light          │ │
 │  │  DirectLake mode                │  │  Bookmarks · Navigation        │ │
 │  └─────────────────────────────────┘  └────────────────────────────────┘ │
-│  ┌─────────────────────────────────┐                                      │
-│  │  Data Agent IA                  │                                      │
-│  │  Q&A en français                │                                      │
-│  │  Connecté au Semantic Model     │                                      │
-│  └─────────────────────────────────┘                                      │
+│  ┌─────────────────────────────────┐                                     │
+│  │  Data Agent IA                  │                                     │
+│  │  Q&A en français                │                                     │
+│  │  Connecté au Semantic Model     │                                     │
+│  └─────────────────────────────────┘                                     │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -88,8 +88,8 @@ Cela garantit la convergence des clés entre les runs sans séquence auto-incré
 | **Notebooks** | Transformations Python/Polars et SQL/Spark |
 | **Data Pipelines** | Orchestration (Master + sous-pipelines paramétriques) |
 | **Variable Library** | Configuration centralisée (WorkspaceId, LakehouseId, connexions…) |
-| **Semantic Model** | Modèle DirectLake (TMDL), relations et mesures DAX |
-| **Rapport Power BI** | Dashboard 4 pages avec thème FDJ |
+| **Semantic Model** | Mode DirectLake, relations et mesures DAX |
+| **Rapport Power BI** | Dashboard avec thème FDJ |
 | **Data Agent** | Agent IA connecté au Semantic Model |
 
 ## Environnements Dataiku supervisés

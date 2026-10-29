@@ -49,7 +49,7 @@ ENABLE_DIM_INSTANCE = True
 ENABLE_DIM_LICENCE = True
 ENABLE_DIM_INSTANCE_LICENCE_UTILISATEUR = True
 ENABLE_DIM_PROJECT = True
-ENABLE_DIM_USAGE = False
+ENABLE_DIM_USAGE = True
 
 # METADATA ********************
 
@@ -263,6 +263,7 @@ def _map_profile_type(expr: pl.Expr) -> pl.Expr:
         .when(expr == "arc").then(pl.lit("architectes"))
         .when(expr == "adm").then(pl.lit("admin"))
         .when(expr == "dmr").then(pl.lit("managers"))
+        .when(expr == "tld").then(pl.lit("tech lead"))
         .otherwise(pl.lit("métiers"))
     )
 
@@ -363,21 +364,6 @@ def build_dim_utilisateur(users_df: pl.DataFrame) -> pl.DataFrame:
 # ### Dim_Licence
 
 # CELL ********************
-
-def _map_profile_type(expr: pl.Expr) -> pl.Expr:
-    expr = expr.fill_null("")
-    return (
-        pl.when(expr == "das").then(pl.lit("data scientist"))
-        .when(expr == "da").then(pl.lit("data analyst"))
-        .when(expr == "dev").then(pl.lit("dev IT"))
-        .when(expr == "qua").then(pl.lit("testeurs"))
-        .when(expr == "roa").then(pl.lit("ops"))
-        .when(expr == "arc").then(pl.lit("architectes"))
-        .when(expr == "adm").then(pl.lit("admin"))
-        .when(expr == "dmr").then(pl.lit("managers"))
-        .otherwise(pl.lit("métiers"))
-    )
-
 
 def build_dim_licence(usage_licences_df: pl.DataFrame) -> pl.DataFrame:
 

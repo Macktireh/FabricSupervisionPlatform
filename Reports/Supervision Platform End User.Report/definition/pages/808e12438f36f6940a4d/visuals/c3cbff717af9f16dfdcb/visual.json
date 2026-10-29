@@ -27,8 +27,9 @@
                 }
               },
               "queryRef": "dim_utilisateur.profile_type",
-              "nativeQueryRef": "profile_type",
-              "active": true
+              "nativeQueryRef": "Profil",
+              "active": true,
+              "displayName": "Profil"
             }
           ]
         },
@@ -107,13 +108,12 @@
                     "Entity": "Indicateurs"
                   }
                 },
-                "Property": "Nb Utilisateurs Sur-utilisés (Licence)"
+                "Property": "Nb Utilisateurs OK (Licence)"
               }
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
     },
     "objects": {

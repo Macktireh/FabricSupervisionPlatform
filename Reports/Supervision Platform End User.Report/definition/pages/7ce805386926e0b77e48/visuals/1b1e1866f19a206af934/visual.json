@@ -47,7 +47,8 @@
                 }
               },
               "queryRef": "dim_utilisateur.contract_type",
-              "nativeQueryRef": "contract_type"
+              "nativeQueryRef": "Type contrat",
+              "displayName": "Type contrat"
             }
           ]
         },

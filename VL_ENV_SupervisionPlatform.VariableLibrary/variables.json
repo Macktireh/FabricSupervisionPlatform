@@ -48,6 +48,15 @@
         "itemId": "ee4a2808-d90e-435e-83ee-6c333a205737",
         "workspaceId": "cae55539-e164-4a36-bb47-62c5bb2cbee7"
       }
+    },
+    {
+      "name": "DataflowStarburstLakehouseLoaderInit",
+      "note": "",
+      "type": "ItemReference",
+      "value": {
+        "itemId": "b50b7368-ec57-4be0-b2ca-396f1ff8ce3c",
+        "workspaceId": "cae55539-e164-4a36-bb47-62c5bb2cbee7"
+      }
     }
   ]
 }

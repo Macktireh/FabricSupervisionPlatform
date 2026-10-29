@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataAgent",
+    "displayName": "Agent Supervision Platform End User"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0eb3a792-92cd-8272-4101-df1221d54468"
+  }
+}

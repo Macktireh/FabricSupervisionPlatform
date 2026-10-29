@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "NB_Fait_Licence_Dataiku"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f1d519f1-29eb-8abb-4cec-a95a3784dbd4"
+  }
+}

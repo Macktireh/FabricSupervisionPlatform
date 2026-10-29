@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "DP_STARBURST_LAKEHOUSE_LOADER"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7b2866ce-1938-92b4-4dd8-07936c663ad1"
+  }
+}

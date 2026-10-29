@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "DP_DATA_INGESTION_BRONZE"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "64858807-447a-88d5-429c-55fef9a2808c"
+  }
+}

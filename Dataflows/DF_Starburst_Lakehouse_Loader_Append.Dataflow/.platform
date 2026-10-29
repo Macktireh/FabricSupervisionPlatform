@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "DF_Starburst_Lakehouse_Loader_Append"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3a205737-6c33-83ee-435e-d90eee4a2808"
+  }
+}

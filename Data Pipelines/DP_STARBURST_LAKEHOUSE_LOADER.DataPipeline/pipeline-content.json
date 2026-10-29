@@ -2,70 +2,152 @@
   "properties": {
     "activities": [
       {
-        "name": "Design_Dev",
-        "type": "RefreshDataflow",
+        "name": "IsInitialLoad",
+        "type": "IfCondition",
         "dependsOn": [],
-        "policy": {
-          "timeout": "0.12:00:00",
-          "retry": 0,
-          "retryIntervalInSeconds": 30,
-          "secureOutput": false,
-          "secureInput": false
-        },
         "typeProperties": {
-          "dataflowId": {
-            "value": "@pipeline().libraryVariables.DataflowStarburstLakehouseLoaderAppend.itemId",
+          "expression": {
+            "value": "@if(\r\n    equals(\r\n        pipeline().parameters.FORCE_INIT,\r\n        bool(1)\r\n    ),\r\n    bool(1), \r\n    bool(0)\r\n)",
             "type": "Expression"
           },
-          "workspaceId": {
-            "value": "@pipeline().libraryVariables.DataflowStarburstLakehouseLoaderAppend.workspaceId",
-            "type": "Expression"
-          },
-          "notifyOption": "NoNotification",
-          "parameters": {
-            "SOURCE_HOST": {
-              "value": {
-                "value": "@pipeline().parameters.SOURCE_HOST",
-                "type": "Expression"
-              }
-            },
-            "SOURCE_PORT": {
-              "value": {
-                "value": "@pipeline().parameters.SOURCE_PORT",
-                "type": "Expression"
-              }
-            },
-            "SOURCE_DATABASE": {
-              "value": {
-                "value": "@pipeline().parameters.SOURCE_DATABASE",
-                "type": "Expression"
-              }
-            },
-            "SOURCE_SCHEMA": {
-              "value": {
-                "value": "@pipeline().parameters.SOURCE_SCHEMA",
-                "type": "Expression"
-              }
-            },
-            "SOURCE_INSTANCE_PREFIX_TABLE": {
-              "value": {
-                "value": "@pipeline().parameters.SOURCE_INSTANCE_PREFIX_TABLE",
-                "type": "Expression"
-              }
-            },
-            "SOURCE_INSTANCE_VALUE": {
-              "value": {
-                "value": "@pipeline().parameters.SOURCE_INSTANCE_VALUE",
-                "type": "Expression"
-              }
-            },
-            "DESTINATION_SCHEMA": {
-              "value": {
-                "value": "@pipeline().parameters.DESTINATION_SCHEMA",
-                "type": "Expression"
+          "ifFalseActivities": [
+            {
+              "name": "DF_Starburst_Lakehouse_Loader_Append",
+              "type": "RefreshDataflow",
+              "dependsOn": [],
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureOutput": false,
+                "secureInput": false
+              },
+              "typeProperties": {
+                "dataflowId": {
+                  "value": "@pipeline().libraryVariables.DataflowStarburstLakehouseLoaderAppend.itemId",
+                  "type": "Expression"
+                },
+                "workspaceId": {
+                  "value": "@pipeline().libraryVariables.DataflowStarburstLakehouseLoaderAppend.workspaceId",
+                  "type": "Expression"
+                },
+                "notifyOption": "NoNotification",
+                "parameters": {
+                  "SOURCE_HOST": {
+                    "value": {
+                      "value": "@pipeline().parameters.SOURCE_HOST",
+                      "type": "Expression"
+                    }
+                  },
+                  "SOURCE_PORT": {
+                    "value": {
+                      "value": "@pipeline().parameters.SOURCE_PORT",
+                      "type": "Expression"
+                    }
+                  },
+                  "SOURCE_DATABASE": {
+                    "value": {
+                      "value": "@pipeline().parameters.SOURCE_DATABASE",
+                      "type": "Expression"
+                    }
+                  },
+                  "SOURCE_SCHEMA": {
+                    "value": {
+                      "value": "@pipeline().parameters.SOURCE_SCHEMA",
+                      "type": "Expression"
+                    }
+                  },
+                  "SOURCE_INSTANCE_PREFIX_TABLE": {
+                    "value": {
+                      "value": "@pipeline().parameters.SOURCE_INSTANCE_PREFIX_TABLE",
+                      "type": "Expression"
+                    }
+                  },
+                  "SOURCE_INSTANCE_VALUE": {
+                    "value": {
+                      "value": "@pipeline().parameters.SOURCE_INSTANCE_VALUE",
+                      "type": "Expression"
+                    }
+                  },
+                  "DESTINATION_SCHEMA": {
+                    "value": {
+                      "value": "@pipeline().parameters.DESTINATION_SCHEMA",
+                      "type": "Expression"
+                    }
+                  }
+                }
               }
             }
-          }
+          ],
+          "ifTrueActivities": [
+            {
+              "name": "DF_Starburst_Lakehouse_Loader_Init",
+              "type": "RefreshDataflow",
+              "dependsOn": [],
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureOutput": false,
+                "secureInput": false
+              },
+              "typeProperties": {
+                "dataflowId": {
+                  "value": "@pipeline().libraryVariables.DataflowStarburstLakehouseLoaderInit.itemId",
+                  "type": "Expression"
+                },
+                "workspaceId": {
+                  "value": "@pipeline().libraryVariables.DataflowStarburstLakehouseLoaderAppend.workspaceId",
+                  "type": "Expression"
+                },
+                "notifyOption": "NoNotification",
+                "parameters": {
+                  "SOURCE_HOST": {
+                    "value": {
+                      "value": "@pipeline().parameters.SOURCE_HOST",
+                      "type": "Expression"
+                    }
+                  },
+                  "SOURCE_PORT": {
+                    "value": {
+                      "value": "@pipeline().parameters.SOURCE_PORT",
+                      "type": "Expression"
+                    }
+                  },
+                  "SOURCE_DATABASE": {
+                    "value": {
+                      "value": "@pipeline().parameters.SOURCE_DATABASE",
+                      "type": "Expression"
+                    }
+                  },
+                  "SOURCE_SCHEMA": {
+                    "value": {
+                      "value": "@pipeline().parameters.SOURCE_SCHEMA",
+                      "type": "Expression"
+                    }
+                  },
+                  "SOURCE_INSTANCE_PREFIX_TABLE": {
+                    "value": {
+                      "value": "@pipeline().parameters.SOURCE_INSTANCE_PREFIX_TABLE",
+                      "type": "Expression"
+                    }
+                  },
+                  "SOURCE_INSTANCE_VALUE": {
+                    "value": {
+                      "value": "@pipeline().parameters.SOURCE_INSTANCE_VALUE",
+                      "type": "Expression"
+                    }
+                  },
+                  "DESTINATION_SCHEMA": {
+                    "value": {
+                      "value": "@pipeline().parameters.DESTINATION_SCHEMA",
+                      "type": "Expression"
+                    }
+                  }
+                }
+              }
+            }
+          ]
         }
       }
     ],
@@ -97,12 +179,21 @@
       "DESTINATION_SCHEMA": {
         "type": "string",
         "defaultValue": "bronze"
+      },
+      "FORCE_INIT": {
+        "type": "bool",
+        "defaultValue": false
       }
     },
     "libraryVariables": {
       "DataflowStarburstLakehouseLoaderAppend": {
         "type": "Object",
         "variableName": "DataflowStarburstLakehouseLoaderAppend",
+        "libraryName": "VL_ENV_SupervisionPlatform"
+      },
+      "DataflowStarburstLakehouseLoaderInit": {
+        "type": "Object",
+        "variableName": "DataflowStarburstLakehouseLoaderInit",
         "libraryName": "VL_ENV_SupervisionPlatform"
       }
     }

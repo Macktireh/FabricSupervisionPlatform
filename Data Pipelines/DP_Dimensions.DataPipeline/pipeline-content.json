@@ -24,6 +24,7 @@
             "type": "LakehouseTableSink",
             "tableActionOption": "Upsert",
             "applyVOrder": false,
+            "enableTimestampNtz": false,
             "upsertSettings": {
               "keys": [
                 "DATE"
@@ -40,16 +41,16 @@
               },
               "schema": [],
               "connectionSettings": {
-                "name": "91c6f484_cb9e_4935_8815_8c50fb11cb65",
+                "name": "LH_Supervision_Platform_End_User",
                 "properties": {
                   "type": "Lakehouse",
                   "typeProperties": {
-                    "artifactId": "@pipeline().libraryVariables.LakehouseSupervisionPlatform.itemId",
-                    "workspaceId": "@pipeline().libraryVariables.LakehouseSupervisionPlatform.workspaceId",
+                    "artifactId": "dd93bd08-494a-9fd3-44ec-2c9ce5a494bb",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
                     "rootFolder": "Tables"
                   },
                   "externalReferences": {
-                    "connection": "bfa671b3-eb01-44a9-ac29-f51c71fbe684"
+                    "connection": "076aba51-4fb7-4f83-b39e-6a00e624a331"
                   },
                   "annotations": []
                 }
@@ -110,12 +111,6 @@
         "dependsOn": [
           {
             "activity": "NB_Dimensions Silver",
-            "dependencyConditions": [
-              "Succeeded"
-            ]
-          },
-          {
-            "activity": "Dim_Calendrier",
             "dependencyConditions": [
               "Succeeded"
             ]

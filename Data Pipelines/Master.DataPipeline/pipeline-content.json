@@ -95,7 +95,11 @@
         "type": "InvokePipeline",
         "typeProperties": {
           "parameters": {
-            "DESTINATION_SCHEMA": "silver"
+            "DESTINATION_SCHEMA": "silver",
+            "FORCE_INIT": {
+              "value": "@pipeline().parameters.FORCE_INIT",
+              "type": "Expression"
+            }
           },
           "waitOnCompletion": true,
           "workspaceId": "00000000-0000-0000-0000-000000000000",
@@ -115,6 +119,12 @@
         "name": "DP_Data_Ingestion",
         "dependsOn": []
       }
-    ]
+    ],
+    "parameters": {
+      "FORCE_INIT": {
+        "type": "bool",
+        "defaultValue": false
+      }
+    }
   }
 }

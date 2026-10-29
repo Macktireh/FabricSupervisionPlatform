@@ -11,7 +11,11 @@
             "SOURCE_SCHEMA": "lab_mnp_plt_plt",
             "SOURCE_INSTANCE_PREFIX_TABLE": "design",
             "SOURCE_INSTANCE_VALUE": "design_monopole_dev",
-            "DESTINATION_SCHEMA": "bronze"
+            "DESTINATION_SCHEMA": "bronze",
+            "FORCE_INIT": {
+              "value": "@pipeline().parameters.FORCE_INIT",
+              "type": "Expression"
+            }
           },
           "waitOnCompletion": true,
           "workspaceId": "00000000-0000-0000-0000-000000000000",
@@ -41,7 +45,11 @@
             "SOURCE_SCHEMA": "mrt_mnp_plt_plt",
             "SOURCE_INSTANCE_PREFIX_TABLE": "automation",
             "SOURCE_INSTANCE_VALUE": "automation_monopole_int",
-            "DESTINATION_SCHEMA": "bronze"
+            "DESTINATION_SCHEMA": "bronze",
+            "FORCE_INIT": {
+              "value": "@pipeline().parameters.FORCE_INIT",
+              "type": "Expression"
+            }
           },
           "waitOnCompletion": true,
           "workspaceId": "00000000-0000-0000-0000-000000000000",
@@ -61,6 +69,12 @@
         "name": "Starburst Instance Automation Int",
         "dependsOn": []
       }
-    ]
+    ],
+    "parameters": {
+      "FORCE_INIT": {
+        "type": "bool",
+        "defaultValue": false
+      }
+    }
   }
 }

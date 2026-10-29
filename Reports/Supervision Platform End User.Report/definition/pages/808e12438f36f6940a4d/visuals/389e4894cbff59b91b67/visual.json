@@ -1051,7 +1051,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "83.5552205666184D"
+                  "Value": "95.49100826012692D"
                 }
               }
             }
@@ -1100,6 +1100,34 @@
           },
           "selector": {
             "metadata": "Indicateurs.Status_Opt_Label"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "102.19043908095989D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "dim_utilisateur.profile_type"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "194.46661060837428D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "dim_utilisateur.full_name"
           }
         }
       ]

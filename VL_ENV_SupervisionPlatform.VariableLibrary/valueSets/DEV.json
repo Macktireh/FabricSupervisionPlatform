@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/variableLibrary/definition/valueSet/1.0.0/schema.json",
+  "name": "DEV",
+  "variableOverrides": [
+    {
+      "name": "WorkspaceId",
+      "value": "b837c58e-9253-479f-a4e6-43558e13c6b5"
+    },
+    {
+      "name": "LakehouseSupervisionPlatform",
+      "value": {
+        "itemId": "69929c9a-5800-4e4e-b87b-48f93996df46",
+        "workspaceId": "b837c58e-9253-479f-a4e6-43558e13c6b5"
+      }
+    },
+    {
+      "name": "LakehouseId",
+      "value": "69929c9a-5800-4e4e-b87b-48f93996df46"
+    },
+    {
+      "name": "DataflowStarburstLakehouseLoaderAppend",
+      "value": {
+        "itemId": "f023100f-8aef-41ca-b584-c50cd5141b02",
+        "workspaceId": "b837c58e-9253-479f-a4e6-43558e13c6b5"
+      }
+    },
+    {
+      "name": "DataflowStarburstLakehouseLoaderInit",
+      "value": {
+        "itemId": "0295684e-4d27-4c8b-9913-a73d02f1606f",
+        "workspaceId": "b837c58e-9253-479f-a4e6-43558e13c6b5"
+      }
+    }
+  ]
+}

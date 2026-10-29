@@ -13,7 +13,7 @@ shared LakehouseId = let
   Source = Variable.Value("$(/**/VL_ENV_SupervisionPlatform/LakehouseId)")
 in
   Source;
-shared SOURCE_HOST = "starburst.paas-datalake-data-2.dev.xxx.fr" meta [IsParameterQuery = true, IsParameterQueryRequired = true, Type = type text];
+shared SOURCE_HOST = "starburst.paas-datalake-data-2.dev.fdj.fr" meta [IsParameterQuery = true, IsParameterQueryRequired = true, Type = type text];
 shared SOURCE_PORT = "443" meta [IsParameterQuery = true, IsParameterQueryRequired = true, Type = type text];
 shared SOURCE_DATABASE = "lab_mnp_plt_hive" meta [IsParameterQuery = true, IsParameterQueryRequired = true, Type = type text];
 shared SOURCE_SCHEMA = "lab_mnp_plt_plt" meta [IsParameterQuery = true, IsParameterQueryRequired = true, Type = type text];

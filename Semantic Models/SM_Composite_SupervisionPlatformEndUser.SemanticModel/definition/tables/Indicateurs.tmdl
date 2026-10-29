@@ -26,12 +26,19 @@ table Indicateurs
 			RETURN
 			CALCULATE(
 			    DISTINCTCOUNT( fait_usage_dataiku_utilisateur[user_id] ),
-			    REMOVEFILTERS( dim_calendrier[DATE] ),
+			    // REMOVEFILTERS( dim_calendrier[DATE] ),
+			    // KEEPFILTERS(
+			    //     FILTER(
+			    //         VALUES(fait_usage_dataiku_utilisateur[user_id]),
+			    //         [First Connection] >= StartDate
+			    //             && [First Connection] <= EndDate
+			    //     )
+			    // )
 			    KEEPFILTERS(
 			        FILTER(
 			            VALUES(fait_usage_dataiku_utilisateur[user_id]),
-			            [First Connection] >= StartDate
-			                && [First Connection] <= EndDate
+			             MIN(fait_usage_dataiku_utilisateur[timestamp_dt]) >= StartDate
+			                &&  MIN(fait_usage_dataiku_utilisateur[timestamp_dt]) <= EndDate
 			        )
 			    )
 			)
@@ -586,7 +593,7 @@ table Indicateurs
 	/// Formatted month-over-month evolution label with arrow/icon and percent formatting.
 	measure 'Évolution Utilisateurs Actifs Format' = ```
 			
-			VAR _evol = [Évolution Utilisateurs Actifs]
+			VAR _evol = [% Évolution Utilisateurs Actifs]
 			VAR _format = 
 			    SWITCH(
 			        TRUE(),
@@ -903,6 +910,14 @@ table Indicateurs
 		formatString: Short Date
 		displayFolder: Évolution temporelle
 		lineageTag: e94fcd91-d9d1-4de9-9ccd-b67e71708c43
+
+	measure '% Évolution Utilisateurs Actifs' =
+			
+			// [Nb Utilisateurs Actifs] - [Nb Utilisateurs Actifs M-1]
+			DIVIDE([Nb Utilisateurs Actifs], [Nb Utilisateurs Actifs M-1], 0) +0
+		formatString: 0%;-0%;0%
+		displayFolder: Évolution temporelle
+		lineageTag: 0d6d17ea-2e41-4974-997b-19a41ab629bf
 
 	column _
 		isHidden

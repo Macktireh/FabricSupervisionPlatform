@@ -8,8 +8,7 @@ Cadre standardisé de supervision des usages **End User** dans Microsoft Fabric.
 
 - Piloter l'attribution des licences Dataiku (dotation vs utilisation réelle)
 - Suivre l'adoption et l'intensité d'usage par équipe, projet et profil utilisateur
-- Identifier les licences inactives, sous-utilisées ou les périmètres en tension
-- Préparer l'extension du dispositif à Microsoft Fabric et Data Catalog
+- Identifier les licences inactives, sous-utilisées, sur-utilisées
 
 ## Architecture
 
@@ -24,14 +23,14 @@ Starburst (DEV/INT/RPP/PROD)
 │  users, audit_logs, licences, projets…  │
 └─────────────────────────────────────────┘
         │
-        ▼  Notebooks Python/Polars
+        ▼  Notebooks
 ┌─────────────────────────────────────────┐
 │  SILVER  – dimensions nettoyées         │
 │  dim_utilisateur, dim_licence,          │
 │  dim_instance, dim_project, dim_usage…  │
 └─────────────────────────────────────────┘
         │
-        ▼  Notebooks SQL/Spark (MERGE idempotent)
+        ▼  Notebooks
 ┌─────────────────────────────────────────┐
 │  GOLD    – faits analytiques            │
 │  fait_usage_dataiku_utilisateur         │
@@ -95,6 +94,5 @@ FabricSupervisionPlatform/
 
 | Version | Périmètre | Statut |
 |---------|-----------|--------|
-| V1 | Dataiku (DEV, INT, RPP, PROD) | En production |
+| V1 | Dataiku (DEV, INT, RPP, PROD) | En cours |
 | V2 | Microsoft Fabric (workspaces, artefacts, capacités) | Planifié |
-| V3 | Data Catalog (consultations, documentation) | Planifié |

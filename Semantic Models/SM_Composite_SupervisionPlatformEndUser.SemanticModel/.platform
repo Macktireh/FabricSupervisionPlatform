@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "SM_Composite_SupervisionPlatformEndUser"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "8df153aa-4bd9-9fa5-4bb4-6fb649efcd8e"
+  }
+}

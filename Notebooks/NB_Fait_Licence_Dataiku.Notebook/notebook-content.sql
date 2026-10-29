@@ -52,8 +52,8 @@
 -- Type here in the cell editor to add code!
 
 --CREATE OR REPLACE TABLE gold.fait_licence_dataiku
-MERGE INTO gold.fait_licence_dataiku AS tgt
-USING (
+/*MERGE INTO gold.fait_licence_dataiku AS tgt
+USING (*/
 WITH
  
 dim_utilisateur AS (
@@ -81,7 +81,7 @@ dim_utilisateur AS (
 ),
 
 dim_environnement AS (
-   SELECT instance_name as instance from gold.dim_instance
+   SELECT instance_name as instance, id from gold.dim_instance
 ),
 
 users_snapshots AS (
@@ -97,21 +97,18 @@ users_snapshots AS (
         temps_env.first_connection
     FROM (
         SELECT
-            u.instance,
-            u.instance_id,
+            e.instance,
+            e.id as instance_id,
             u.user_id,
-            t.date as date_jour,
+            snapshot_date as date_jour,
             u.userprofile,
             u.login,
             u.licence_id,
             u.creationdate,
             u.first_connection
-        FROM gold.dim_calendrier t
-        CROSS JOIN dim_environnement e
+        FROM dim_environnement e
         LEFT OUTER JOIN dim_utilisateur u
             ON u.instance      = e.instance
-           AND u.snapshot_date = t.date
-        WHERE t.date <= current_date
     ) temps_env
 ),
 
@@ -119,9 +116,9 @@ user_events AS (
     SELECT DISTINCT
         instance,
         user         AS login,
-        timestamp_dt,
-        1            AS connected
+        timestamp_dt
     FROM bronze.audit_logs_prep a
+    -- ?
 ),
 
 match_user_audit_event AS (
@@ -136,16 +133,10 @@ match_user_audit_event AS (
         res.creationdate,
         res.first_connection,
         MAX(res.timestamp) OVER (
-            PARTITION BY res.instance, res.login
+            PARTITION BY res.instance, res.login, res.userprofile
             ORDER BY res.date_jour
             ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
-        ) AS derniere_user_date_action,
-        MAX(res.timestamp) OVER (
-            PARTITION BY res.instance, res.userprofile
-            ORDER BY res.date_jour
-            ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
-        ) AS derniere_profile_date_action,
-        res.connected
+        ) AS derniere_user_date_action
     FROM (
         SELECT
             u.instance,
@@ -157,16 +148,8 @@ match_user_audit_event AS (
             u.creationdate,
             u.first_connection,
             UPPER(u.userprofile)          AS userprofile,
-            COALESCE(ue.connected, 0)     AS connected,
-            CASE
-                WHEN a.timestamp_dt = u.date_jour
-                    THEN a.timestamp_dt
-            END                           AS timestamp
+            ue.timestamp_dt                           AS timestamp
         FROM users_snapshots u
-        LEFT OUTER JOIN bronze.audit_logs_prep a
-            ON a.user       = u.login
-           AND a.timestamp_dt = u.date_jour
-           AND a.instance   = u.instance
         LEFT OUTER JOIN user_events ue
             ON ue.instance    = u.instance
            AND ue.login       = u.login
@@ -185,55 +168,14 @@ last_usage_nb_profils AS (
         userprofile,
         creationdate,
         first_connection,
-        connected,
         COALESCE(
             derniere_user_date_action,
             LAG(derniere_user_date_action, 1) OVER (
-                PARTITION BY instance, login, date_jour
+                PARTITION BY instance, userprofile, login, date_jour
                 ORDER BY date_jour
             )
-        ) AS dernire_user_date_action,
-        COALESCE(
-            derniere_profile_date_action,
-            LAG(derniere_user_date_action, 1) OVER (
-                PARTITION BY instance, userprofile, date_jour
-                ORDER BY date_jour
-            )
-        ) AS dernire_profile_date_action,
-        (
-            SELECT COUNT(DISTINCT e2.login)
-            FROM match_user_audit_event e2
-            WHERE e2.instance     = e1.instance
-              AND e2.date_jour   >= DATEADD(day, -20, e1.date_jour)
-              AND e2.date_jour   <= e1.date_jour
-              AND e2.userprofile  = e1.userprofile
-              AND e2.connected    = 1
-        ) AS nb_user_per_profile_3weeks,
-        (
-            SELECT COUNT(DISTINCT e3.login)
-            FROM match_user_audit_event e3
-            WHERE e3.instance     = e1.instance
-              AND e3.date_jour   >= DATEADD(month, -1, e1.date_jour)
-              AND e3.date_jour   <= e1.date_jour
-              AND e3.userprofile  = e1.userprofile
-              AND e3.connected    = 1
-        ) AS nb_user_per_profile_month
+        ) AS dernire_user_date_action
     FROM match_user_audit_event e1
-),
-
-status_optimisation AS (
-    SELECT
-        *,
-        CASE
-            WHEN nb_user_per_profile_3weeks <= 3 THEN
-                CASE
-                    WHEN nb_user_per_profile_month <> 0 THEN 'Sous-utilisé'
-                    ELSE 'Inactive'
-                END
-            WHEN nb_user_per_profile_3weeks IN (4, 5) THEN 'OK'
-            WHEN nb_user_per_profile_3weeks > 5      THEN 'Sur-utilisé'
-        END AS status_optimisation
-    FROM last_usage_nb_profils
 )
 
 SELECT
@@ -254,16 +196,13 @@ SELECT
     licence_id,
     creationdate,
     dernire_user_date_action,
-    dernire_profile_date_action,
-    nb_user_per_profile_3weeks,
-    nb_user_per_profile_month,
     first_connection,
-    status_optimisation,
     current_timestamp         AS loaded_at,
     current_timestamp         AS updated_at
-FROM status_optimisation
+FROM last_usage_nb_profils
 WHERE instance IS NOT NULL
-)AS src
+and user_id=1976824888885209769
+/*)AS src
 ON tgt.id = src.id
 
 WHEN MATCHED THEN UPDATE SET
@@ -273,11 +212,7 @@ WHEN MATCHED THEN UPDATE SET
     tgt.licence_id                      = src.licence_id,
     tgt.creationdate                    = src.creationdate,
     tgt.dernire_user_date_action        = src.dernire_user_date_action,
-    tgt.dernire_profile_date_action     = src.dernire_profile_date_action,
-    tgt.nb_user_per_profile_3weeks      = src.nb_user_per_profile_3weeks,
-    tgt.nb_user_per_profile_month       = src.nb_user_per_profile_month,
     tgt.first_connection                = src.first_connection,
-    tgt.status_optimisation             = src.status_optimisation,
     tgt.updated_at                      = current_timestamp
 
 WHEN NOT MATCHED THEN INSERT (
@@ -287,11 +222,7 @@ WHEN NOT MATCHED THEN INSERT (
     licence_id,
     creationdate,
     dernire_user_date_action,
-    dernire_profile_date_action,
-    nb_user_per_profile_3weeks,
-    nb_user_per_profile_month,
     first_connection,
-    status_optimisation,
     loaded_at,
     updated_at
 )
@@ -302,14 +233,10 @@ VALUES (
     src.licence_id,
     src.creationdate,
     src.dernire_user_date_action,
-    src.dernire_profile_date_action,
-    src.nb_user_per_profile_3weeks,
-    src.nb_user_per_profile_month,
     src.first_connection,
-    src.status_optimisation,
     src.loaded_at,
     src.updated_at
-); 
+); */
 
 -- METADATA ********************
 
